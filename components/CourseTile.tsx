@@ -56,7 +56,8 @@ export function CourseTile({
   status = 'Active',
   duration = 'Course',
   accent = 'cyan',
-}: CourseTileProps) {
+  onContinue,
+}: CourseTileProps & { onContinue?: (id: string) => void }) {
   const accentClass = accentClasses[accent] ?? accentClasses.cyan;
 
   return (
@@ -95,6 +96,7 @@ export function CourseTile({
         <ProgressIndicator progress={progress} size="medium" />
         <button
           type="button"
+          onClick={() => onContinue && onContinue(id)}
           className="mt-4 flex w-full items-center justify-between rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:border-cyan-300/30 hover:text-cyan-200"
         >
           Continue

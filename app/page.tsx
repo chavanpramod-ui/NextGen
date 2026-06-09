@@ -1,4 +1,6 @@
-import { Suspense } from 'react';
+'use client';
+
+import { Suspense, useState, useMemo } from 'react';
 import {
   ArrowUpRight,
   CalendarCheck,
@@ -17,7 +19,7 @@ import { HeroTile } from '@/components/HeroTile';
 import { LoadingSkeletons } from '@/components/LoadingStates';
 import { Sidebar } from '@/components/Sidebar';
 
-const courses = [
+const initialCourses = [
   {
     id: '1',
     title: 'Advanced React Patterns',
@@ -56,19 +58,19 @@ const courses = [
   },
 ];
 
-const metrics = [
+const initialMetrics = [
   { label: 'Focus score', value: '94%', detail: '+12% this week', icon: Target },
   { label: 'Study time', value: '18.5h', detail: '4h 20m today', icon: Clock3 },
   { label: 'Completed', value: '27', detail: 'certified skills', icon: ShieldCheck },
 ];
 
-const priorities = [
+const initialPriorities = [
   { title: 'Ship portfolio case study', time: 'Today, 4:30 PM', tone: 'High' },
   { title: 'Database schema checkpoint', time: 'Tomorrow, 10:00 AM', tone: 'Medium' },
   { title: 'Design critique recap', time: 'Friday, 2:00 PM', tone: 'Low' },
 ];
 
-function MetricStrip() {
+function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
   return (
     <section className="grid gap-3 md:grid-cols-3" aria-label="Learning metrics">
       {metrics.map((metric) => {
@@ -95,7 +97,7 @@ function MetricStrip() {
   );
 }
 
-function PriorityPanel() {
+function PriorityPanel({ priorities }: { priorities: typeof initialPriorities }) {
   return (
     <section className="dashboard-panel p-5">
       <div className="flex items-center justify-between gap-4">
@@ -135,7 +137,13 @@ function PriorityPanel() {
   );
 }
 
-function CoursesGrid() {
+function CoursesGrid({ 
+  courses, 
+  onContinue 
+}: { 
+  courses: typeof initialCourses, 
+  onContinue: (id: string) => void 
+}) {
   return (
     <section aria-labelledby="courses-heading">
       <div className="mb-4 flex items-center justify-between gap-4">
@@ -165,6 +173,7 @@ function CoursesGrid() {
             status={course.status}
             duration={course.duration}
             accent={course.accent}
+            onContinue={onContinue}
           />
         ))}
       </div>
@@ -173,6 +182,30 @@ function CoursesGrid() {
 }
 
 export default function Dashboard() {
+  const [courses, setCourses] = useState(initialCourses);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [metrics, setMetrics] = useState(initialMetrics);
+  const [priorities, setPriorities] = useState(initialPriorities);
+
+  const filteredCourses = useMemo(() => {
+    return courses.filter((course) =>
+      course.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [courses, searchQuery]);
+
+  const handleContinueCourse = (id: string) => {
+    setCourses((prev) =>
+      prev.map((c) =>
+        c.id === id ? { ...c, progress: Math.min(100, c.progress + 5) } : c
+      )
+    );
+  };
+
+  const handleOptimize = () => {
+    // Shuffle priorities to simulate optimization
+    setPriorities((prev) => [...prev].sort(() => Math.random() - 0.5));
+  };
+
   return (
     <div className="min-h-screen bg-[var(--background)] text-slate-100">
       <div className="dashboard-shell">
@@ -204,9 +237,14 @@ export default function Dashboard() {
                 <label className="search-control">
                   <Search size={17} className="text-slate-500" />
                   <span className="sr-only">Search dashboard</span>
-                  <input type="search" placeholder="Search courses" />
+                  <input
+                    type="search"
+                    placeholder="Search courses"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
                 </label>
-                <button type="button" className="primary-button">
+                <button type="button" className="primary-button" onClick={handleOptimize}>
                   <Sparkles size={17} />
                   Optimize
                 </button>
@@ -217,13 +255,13 @@ export default function Dashboard() {
               <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
                 <div className="flex min-w-0 flex-col gap-6">
                   <HeroTile userName="Alex" streakDays={12} />
-                  <MetricStrip />
-                  <CoursesGrid />
+                  <MetricStrip metrics={metrics} />
+                  <CoursesGrid courses={filteredCourses} onContinue={handleContinueCourse} />
                 </div>
 
                 <aside className="flex min-w-0 flex-col gap-6">
                   <ActivityTile />
-                  <PriorityPanel />
+                  <PriorityPanel priorities={priorities} />
                   <section className="dashboard-panel p-5">
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-400/20 bg-emerald-400/10 text-emerald-300">
