@@ -149,10 +149,10 @@ function CoursesGrid({
       <div className="mb-4 flex items-center justify-between gap-4">
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
-            Active tracks
+            Active Tracks
           </p>
           <h2 id="courses-heading" className="mt-1 text-xl font-semibold text-slate-50">
-            Learning roadmap
+            Learning Roadmap
           </h2>
         </div>
         <button type="button" className="secondary-button">
