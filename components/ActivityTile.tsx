@@ -54,10 +54,10 @@ export function ActivityTile({ activity }: ActivityTileProps) {
                 animate={{ height: `${(item.value / maxValue) * 100}%` }}
                 transition={{ delay: index * 0.04, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 title={`${item.day}: ${item.value} minutes`}
-                className={`w-full rounded-sm ${
+                className={`w-full rounded-sm transition-all duration-300 origin-bottom hover:scale-x-125 ${
                   item.isToday
-                    ? 'bg-cyan-300'
-                    : 'bg-slate-700 transition-colors hover:bg-emerald-300'
+                    ? 'bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]'
+                    : 'bg-slate-700 hover:bg-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.5)]'
                 }`}
               />
             </div>

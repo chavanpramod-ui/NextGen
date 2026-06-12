@@ -21,13 +21,21 @@ interface CourseTileProps {
   status?: string;
   duration?: string;
   accent?: string;
+  onContinue?: (id: string) => void;
 }
 
 const accentClasses: Record<string, string> = {
-  amber: 'border-amber-300/20 bg-amber-300/10 text-amber-200',
-  cyan: 'border-cyan-300/20 bg-cyan-300/10 text-cyan-200',
-  emerald: 'border-emerald-300/20 bg-emerald-300/10 text-emerald-200',
-  violet: 'border-violet-300/20 bg-violet-300/10 text-violet-200',
+  amber: 'border-amber-400/30 bg-amber-400/10 text-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.15)]',
+  cyan: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.15)]',
+  emerald: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.15)]',
+  violet: 'border-violet-400/30 bg-violet-400/10 text-violet-300 shadow-[0_0_15px_rgba(139,92,246,0.15)]',
+};
+
+const hoverClasses: Record<string, string> = {
+  amber: 'hover:border-amber-400/40 hover:shadow-[0_8px_30px_rgba(251,191,36,0.2)]',
+  cyan: 'hover:border-cyan-400/40 hover:shadow-[0_8px_30px_rgba(34,211,238,0.2)]',
+  emerald: 'hover:border-emerald-400/40 hover:shadow-[0_8px_30px_rgba(52,211,153,0.2)]',
+  violet: 'hover:border-violet-400/40 hover:shadow-[0_8px_30px_rgba(139,92,246,0.2)]',
 };
 
 function CourseIcon({ iconName }: { iconName: string }) {
@@ -57,8 +65,9 @@ export function CourseTile({
   duration = 'Course',
   accent = 'cyan',
   onContinue,
-}: CourseTileProps & { onContinue?: (id: string) => void }) {
+}: CourseTileProps) {
   const accentClass = accentClasses[accent] ?? accentClasses.cyan;
+  const hoverClass = hoverClasses[accent] ?? hoverClasses.cyan;
 
   return (
     <motion.article
@@ -66,20 +75,20 @@ export function CourseTile({
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.06, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -3 }}
-      className="dashboard-panel group flex min-h-[220px] flex-col justify-between p-4"
+      whileHover={{ y: -5, scale: 1.02 }}
+      className={`dashboard-panel group flex min-h-[220px] flex-col justify-between p-4 transition-all duration-300 ${hoverClass}`}
     >
       <div>
         <div className="flex items-start justify-between gap-4">
-          <div className={`flex h-11 w-11 items-center justify-center rounded-lg border ${accentClass}`}>
+          <div className={`flex h-11 w-11 items-center justify-center rounded-lg border transition-colors ${accentClass}`}>
             <CourseIcon iconName={iconName} />
           </div>
-          <span className="rounded-md border border-slate-800 px-2 py-1 text-xs font-medium text-slate-400">
+          <span className="rounded-md border border-slate-700 bg-slate-800/50 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-md">
             {status}
           </span>
         </div>
 
-        <h3 className="mt-5 line-clamp-2 text-base font-semibold leading-6 text-slate-50">
+        <h3 className="mt-5 line-clamp-2 text-base font-semibold leading-6 text-slate-50 transition-colors group-hover:text-white">
           {title}
         </h3>
         <div className="mt-3 flex items-center gap-2 text-sm text-slate-500">
@@ -97,10 +106,10 @@ export function CourseTile({
         <button
           type="button"
           onClick={() => onContinue && onContinue(id)}
-          className="mt-4 flex w-full items-center justify-between rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:border-cyan-300/30 hover:text-cyan-200"
+          className={`mt-4 flex w-full items-center justify-between rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:text-white ${hoverClasses[accent]?.split(' ')[0]}`}
         >
           Continue
-          <ArrowRight size={16} />
+          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
         </button>
       </div>
     </motion.article>

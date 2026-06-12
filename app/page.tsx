@@ -1,12 +1,14 @@
 'use client';
 
 import { Suspense, useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
   CalendarCheck,
   Clock3,
   Cpu,
   GraduationCap,
+  Loader2,
   Search,
   ShieldCheck,
   Sparkles,
@@ -65,19 +67,25 @@ const initialMetrics = [
 ];
 
 const initialPriorities = [
+  { title: 'Design critique recap', time: 'Friday, 2:00 PM', tone: 'Low' },
   { title: 'Ship portfolio case study', time: 'Today, 4:30 PM', tone: 'High' },
   { title: 'Database schema checkpoint', time: 'Tomorrow, 10:00 AM', tone: 'Medium' },
-  { title: 'Design critique recap', time: 'Friday, 2:00 PM', tone: 'Low' },
 ];
 
 function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
   return (
     <section className="grid gap-3 md:grid-cols-3" aria-label="Learning metrics">
-      {metrics.map((metric) => {
+      {metrics.map((metric, idx) => {
         const Icon = metric.icon;
 
         return (
-          <article key={metric.label} className="dashboard-panel p-4">
+          <motion.article 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1, duration: 0.4 }}
+            key={metric.label} 
+            className="dashboard-panel p-4"
+          >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
@@ -86,11 +94,11 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
                 <p className="mt-2 text-2xl font-semibold text-slate-50">{metric.value}</p>
                 <p className="mt-1 text-sm text-slate-400">{metric.detail}</p>
               </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-cyan-300">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
                 <Icon size={18} />
               </div>
             </div>
-          </article>
+          </motion.article>
         );
       })}
     </section>
@@ -102,7 +110,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
     <section className="dashboard-panel p-5">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-cyan-300">
+          <p className="text-xs font-medium uppercase tracking-wide text-cyan-400">
             Mission control
           </p>
           <h2 className="mt-2 text-lg font-semibold text-slate-50">Priority queue</h2>
@@ -119,18 +127,26 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
 
       <div className="mt-5 space-y-3">
         {priorities.map((item) => (
-          <div
+          <motion.div
+            layout
             key={item.title}
-            className="flex items-center justify-between gap-4 rounded-lg border border-slate-800 bg-slate-950/60 p-3"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+            className="group flex items-center justify-between gap-4 rounded-lg border border-slate-800 bg-slate-900/40 p-3 transition-colors hover:border-slate-600 hover:bg-slate-800/60"
           >
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-slate-100">{item.title}</p>
+              <p className="truncate text-sm font-medium text-slate-100 transition-colors group-hover:text-cyan-100">{item.title}</p>
               <p className="mt-1 text-xs text-slate-500">{item.time}</p>
             </div>
-            <span className="rounded-md border border-slate-700 px-2 py-1 text-xs font-medium text-slate-300">
+            <span className={`rounded-md border px-2 py-1 text-xs font-medium ${
+              item.tone === 'High' ? 'border-rose-400/30 text-rose-300 bg-rose-400/10' :
+              item.tone === 'Medium' ? 'border-amber-400/30 text-amber-300 bg-amber-400/10' :
+              'border-slate-600 text-slate-400 bg-slate-800'
+            }`}>
               {item.tone}
             </span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -149,10 +165,10 @@ function CoursesGrid({
       <div className="mb-4 flex items-center justify-between gap-4">
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
-            Active Tracks
+            Active tracks
           </p>
           <h2 id="courses-heading" className="mt-1 text-xl font-semibold text-slate-50">
-            Learning Roadmap
+            Learning roadmap
           </h2>
         </div>
         <button type="button" className="secondary-button">
@@ -186,6 +202,7 @@ export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState('');
   const [metrics, setMetrics] = useState(initialMetrics);
   const [priorities, setPriorities] = useState(initialPriorities);
+  const [isOptimizing, setIsOptimizing] = useState(false);
 
   const filteredCourses = useMemo(() => {
     return courses.filter((course) =>
@@ -202,12 +219,23 @@ export default function Dashboard() {
   };
 
   const handleOptimize = () => {
-    // Shuffle priorities to simulate optimization
-    setPriorities((prev) => [...prev].sort(() => Math.random() - 0.5));
+    if (isOptimizing) return;
+    setIsOptimizing(true);
+    
+    // Simulate AI optimization delay
+    setTimeout(() => {
+      setPriorities((prev) => {
+        const toneOrder: Record<string, number> = { High: 1, Medium: 2, Low: 3 };
+        return [...prev].sort((a, b) => toneOrder[a.tone] - toneOrder[b.tone]);
+      });
+      setIsOptimizing(false);
+    }, 1200);
   };
 
+  const tasksRemaining = courses.filter(c => c.progress < 100).length;
+
   return (
-    <div className="min-h-screen bg-[var(--background)] text-slate-100">
+    <div className="min-h-screen bg-[var(--background)] text-slate-100 selection:bg-cyan-400/30">
       <div className="dashboard-shell">
         <Sidebar />
 
@@ -216,7 +244,7 @@ export default function Dashboard() {
             <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
-                  <span className="flex items-center gap-2 rounded-md border border-cyan-400/20 bg-cyan-400/10 px-2 py-1 text-cyan-200">
+                  <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
                     <Cpu size={14} />
                     Next-Gen Dashboard
                   </span>
@@ -234,19 +262,25 @@ export default function Dashboard() {
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <label className="search-control">
-                  <Search size={17} className="text-slate-500" />
+                <label className="search-control group">
+                  <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
                   <span className="sr-only">Search dashboard</span>
                   <input
                     type="search"
                     placeholder="Search courses"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
                   />
                 </label>
-                <button type="button" className="primary-button" onClick={handleOptimize}>
-                  <Sparkles size={17} />
-                  Optimize
+                <button 
+                  type="button" 
+                  className="primary-button" 
+                  onClick={handleOptimize}
+                  disabled={isOptimizing}
+                >
+                  {isOptimizing ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}
+                  {isOptimizing ? 'Optimizing...' : 'Optimize'}
                 </button>
               </div>
             </header>
@@ -264,7 +298,7 @@ export default function Dashboard() {
                   <PriorityPanel priorities={priorities} />
                   <section className="dashboard-panel p-5">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-400/20 bg-emerald-400/10 text-emerald-300">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-400/30 bg-emerald-400/10 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.15)]">
                         <GraduationCap size={19} />
                       </div>
                       <div>
@@ -274,10 +308,17 @@ export default function Dashboard() {
                     </div>
                     <div className="mt-5 flex items-end justify-between gap-4">
                       <div>
-                        <p className="text-3xl font-semibold text-slate-50">3</p>
+                        <motion.p 
+                          key={tasksRemaining}
+                          initial={{ scale: 1.5, color: '#34d399' }}
+                          animate={{ scale: 1, color: '#f8fafc' }}
+                          className="text-3xl font-semibold"
+                        >
+                          {tasksRemaining}
+                        </motion.p>
                         <p className="text-sm text-slate-400">tasks remaining</p>
                       </div>
-                      <div className="flex items-center gap-1 text-sm font-medium text-emerald-300">
+                      <div className="flex items-center gap-1 text-sm font-medium text-emerald-400">
                         <TrendingUp size={16} />
                         On pace
                       </div>
