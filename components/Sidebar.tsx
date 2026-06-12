@@ -104,15 +104,17 @@ export function Sidebar() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        className="icon-button fixed left-4 top-4 z-50 lg:hidden"
-        aria-label="Open navigation"
-        title="Open navigation"
-      >
-        <Menu size={20} />
-      </button>
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="icon-button fixed left-4 top-4 z-50 lg:hidden"
+          aria-label="Open navigation"
+          title="Open navigation"
+        >
+          <Menu size={20} />
+        </button>
+      )}
 
       {isOpen && (
         <button
