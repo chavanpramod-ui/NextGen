@@ -26,33 +26,46 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
     <motion.section
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
         pointerX.set(0);
         pointerY.set(0);
       }}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', '--mouse-x': useTransform(pointerX, [-0.5, 0.5], ['0%', '100%']), '--mouse-y': useTransform(pointerY, [-0.5, 0.5], ['0%', '100%']) } as any}
       className="dashboard-panel relative min-h-[360px] overflow-hidden p-5 sm:p-6 lg:p-7"
     >
-      <div className="absolute inset-0 grid-overlay opacity-60" />
+      <div className="absolute inset-0 grid-overlay opacity-40 mix-blend-overlay" />
+      
+      {/* Glowing Orbs */}
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-violet-600/30 blur-[100px] pointer-events-none"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-cyan-600/30 blur-[100px] pointer-events-none"
+      />
+
       <motion.div 
-        animate={{ opacity: [0.4, 0.8, 0.4] }} 
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_20px_rgba(34,211,238,0.8)]" 
+        animate={{ opacity: [0.4, 1, 0.4] }} 
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet-400 to-transparent shadow-[0_0_20px_rgba(139,92,246,0.8)]" 
       />
       
       <div className="relative z-10 grid h-full gap-6 lg:grid-cols-[minmax(0,1fr)_310px]">
         <div className="flex min-w-0 flex-col justify-between gap-8">
-          <div style={{ transform: 'translateZ(20px)' }}>
-            <div className="inline-flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-cyan-300">
-              <Zap size={14} />
+          <div style={{ transform: 'translateZ(30px)' }}>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-300 shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
+              <Zap size={14} className="text-violet-400" />
               Live learning system
             </div>
-            <h2 className="mt-5 max-w-3xl text-3xl font-semibold leading-tight tracking-normal text-slate-50 sm:text-4xl lg:text-5xl">
+            <h2 className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg font-outfit">
               Welcome back, {userName}. Your next best move is ready.
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg mix-blend-plus-lighter">
               Continue the React architecture module, then clear the database lab while your focus score is trending up.
             </p>
           </div>
@@ -69,9 +82,10 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
           </div>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1" style={{ transform: 'translateZ(15px)' }}>
-          <div className="group rounded-lg border border-slate-800 bg-slate-900/60 p-4 transition-all hover:border-amber-400/30 hover:bg-slate-800/80">
-            <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1" style={{ transform: 'translateZ(20px)' }}>
+          <div className="group rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md p-5 transition-all hover:border-white/15 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(251,191,36,0.15)] relative overflow-hidden">
+            <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/20 blur-[40px] pointer-events-none transition-opacity group-hover:opacity-100 opacity-0" />
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Learning streak
             </p>
             <div className="mt-4 flex items-end justify-between gap-4">
@@ -89,16 +103,17 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-4 transition-all hover:border-emerald-400/30 hover:bg-slate-800/80">
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+          <div className="group rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md p-5 transition-all hover:border-white/15 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] relative overflow-hidden">
+            <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-emerald-500/20 blur-[40px] pointer-events-none transition-opacity group-hover:opacity-100 opacity-0" />
+            <div className="flex items-center justify-between gap-4 relative z-10">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Today plan
               </p>
-              <span className="rounded-md border border-emerald-400/30 bg-emerald-400/10 px-2 py-1 text-xs font-medium text-emerald-400">
+              <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
                 Optimized
               </span>
             </div>
-            <div className="mt-5 space-y-4">
+            <div className="mt-5 space-y-4 relative z-10">
               {[
                 ['React Patterns', '42 min'],
                 ['Schema Lab', '30 min'],
