@@ -113,7 +113,6 @@ input:focus-visible {
   .dashboard-panel:hover {
     box-shadow: 0 12px 60px rgba(139, 92, 246, 0.12), inset 0 0 0 1px rgba(255,255,255,0.05);
     border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
   }
 
   .grid-overlay {
