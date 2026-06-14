@@ -132,11 +132,12 @@ export function Sidebar() {
       <motion.aside
         initial={false}
         animate={{
-          x: isOpen ? 0 : '-110%',
           width: isCollapsed ? 88 : 280,
         }}
         transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-        className="dashboard-panel fixed left-4 top-4 z-50 h-[calc(100vh-2rem)] p-4 lg:relative lg:left-auto lg:top-auto lg:z-20 lg:translate-x-0"
+        className={`dashboard-panel fixed left-4 top-4 z-50 h-[calc(100vh-2rem)] p-4 lg:relative lg:left-auto lg:top-auto lg:z-20 lg:!translate-x-0 transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : '-translate-x-[120%]'
+        }`}
       >
         {navigation}
       </motion.aside>
