@@ -235,101 +235,93 @@ export default function Dashboard() {
   const tasksRemaining = courses.filter(c => c.progress < 100).length;
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-slate-100 selection:bg-cyan-400/30">
-      <div className="dashboard-shell">
-        <Sidebar />
-
-        <main className="min-w-0 flex-1">
-          <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8">
-            <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
-                  <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
-                    <Cpu size={14} />
-                    Next-Gen Dashboard
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <CalendarCheck size={15} />
-                    Thursday, Jun 4
-                  </span>
-                </div>
-                <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-50 md:text-4xl">
-                  Student command center
-                </h1>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400 md:text-base">
-                  Track progress, choose the next action, and keep every learning signal in one focused workspace.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <label className="search-control group">
-                  <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
-                  <span className="sr-only">Search dashboard</span>
-                  <input
-                    type="search"
-                    placeholder="Search courses"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
-                  />
-                </label>
-                <button 
-                  type="button" 
-                  className="primary-button" 
-                  onClick={handleOptimize}
-                  disabled={isOptimizing}
-                >
-                  {isOptimizing ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}
-                  {isOptimizing ? 'Optimizing...' : 'Optimize'}
-                </button>
-              </div>
-            </header>
-
-            <Suspense fallback={<LoadingSkeletons />}>
-              <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
-                <div className="flex min-w-0 flex-col gap-6">
-                  <HeroTile userName="Alex" streakDays={12} />
-                  <MetricStrip metrics={metrics} />
-                  <CoursesGrid courses={filteredCourses} onContinue={handleContinueCourse} />
-                </div>
-
-                <aside className="flex min-w-0 flex-col gap-6">
-                  <ActivityTile />
-                  <PriorityPanel priorities={priorities} />
-                  <section className="dashboard-panel p-5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-400/30 bg-emerald-400/10 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.15)]">
-                        <GraduationCap size={19} />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-slate-100">Next milestone</p>
-                        <p className="text-xs text-slate-500">Frontend Architecture badge</p>
-                      </div>
-                    </div>
-                    <div className="mt-5 flex items-end justify-between gap-4">
-                      <div>
-                        <motion.p 
-                          key={tasksRemaining}
-                          initial={{ scale: 1.5, color: '#34d399' }}
-                          animate={{ scale: 1, color: '#f8fafc' }}
-                          className="text-3xl font-semibold"
-                        >
-                          {tasksRemaining}
-                        </motion.p>
-                        <p className="text-sm text-slate-400">tasks remaining</p>
-                      </div>
-                      <div className="flex items-center gap-1 text-sm font-medium text-emerald-400">
-                        <TrendingUp size={16} />
-                        On pace
-                      </div>
-                    </div>
-                  </section>
-                </aside>
-              </div>
-            </Suspense>
+    <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8">
+      <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+            <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
+              <Cpu size={14} />
+              Next-Gen Dashboard
+            </span>
+            <span className="flex items-center gap-2">
+              <CalendarCheck size={15} />
+              Thursday, Jun 4
+            </span>
           </div>
-        </main>
-      </div>
+          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-50 md:text-4xl">
+            Student command center
+          </h1>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400 md:text-base">
+            Track progress, choose the next action, and keep every learning signal in one focused workspace.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <label className="search-control group">
+            <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
+            <span className="sr-only">Search dashboard</span>
+            <input
+              type="search"
+              placeholder="Search courses"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
+            />
+          </label>
+          <button 
+            type="button" 
+            className="primary-button" 
+            onClick={handleOptimize}
+            disabled={isOptimizing}
+          >
+            {isOptimizing ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}
+            {isOptimizing ? 'Optimizing...' : 'Optimize'}
+          </button>
+        </div>
+      </header>
+
+      <Suspense fallback={<LoadingSkeletons />}>
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="flex min-w-0 flex-col gap-6">
+            <HeroTile userName="Alex" streakDays={12} />
+            <MetricStrip metrics={metrics} />
+            <CoursesGrid courses={filteredCourses} onContinue={handleContinueCourse} />
+          </div>
+
+          <aside className="flex min-w-0 flex-col gap-6">
+            <ActivityTile />
+            <PriorityPanel priorities={priorities} />
+            <section className="dashboard-panel p-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-400/30 bg-emerald-400/10 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.15)]">
+                  <GraduationCap size={19} />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-100">Next milestone</p>
+                  <p className="text-xs text-slate-500">Frontend Architecture badge</p>
+                </div>
+              </div>
+              <div className="mt-5 flex items-end justify-between gap-4">
+                <div>
+                  <motion.p 
+                    key={tasksRemaining}
+                    initial={{ scale: 1.5, color: '#34d399' }}
+                    animate={{ scale: 1, color: '#f8fafc' }}
+                    className="text-3xl font-semibold"
+                  >
+                    {tasksRemaining}
+                  </motion.p>
+                  <p className="text-sm text-slate-400">tasks remaining</p>
+                </div>
+                <div className="flex items-center gap-1 text-sm font-medium text-emerald-400">
+                  <TrendingUp size={16} />
+                  On pace
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </Suspense>
     </div>
   );
 }

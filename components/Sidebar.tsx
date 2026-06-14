@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   BarChart2,
   Bell,
@@ -15,14 +16,15 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { label: 'Dashboard', href: '#', icon: Home, active: true },
-  { label: 'Courses', href: '#', icon: BookOpen, active: false },
-  { label: 'Progress', href: '#', icon: BarChart2, active: false },
-  { label: 'Alerts', href: '#', icon: Bell, active: false },
-  { label: 'Settings', href: '#', icon: Settings, active: false },
+  { label: 'Dashboard', href: '/', icon: Home },
+  { label: 'Courses', href: '/courses', icon: BookOpen },
+  { label: 'Progress', href: '/progress', icon: BarChart2 },
+  { label: 'Alerts', href: '/alerts', icon: Bell },
+  { label: 'Settings', href: '/settings', icon: Settings },
 ];
 
 export function Sidebar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -64,13 +66,15 @@ export function Sidebar() {
         {navItems.map((item) => {
           const Icon = item.icon;
 
+          const isActive = pathname === item.href;
+
           return (
             <Link
               key={item.label}
               href={item.href}
               title={item.label}
               className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
-                item.active
+                isActive
                   ? 'border-cyan-300/20 bg-cyan-300/10 text-cyan-100'
                   : 'border-transparent text-slate-400 hover:border-slate-800 hover:bg-slate-900 hover:text-slate-100'
               }`}
@@ -78,7 +82,7 @@ export function Sidebar() {
             >
               <Icon size={18} className="shrink-0" />
               {!isCollapsed && <span className="truncate">{item.label}</span>}
-              {item.active && !isCollapsed && (
+              {isActive && !isCollapsed && (
                 <span className="ml-auto h-1.5 w-1.5 rounded-full bg-cyan-300" />
               )}
             </Link>
@@ -132,7 +136,7 @@ export function Sidebar() {
           width: isCollapsed ? 88 : 280,
         }}
         transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-        className="dashboard-panel fixed left-4 top-4 z-50 h-[calc(100vh-2rem)] p-4 lg:sticky lg:left-auto lg:top-4 lg:z-20 lg:translate-x-0"
+        className="dashboard-panel fixed left-4 top-4 z-50 h-[calc(100vh-2rem)] p-4 lg:relative lg:left-auto lg:top-auto lg:z-20 lg:translate-x-0"
       >
         {navigation}
       </motion.aside>
