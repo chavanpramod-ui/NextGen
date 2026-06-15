@@ -1,6 +1,29 @@
-import { Settings, User, Bell, Shield, Palette, Mail, Lock, LogOut } from 'lucide-react';
+"use client";
+
+import { useState } from 'react';
+import { Settings, User, Bell, Shield, Palette, Mail, Lock, LogOut, Check } from 'lucide-react';
 
 export default function SettingsPage() {
+  const [firstName, setFirstName] = useState("Alex");
+  const [lastName, setLastName] = useState("Morgan");
+  const [email, setEmail] = useState("alex.morgan@example.com");
+  const [bio, setBio] = useState("Pro learner trying to master full-stack development. I enjoy building beautiful and responsive web applications.");
+  
+  const [isSaving, setIsSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  const initials = `${firstName.charAt(0) || ''}${lastName.charAt(0) || ''}`.toUpperCase();
+
+  const handleSave = () => {
+    setIsSaving(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsSaving(false);
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    }, 800);
+  };
+
   return (
     <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
@@ -48,8 +71,8 @@ export default function SettingsPage() {
             <div className="flex flex-col sm:flex-row gap-8">
               <div className="flex flex-col items-center gap-4 shrink-0">
                 <div className="h-24 w-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 p-1">
-                  <div className="h-full w-full rounded-full bg-slate-900 flex items-center justify-center text-3xl font-bold text-cyan-400">
-                    AM
+                  <div className="h-full w-full rounded-full bg-slate-900 flex items-center justify-center text-3xl font-bold text-cyan-400 transition-all duration-300">
+                    {initials || '?'}
                   </div>
                 </div>
                 <button className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors">
@@ -63,7 +86,8 @@ export default function SettingsPage() {
                     <label className="text-sm font-medium text-slate-400">First Name</label>
                     <input 
                       type="text" 
-                      defaultValue="Alex" 
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     />
                   </div>
@@ -71,7 +95,8 @@ export default function SettingsPage() {
                     <label className="text-sm font-medium text-slate-400">Last Name</label>
                     <input 
                       type="text" 
-                      defaultValue="Morgan" 
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     />
                   </div>
@@ -82,7 +107,8 @@ export default function SettingsPage() {
                     <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
                     <input 
                       type="email" 
-                      defaultValue="alex.morgan@example.com" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg pl-10 pr-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     />
                   </div>
@@ -91,13 +117,23 @@ export default function SettingsPage() {
                   <label className="text-sm font-medium text-slate-400">Bio</label>
                   <textarea 
                     rows={3}
-                    defaultValue="Pro learner trying to master full-stack development. I enjoy building beautiful and responsive web applications." 
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
                     className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all resize-none"
                   />
                 </div>
-                <div className="pt-4 flex justify-end">
-                  <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-medium px-6 py-2.5 rounded-lg transition-colors">
-                    Save Changes
+                <div className="pt-4 flex justify-end items-center gap-4">
+                  {saved && (
+                    <span className="text-emerald-400 text-sm flex items-center gap-1.5 animate-in fade-in zoom-in duration-300">
+                      <Check size={16} /> Saved successfully
+                    </span>
+                  )}
+                  <button 
+                    onClick={handleSave}
+                    disabled={isSaving}
+                    className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-medium px-6 py-2.5 rounded-lg transition-all disabled:opacity-70 flex items-center gap-2"
+                  >
+                    {isSaving ? 'Saving...' : 'Save Changes'}
                   </button>
                 </div>
               </div>
