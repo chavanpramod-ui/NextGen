@@ -9,10 +9,8 @@ import {
   Bell,
   BookOpen,
   Home,
-  Menu,
   PanelLeftClose,
   Settings,
-  X,
 } from 'lucide-react';
 
 const navItems = [
@@ -51,15 +49,7 @@ export function Sidebar() {
         >
           <PanelLeftClose size={17} className={isCollapsed ? 'rotate-180' : ''} />
         </button>
-        <button
-          type="button"
-          className="icon-button lg:hidden"
-          aria-label="Close navigation"
-          title="Close navigation"
-          onClick={() => setIsOpen(false)}
-        >
-          <X size={18} />
-        </button>
+
       </div>
 
       <nav className="mt-8 space-y-1" aria-label="Primary navigation">
@@ -108,17 +98,7 @@ export function Sidebar() {
 
   return (
     <>
-      {!isOpen && (
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          className="icon-button fixed left-4 top-4 z-50 lg:hidden"
-          aria-label="Open navigation"
-          title="Open navigation"
-        >
-          <Menu size={20} />
-        </button>
-      )}
+
 
       {isOpen && (
         <button
