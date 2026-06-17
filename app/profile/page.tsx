@@ -9,6 +9,13 @@ export default function ProfilePage() {
   const [email, setEmail] = useState("alex.morgan@example.com");
   const [bio, setBio] = useState("Pro learner trying to master full-stack development. I enjoy building beautiful and responsive web applications.");
   
+  // Student Details State
+  const [studentId, setStudentId] = useState("STU-849201");
+  const [university, setUniversity] = useState("Tech Global University");
+  const [course, setCourse] = useState("B.S. Computer Science");
+  const [yearOfStudy, setYearOfStudy] = useState("Junior");
+
+  
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -98,7 +105,56 @@ export default function ProfilePage() {
                 className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all resize-none"
               />
             </div>
-            <div className="pt-4 flex justify-end items-center gap-4">
+
+            <div className="mt-4 mb-2">
+              <h3 className="text-lg font-medium text-slate-200 border-b border-slate-800 pb-2">Student Details</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-slate-400">Student ID</label>
+                <input 
+                  type="text" 
+                  value={studentId}
+                  onChange={(e) => setStudentId(e.target.value)}
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-slate-400">University</label>
+                <input 
+                  type="text" 
+                  value={university}
+                  onChange={(e) => setUniversity(e.target.value)}
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-slate-400">Course / Major</label>
+                <input 
+                  type="text" 
+                  value={course}
+                  onChange={(e) => setCourse(e.target.value)}
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-slate-400">Year of Study</label>
+                <select 
+                  value={yearOfStudy}
+                  onChange={(e) => setYearOfStudy(e.target.value)}
+                  className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all appearance-none"
+                >
+                  <option value="Freshman" className="bg-slate-900">Freshman</option>
+                  <option value="Sophomore" className="bg-slate-900">Sophomore</option>
+                  <option value="Junior" className="bg-slate-900">Junior</option>
+                  <option value="Senior" className="bg-slate-900">Senior</option>
+                  <option value="Graduate" className="bg-slate-900">Graduate</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="pt-6 mt-2 border-t border-slate-800 flex justify-end items-center gap-4">
               {saved && (
                 <span className="text-emerald-400 text-sm flex items-center gap-1.5 animate-in fade-in zoom-in duration-300">
                   <Check size={16} /> Saved successfully
