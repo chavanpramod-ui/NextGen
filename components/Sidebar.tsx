@@ -11,10 +11,12 @@ import {
   Home,
   PanelLeftClose,
   Settings,
+  User,
 } from 'lucide-react';
 
 const navItems = [
   { label: 'Dashboard', href: '/', icon: Home },
+  { label: 'Profile', href: '/profile', icon: User },
   { label: 'Courses', href: '/courses', icon: BookOpen },
   { label: 'Progress', href: '/progress', icon: BarChart2 },
   { label: 'Alerts', href: '/alerts', icon: Bell },
@@ -81,7 +83,7 @@ export function Sidebar() {
       </nav>
 
       <div className="mt-auto border-t border-slate-800 pt-4">
-        <div className="flex items-center gap-3 rounded-lg bg-slate-950/70 p-3">
+        <Link href="/profile" className="flex items-center gap-3 rounded-lg bg-slate-950/70 p-3 hover:bg-slate-900 transition-colors" onClick={() => setIsOpen(false)}>
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-300 text-sm font-semibold text-slate-950">
             A
           </div>
@@ -91,7 +93,7 @@ export function Sidebar() {
               <p className="truncate text-xs text-slate-500">Pro Learner</p>
             </div>
           )}
-        </div>
+        </Link>
       </div>
     </div>
   );
