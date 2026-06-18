@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState, useMemo } from 'react';
+import { Suspense, useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -203,6 +203,27 @@ export default function Dashboard() {
   const [metrics, setMetrics] = useState(initialMetrics);
   const [priorities, setPriorities] = useState(initialPriorities);
   const [isOptimizing, setIsOptimizing] = useState(false);
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('recentSearches');
+    if (saved) {
+      try {
+        setRecentSearches(JSON.parse(saved));
+      } catch (e) {}
+    }
+  }, []);
+
+  const handleSearchSubmit = () => {
+    if (!searchQuery.trim()) return;
+    setRecentSearches((prev) => {
+      const updated = [searchQuery.trim(), ...prev.filter(q => q !== searchQuery.trim())].slice(0, 5);
+      localStorage.setItem('recentSearches', JSON.stringify(updated));
+      return updated;
+    });
+    setIsSearchFocused(false);
+  };
 
   const filteredCourses = useMemo(() => {
     return courses.filter((course) =>
@@ -257,17 +278,48 @@ export default function Dashboard() {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <label className="search-control group">
-            <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
-            <span className="sr-only">Search dashboard</span>
-            <input
-              type="search"
-              placeholder="Search courses"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
-            />
-          </label>
+          <div className="relative group">
+            <label className="search-control flex items-center relative">
+              <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
+              <span className="sr-only">Search dashboard</span>
+              <input
+                type="search"
+                placeholder="Search courses"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleSearchSubmit();
+                }}
+                className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64 bg-transparent outline-none"
+              />
+            </label>
+            {isSearchFocused && recentSearches.length > 0 && (
+              <div className="absolute top-full mt-2 w-full rounded-md border border-slate-700 bg-slate-900 shadow-lg z-50 overflow-hidden">
+                <div className="px-3 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wider bg-slate-800/50">
+                  Recommended / Recent
+                </div>
+                <ul className="max-h-48 overflow-y-auto m-0 p-0 list-none">
+                  {recentSearches.map((term, i) => (
+                    <li key={i}>
+                      <button
+                        type="button"
+                        className="w-full flex items-center px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
+                        onClick={() => {
+                          setSearchQuery(term);
+                          setIsSearchFocused(false);
+                        }}
+                      >
+                        <Search size={14} className="mr-2 text-slate-500" />
+                        {term}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
           <button 
             type="button" 
             className="primary-button" 
