@@ -13,6 +13,7 @@ import {
   Settings,
   User,
 } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
   { label: 'Dashboard', href: '/', icon: Home },
@@ -37,8 +38,8 @@ export function Sidebar() {
           </div>
           {!isCollapsed && (
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-slate-50">NextGen Learn</p>
-              <p className="truncate text-xs text-slate-500">Student OS</p>
+              <p className="truncate text-sm font-semibold text-slate-900 dark:text-slate-50">NextGen Learn</p>
+              <p className="truncate text-xs text-slate-900 dark:text-slate-500">Student OS</p>
             </div>
           )}
         </Link>
@@ -68,7 +69,7 @@ export function Sidebar() {
               className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive
                   ? 'border-cyan-300/20 bg-cyan-300/10 text-cyan-100'
-                  : 'border-transparent text-slate-400 hover:border-slate-800 hover:bg-slate-900 hover:text-slate-100'
+                  : 'border-transparent text-slate-600 dark:text-slate-400 hover:border-slate-200 dark:border-slate-800 hover:bg-white dark:bg-slate-900 hover:text-slate-900 dark:text-slate-100'
               }`}
               onClick={() => setIsOpen(false)}
             >
@@ -82,15 +83,19 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="mt-auto border-t border-slate-800 pt-4">
-        <Link href="/profile" className="flex items-center gap-3 rounded-lg bg-slate-950/70 p-3 hover:bg-slate-900 transition-colors" onClick={() => setIsOpen(false)}>
+      <div className="mt-auto border-t border-slate-200 dark:border-slate-800 pt-4 flex flex-col gap-3">
+        <div className="flex items-center justify-between px-1">
+          {!isCollapsed && <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider pl-2">Theme</span>}
+          <ThemeToggle />
+        </div>
+        <Link href="/profile" className="flex items-center gap-3 rounded-lg bg-slate-50 dark:bg-slate-950/70 p-3 hover:bg-white dark:bg-slate-900 transition-colors" onClick={() => setIsOpen(false)}>
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-300 text-sm font-semibold text-slate-950">
             A
           </div>
           {!isCollapsed && (
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-slate-100">Alex Morgan</p>
-              <p className="truncate text-xs text-slate-500">Pro Learner</p>
+              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100">Alex Morgan</p>
+              <p className="truncate text-xs text-slate-900 dark:text-slate-500">Pro Learner</p>
             </div>
           )}
         </Link>
@@ -106,7 +111,7 @@ export function Sidebar() {
         <button
           type="button"
           aria-label="Close navigation overlay"
-          className="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-slate-50 dark:bg-slate-950/70 backdrop-blur-sm lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}

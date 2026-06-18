@@ -93,23 +93,23 @@ export default function CoursesPage() {
     <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8">
       <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
             <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
               <BookOpen size={14} />
               Courses
             </span>
           </div>
-          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-50 md:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-900 dark:text-slate-50 md:text-4xl">
             Learning Catalog
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400 md:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 md:text-base">
             Explore available courses and manage your learning tracks.
           </p>
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <label className="search-control group">
-            <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
+            <Search size={17} className="text-slate-900 dark:text-slate-500 transition-colors group-focus-within:text-cyan-400" />
             <span className="sr-only">Search catalog</span>
             <input
               type="search"
@@ -133,11 +133,11 @@ export default function CoursesPage() {
               <p className="text-xs font-medium uppercase tracking-wide text-cyan-400">
                 In Progress
               </p>
-              <h2 id="active-courses" className="mt-1 text-xl font-semibold text-slate-50">
+              <h2 id="active-courses" className="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-50">
                 Pick up where you left off
               </h2>
             </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-slate-400">
+            <div className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
               <Target size={16} />
               <span>{active.length} active tracks</span>
             </div>
@@ -166,7 +166,7 @@ export default function CoursesPage() {
               <p className="text-xs font-medium uppercase tracking-wide text-emerald-400">
                 Discover
               </p>
-              <h2 id="recommended-courses" className="mt-1 text-xl font-semibold text-slate-50">
+              <h2 id="recommended-courses" className="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-50">
                 Recommended for you
               </h2>
             </div>
@@ -190,7 +190,7 @@ export default function CoursesPage() {
               />
             ))}
             {filteredRecommended.length === 0 && (
-              <div className="col-span-full py-12 text-center text-slate-500">
+              <div className="col-span-full py-12 text-center text-slate-900 dark:text-slate-500">
                 No courses found matching your search.
               </div>
             )}

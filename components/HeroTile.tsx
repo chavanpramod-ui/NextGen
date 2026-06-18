@@ -62,10 +62,10 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
               <Zap size={14} className="text-violet-400" />
               Live learning system
             </div>
-            <h2 className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg font-outfit">
+            <h2 className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl drop-shadow-lg font-outfit">
               Welcome back, {userName}. Your next best move is ready.
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg mix-blend-plus-lighter">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg mix-blend-plus-lighter">
               Continue the React architecture module, then clear the database lab while your focus score is trending up.
             </p>
           </div>
@@ -85,13 +85,13 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1" style={{ transform: 'translateZ(20px)' }}>
           <div className="group rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md p-5 transition-all hover:border-white/15 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(251,191,36,0.15)] relative overflow-hidden">
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/20 blur-[40px] pointer-events-none transition-opacity group-hover:opacity-100 opacity-0" />
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Learning streak
             </p>
             <div className="mt-4 flex items-end justify-between gap-4">
               <div>
-                <p className="text-4xl font-semibold text-slate-50">{streakDays}</p>
-                <p className="text-sm text-slate-400">days active</p>
+                <p className="text-4xl font-semibold text-slate-900 dark:text-slate-50">{streakDays}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">days active</p>
               </div>
               <motion.div 
                 animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 5, 0] }}
@@ -106,7 +106,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
           <div className="group rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md p-5 transition-all hover:border-white/15 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] relative overflow-hidden">
             <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-emerald-500/20 blur-[40px] pointer-events-none transition-opacity group-hover:opacity-100 opacity-0" />
             <div className="flex items-center justify-between gap-4 relative z-10">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                 Today plan
               </p>
               <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
@@ -120,13 +120,13 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
                 ['UI Review', '18 min'],
               ].map(([label, time], index) => (
                 <div key={label} className="group/item flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-700 bg-slate-800 text-xs text-slate-400 transition-colors group-hover/item:border-cyan-400/50 group-hover/item:text-cyan-300">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 transition-colors group-hover/item:border-cyan-400/50 group-hover/item:text-cyan-300">
                     {index + 1}
                   </span>
-                  <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-300 transition-colors group-hover/item:text-slate-50">
+                  <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors group-hover/item:text-slate-900 dark:text-slate-50">
                     {label}
                   </span>
-                  <span className="text-xs text-slate-500">{time}</span>
+                  <span className="text-xs text-slate-900 dark:text-slate-500">{time}</span>
                 </div>
               ))}
             </div>

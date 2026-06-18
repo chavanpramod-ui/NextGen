@@ -83,15 +83,15 @@ export function CourseTile({
           <div className={`flex h-11 w-11 items-center justify-center rounded-lg border transition-colors ${accentClass}`}>
             <CourseIcon iconName={iconName} />
           </div>
-          <span className="rounded-md border border-slate-700 bg-slate-800/50 px-2 py-1 text-xs font-medium text-slate-300 backdrop-blur-md">
+          <span className="rounded-md border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/50 px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 backdrop-blur-md">
             {status}
           </span>
         </div>
 
-        <h3 className="mt-5 line-clamp-2 text-base font-semibold leading-6 text-slate-50 transition-colors group-hover:text-white">
+        <h3 className="mt-5 line-clamp-2 text-base font-semibold leading-6 text-slate-900 dark:text-slate-50 transition-colors group-hover:text-slate-900 dark:text-white">
           {title}
         </h3>
-        <div className="mt-3 flex items-center gap-2 text-sm text-slate-500">
+        <div className="mt-3 flex items-center gap-2 text-sm text-slate-900 dark:text-slate-500">
           <Clock3 size={15} />
           <span>{duration}</span>
         </div>
@@ -99,14 +99,14 @@ export function CourseTile({
 
       <div className="mt-6">
         <div className="mb-2 flex items-center justify-between text-sm">
-          <span className="text-slate-400">Progress</span>
-          <span className="font-medium text-slate-100">{progress}%</span>
+          <span className="text-slate-600 dark:text-slate-400">Progress</span>
+          <span className="font-medium text-slate-900 dark:text-slate-100">{progress}%</span>
         </div>
         <ProgressIndicator progress={progress} size="medium" />
         <button
           type="button"
           onClick={() => onContinue && onContinue(id)}
-          className={`mt-4 flex w-full items-center justify-between rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:text-white ${hoverClasses[accent]?.split(' ')[0]}`}
+          className={`mt-4 flex w-full items-center justify-between rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/60 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 transition-all duration-300 hover:text-slate-900 dark:text-white ${hoverClasses[accent]?.split(' ')[0]}`}
         >
           Continue
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

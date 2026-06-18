@@ -17,7 +17,7 @@ export function ProgressIndicator({ progress, size = 'small' }: ProgressIndicato
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-full bg-slate-800 ${sizeClasses[size]}`}
+      className={`relative w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 ${sizeClasses[size]}`}
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={100}

@@ -5,11 +5,24 @@
 }
 
 :root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --panel: rgba(255, 255, 255, 0.7);
+  --panel-border: rgba(0, 0, 0, 0.08);
+  --muted: #64748b;
+  --grid-color: rgba(0, 0, 0, 0.04);
+  --aurora-opacity: 0.12;
+  color-scheme: light;
+}
+
+.dark {
   --background: #030409;
   --foreground: #f8fafc;
   --panel: rgba(12, 14, 25, 0.55);
   --panel-border: rgba(255, 255, 255, 0.08);
   --muted: #94a3b8;
+  --grid-color: rgba(255, 255, 255, 0.015);
+  --aurora-opacity: 0.18;
   color-scheme: dark;
 }
 
@@ -38,11 +51,11 @@ body {
   overflow-x: hidden;
   background-color: var(--background);
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.18), transparent 45vw),
-    radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.15), transparent 45vw),
-    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 45vw),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    radial-gradient(circle at 15% 50%, rgba(139, 92, 246, var(--aurora-opacity)), transparent 45vw),
+    radial-gradient(circle at 85% 30%, rgba(56, 189, 248, var(--aurora-opacity)), transparent 45vw),
+    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, var(--aurora-opacity)), transparent 45vw),
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: auto, auto, auto, 40px 40px, 40px 40px;
   background-attachment: fixed;
   color: var(--foreground);
@@ -111,8 +124,8 @@ input:focus-visible {
   }
 
   .dashboard-panel:hover {
-    box-shadow: 0 12px 60px rgba(139, 92, 246, 0.12), inset 0 0 0 1px rgba(255,255,255,0.05);
-    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 60px rgba(139, 92, 246, 0.12), inset 0 0 0 1px var(--panel-border);
+    border-color: var(--panel-border);
   }
 
   .grid-overlay {

@@ -12,7 +12,7 @@ export function LoadingSkeletons() {
           initial={{ opacity: 0.35 }}
           animate={{ opacity: [0.35, 0.7, 0.35] }}
           transition={{ duration: 1.6, repeat: Infinity, delay: index * 0.06 }}
-          className="h-48 rounded-lg border border-slate-800 bg-slate-900"
+          className="h-48 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
         />
       ))}
     </div>
@@ -30,7 +30,7 @@ export function ErrorState({ message }: { message: string }) {
 
 export function ConnectingState() {
   return (
-    <div className="flex items-center justify-center gap-3 p-6 text-slate-300">
+    <div className="flex items-center justify-center gap-3 p-6 text-slate-700 dark:text-slate-300">
       <motion.div animate={{ rotate: 360 }} transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}>
         <Loader className="text-cyan-300" />
       </motion.div>

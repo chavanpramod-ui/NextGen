@@ -53,13 +53,13 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                <p className="text-xs font-medium uppercase tracking-wide text-slate-900 dark:text-slate-500">
                   {metric.label}
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-slate-50">{metric.value}</p>
-                <p className="mt-1 text-sm text-slate-400">{metric.detail}</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-50">{metric.value}</p>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{metric.detail}</p>
               </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
                 <Icon size={18} />
               </div>
             </div>
@@ -78,7 +78,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
           <p className="text-xs font-medium uppercase tracking-wide text-cyan-400">
             Mission control
           </p>
-          <h2 className="mt-2 text-lg font-semibold text-slate-50">Priority queue</h2>
+          <h2 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">Priority queue</h2>
         </div>
         <button
           type="button"
@@ -98,16 +98,16 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-            className="group flex items-center justify-between gap-4 rounded-lg border border-slate-800 bg-slate-900/40 p-3 transition-colors hover:border-slate-600 hover:bg-slate-800/60"
+            className="group flex items-center justify-between gap-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-3 transition-colors hover:border-slate-400 dark:border-slate-600 hover:bg-slate-100 dark:bg-slate-800/60"
           >
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-slate-100 transition-colors group-hover:text-cyan-100">{item.title}</p>
-              <p className="mt-1 text-xs text-slate-500">{item.time}</p>
+              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100 transition-colors group-hover:text-cyan-100">{item.title}</p>
+              <p className="mt-1 text-xs text-slate-900 dark:text-slate-500">{item.time}</p>
             </div>
             <span className={`rounded-md border px-2 py-1 text-xs font-medium ${
               item.tone === 'High' ? 'border-rose-400/30 text-rose-300 bg-rose-400/10' :
               item.tone === 'Medium' ? 'border-amber-400/30 text-amber-300 bg-amber-400/10' :
-              'border-slate-600 text-slate-400 bg-slate-800'
+              'border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'
             }`}>
               {item.tone}
             </span>
@@ -129,10 +129,10 @@ function CoursesGrid({
     <section aria-labelledby="courses-heading">
       <div className="mb-4 flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+          <p className="text-xs font-medium uppercase tracking-wide text-slate-900 dark:text-slate-500">
             Active tracks
           </p>
-          <h2 id="courses-heading" className="mt-1 text-xl font-semibold text-slate-50">
+          <h2 id="courses-heading" className="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-50">
             Learning roadmap
           </h2>
         </div>
@@ -222,7 +222,7 @@ export default function Dashboard() {
     <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8">
       <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
             <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
               <Cpu size={14} />
               Next-Gen Dashboard
@@ -232,10 +232,10 @@ export default function Dashboard() {
               Thursday, Jun 4
             </span>
           </div>
-          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-50 md:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-900 dark:text-slate-50 md:text-4xl">
             Student command center
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400 md:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 md:text-base">
             Track progress, choose the next action, and keep every learning signal in one focused workspace.
           </p>
         </div>
@@ -243,7 +243,7 @@ export default function Dashboard() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="relative group">
             <label className="search-control flex items-center relative">
-              <Search size={17} className="text-slate-500 transition-colors group-focus-within:text-cyan-400" />
+              <Search size={17} className="text-slate-900 dark:text-slate-500 transition-colors group-focus-within:text-cyan-400" />
               <span className="sr-only">Search dashboard</span>
               <input
                 type="search"
@@ -259,8 +259,8 @@ export default function Dashboard() {
               />
             </label>
             {isSearchFocused && recentSearches.length > 0 && (
-              <div className="absolute top-full mt-2 w-full rounded-md border border-slate-700 bg-slate-900 shadow-lg z-50 overflow-hidden">
-                <div className="px-3 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wider bg-slate-800/50">
+              <div className="absolute top-full mt-2 w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg z-50 overflow-hidden">
+                <div className="px-3 py-2 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider bg-slate-100 dark:bg-slate-800/50">
                   Recommended / Recent
                 </div>
                 <ul className="max-h-48 overflow-y-auto m-0 p-0 list-none">
@@ -268,13 +268,13 @@ export default function Dashboard() {
                     <li key={i}>
                       <button
                         type="button"
-                        className="w-full flex items-center px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-cyan-400 transition-colors"
+                        className="w-full flex items-center px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-cyan-400 transition-colors"
                         onClick={() => {
                           setSearchQuery(term);
                           setIsSearchFocused(false);
                         }}
                       >
-                        <Search size={14} className="mr-2 text-slate-500" />
+                        <Search size={14} className="mr-2 text-slate-900 dark:text-slate-500" />
                         {term}
                       </button>
                     </li>
@@ -312,8 +312,8 @@ export default function Dashboard() {
                   <GraduationCap size={19} />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-slate-100">Next milestone</p>
-                  <p className="text-xs text-slate-500">Frontend Architecture badge</p>
+                  <p className="text-sm font-medium text-slate-900 dark:text-slate-100">Next milestone</p>
+                  <p className="text-xs text-slate-900 dark:text-slate-500">Frontend Architecture badge</p>
                 </div>
               </div>
               <div className="mt-5 flex items-end justify-between gap-4">
@@ -326,7 +326,7 @@ export default function Dashboard() {
                   >
                     {tasksRemaining}
                   </motion.p>
-                  <p className="text-sm text-slate-400">tasks remaining</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">tasks remaining</p>
                 </div>
                 <div className="flex items-center gap-1 text-sm font-medium text-emerald-400">
                   <TrendingUp size={16} />
