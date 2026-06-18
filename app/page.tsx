@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { Suspense, useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -21,44 +23,7 @@ import { HeroTile } from '@/components/HeroTile';
 import { LoadingSkeletons } from '@/components/LoadingStates';
 import { Sidebar } from '@/components/Sidebar';
 
-const initialCourses = [
-  {
-    id: '1',
-    title: 'Advanced React Patterns',
-    progress: 75,
-    icon_name: 'Code',
-    status: 'In progress',
-    duration: '8 modules',
-    accent: 'cyan',
-  },
-  {
-    id: '2',
-    title: 'TypeScript Deep Dive',
-    progress: 45,
-    icon_name: 'BookOpen',
-    status: 'Next sprint',
-    duration: '12 lessons',
-    accent: 'violet',
-  },
-  {
-    id: '3',
-    title: 'Database Design',
-    progress: 60,
-    icon_name: 'Database',
-    status: 'Practice',
-    duration: '6 labs',
-    accent: 'emerald',
-  },
-  {
-    id: '4',
-    title: 'UI/UX Principles',
-    progress: 85,
-    icon_name: 'Palette',
-    status: 'Review',
-    duration: '4 projects',
-    accent: 'amber',
-  },
-];
+import { initialCourses } from '@/lib/mockData';
 
 const initialMetrics = [
   { label: 'Focus score', value: '94%', detail: '+12% this week', icon: Target },
@@ -231,12 +196,10 @@ export default function Dashboard() {
     );
   }, [courses, searchQuery]);
 
+  const router = useRouter();
+
   const handleContinueCourse = (id: string) => {
-    setCourses((prev) =>
-      prev.map((c) =>
-        c.id === id ? { ...c, progress: Math.min(100, c.progress + 5) } : c
-      )
-    );
+    router.push(`/courses/${id}`);
   };
 
   const handleOptimize = () => {
