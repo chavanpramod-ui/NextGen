@@ -30,7 +30,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-cyan-300">
+          <p className="text-xs font-medium uppercase tracking-wide text-cyan-600 dark:text-cyan-300">
             Activity
           </p>
           <h2 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">
@@ -40,7 +40,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
             {activity?.title ?? 'Minutes learned per day'}
           </p>
         </div>
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-cyan-200">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-cyan-400/30 dark:border-cyan-300/20 bg-cyan-400/10 dark:bg-cyan-300/10 text-cyan-700 dark:text-cyan-200">
           <BarChart3 size={19} />
         </div>
       </div>
@@ -61,7 +61,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
                 }`}
               />
             </div>
-            <span className={`text-xs ${item.isToday ? 'font-semibold text-cyan-200' : 'text-slate-900 dark:text-slate-500'}`}>
+            <span className={`text-xs ${item.isToday ? 'font-semibold text-cyan-700 dark:text-cyan-200' : 'text-slate-700 dark:text-slate-500'}`}>
               {item.day.charAt(0)}
             </span>
           </div>

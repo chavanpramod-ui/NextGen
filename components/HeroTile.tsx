@@ -58,8 +58,8 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
       <div className="relative z-10 grid h-full gap-6 lg:grid-cols-[minmax(0,1fr)_310px]">
         <div className="flex min-w-0 flex-col justify-between gap-8">
           <div style={{ transform: 'translateZ(30px)' }}>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-300 shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
-              <Zap size={14} className="text-violet-400" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-violet-300 dark:border-white/10 bg-violet-100 dark:bg-white/5 backdrop-blur-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-800 dark:text-violet-300 shadow-[0_4px_10px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
+              <Zap size={14} className="text-violet-600 dark:text-violet-400" />
               Live learning system
             </div>
             <h2 className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl drop-shadow-lg font-outfit">
@@ -83,7 +83,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1" style={{ transform: 'translateZ(20px)' }}>
-          <div className="group rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md p-5 transition-all hover:border-white/15 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(251,191,36,0.15)] relative overflow-hidden">
+          <div className="group rounded-2xl border border-slate-300 dark:border-white/5 bg-slate-100 dark:bg-white/5 backdrop-blur-md p-5 transition-all hover:border-slate-400 dark:hover:border-white/15 hover:bg-slate-200 dark:hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(251,191,36,0.15)] relative overflow-hidden">
             <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/20 blur-[40px] pointer-events-none transition-opacity group-hover:opacity-100 opacity-0" />
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Learning streak
@@ -103,7 +103,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
             </div>
           </div>
 
-          <div className="group rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md p-5 transition-all hover:border-white/15 hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] relative overflow-hidden">
+          <div className="group rounded-2xl border border-slate-300 dark:border-white/5 bg-slate-100 dark:bg-white/5 backdrop-blur-md p-5 transition-all hover:border-slate-400 dark:hover:border-white/15 hover:bg-slate-200 dark:hover:bg-white/10 hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] relative overflow-hidden">
             <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-emerald-500/20 blur-[40px] pointer-events-none transition-opacity group-hover:opacity-100 opacity-0" />
             <div className="flex items-center justify-between gap-4 relative z-10">
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">

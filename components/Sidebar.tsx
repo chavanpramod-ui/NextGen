@@ -33,7 +33,7 @@ export function Sidebar() {
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between gap-3">
         <Link href="#" className="flex min-w-0 items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-sm font-semibold text-cyan-200">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-cyan-400/30 dark:border-cyan-300/20 bg-cyan-400/10 dark:bg-cyan-300/10 text-sm font-semibold text-cyan-700 dark:text-cyan-200">
             NG
           </div>
           {!isCollapsed && (
@@ -68,8 +68,8 @@ export function Sidebar() {
               title={item.label}
               className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? 'border-cyan-300/20 bg-cyan-300/10 text-cyan-100'
-                  : 'border-transparent text-slate-600 dark:text-slate-400 hover:border-slate-200 dark:border-slate-800 hover:bg-white dark:bg-slate-900 hover:text-slate-900 dark:text-slate-100'
+                  ? 'border-cyan-400/30 dark:border-cyan-300/20 bg-cyan-400/10 dark:bg-cyan-300/10 text-cyan-700 dark:text-cyan-100'
+                  : 'border-transparent text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-slate-100'
               }`}
               onClick={() => setIsOpen(false)}
             >

@@ -25,10 +25,10 @@ interface CourseTileProps {
 }
 
 const accentClasses: Record<string, string> = {
-  amber: 'border-amber-400/30 bg-amber-400/10 text-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.15)]',
-  cyan: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.15)]',
-  emerald: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.15)]',
-  violet: 'border-violet-400/30 bg-violet-400/10 text-violet-300 shadow-[0_0_15px_rgba(139,92,246,0.15)]',
+  amber: 'border-amber-400/30 bg-amber-400/10 text-amber-600 dark:text-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.15)]',
+  cyan: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-700 dark:text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.15)]',
+  emerald: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-600 dark:text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.15)]',
+  violet: 'border-violet-400/30 bg-violet-400/10 text-violet-600 dark:text-violet-300 shadow-[0_0_15px_rgba(139,92,246,0.15)]',
 };
 
 const hoverClasses: Record<string, string> = {

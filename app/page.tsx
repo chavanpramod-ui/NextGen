@@ -75,7 +75,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
     <section className="dashboard-panel p-5">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-cyan-400">
+          <p className="text-xs font-medium uppercase tracking-wide text-cyan-600 dark:text-cyan-400">
             Mission control
           </p>
           <h2 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">Priority queue</h2>
@@ -101,7 +101,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
             className="group flex items-center justify-between gap-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-3 transition-colors hover:border-slate-400 dark:border-slate-600 hover:bg-slate-100 dark:bg-slate-800/60"
           >
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100 transition-colors group-hover:text-cyan-100">{item.title}</p>
+              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100 transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-100">{item.title}</p>
               <p className="mt-1 text-xs text-slate-900 dark:text-slate-500">{item.time}</p>
             </div>
             <span className={`rounded-md border px-2 py-1 text-xs font-medium ${
@@ -223,7 +223,7 @@ export default function Dashboard() {
       <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-            <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
+            <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-700 dark:text-cyan-300">
               <Cpu size={14} />
               Next-Gen Dashboard
             </span>
@@ -268,7 +268,7 @@ export default function Dashboard() {
                     <li key={i}>
                       <button
                         type="button"
-                        className="w-full flex items-center px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-cyan-400 transition-colors"
+                        className="w-full flex items-center px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                         onClick={() => {
                           setSearchQuery(term);
                           setIsSearchFocused(false);
@@ -328,7 +328,7 @@ export default function Dashboard() {
                   </motion.p>
                   <p className="text-sm text-slate-600 dark:text-slate-400">tasks remaining</p>
                 </div>
-                <div className="flex items-center gap-1 text-sm font-medium text-emerald-400">
+                <div className="flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-emerald-400">
                   <TrendingUp size={16} />
                   On pace
                 </div>
