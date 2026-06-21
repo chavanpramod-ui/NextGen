@@ -18,6 +18,7 @@ export default function ProfilePage() {
   
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const initials = `${firstName.charAt(0) || ''}${lastName.charAt(0) || ''}`.toUpperCase();
 
@@ -27,6 +28,7 @@ export default function ProfilePage() {
     setTimeout(() => {
       setIsSaving(false);
       setSaved(true);
+      setIsEditing(false);
       setTimeout(() => setSaved(false), 3000);
     }, 800);
   };
@@ -58,9 +60,11 @@ export default function ProfilePage() {
                 {initials || '?'}
               </div>
             </div>
-            <button className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors">
-              Change avatar
-            </button>
+            {isEditing && (
+              <button className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors">
+                Change avatar
+              </button>
+            )}
           </div>
           
           <div className="flex-1 flex flex-col gap-4">
@@ -71,7 +75,8 @@ export default function ProfilePage() {
                   type="text" 
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -80,7 +85,8 @@ export default function ProfilePage() {
                   type="text" 
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 />
               </div>
             </div>
@@ -92,7 +98,8 @@ export default function ProfilePage() {
                   type="email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg pl-10 pr-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg pl-10 pr-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 />
               </div>
             </div>
@@ -102,7 +109,8 @@ export default function ProfilePage() {
                 rows={4}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all resize-none"
+                disabled={!isEditing}
+                className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all resize-none disabled:opacity-60 disabled:cursor-not-allowed"
               />
             </div>
 
@@ -117,7 +125,8 @@ export default function ProfilePage() {
                   type="text" 
                   value={studentId}
                   onChange={(e) => setStudentId(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -126,7 +135,8 @@ export default function ProfilePage() {
                   type="text" 
                   value={university}
                   onChange={(e) => setUniversity(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -135,7 +145,8 @@ export default function ProfilePage() {
                   type="text" 
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -143,7 +154,8 @@ export default function ProfilePage() {
                 <select 
                   value={yearOfStudy}
                   onChange={(e) => setYearOfStudy(e.target.value)}
-                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all appearance-none"
+                  disabled={!isEditing}
+                  className="w-full bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700/50 rounded-lg px-4 py-2.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all appearance-none disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <option value="Freshman" className="bg-white dark:bg-slate-900">Freshman</option>
                   <option value="Sophomore" className="bg-white dark:bg-slate-900">Sophomore</option>
@@ -160,13 +172,30 @@ export default function ProfilePage() {
                   <Check size={16} /> Saved successfully
                 </span>
               )}
-              <button 
-                onClick={handleSave}
-                disabled={isSaving}
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-medium px-6 py-2.5 rounded-lg transition-all disabled:opacity-70 flex items-center gap-2"
-              >
-                {isSaving ? 'Saving...' : 'Save Profile'}
-              </button>
+              {!isEditing ? (
+                <button 
+                  onClick={() => setIsEditing(true)}
+                  className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-medium px-6 py-2.5 rounded-lg transition-all flex items-center gap-2"
+                >
+                  Edit Profile
+                </button>
+              ) : (
+                <>
+                  <button 
+                    onClick={() => setIsEditing(false)}
+                    className="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 font-medium px-6 py-2.5 rounded-lg transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    onClick={handleSave}
+                    disabled={isSaving}
+                    className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-medium px-6 py-2.5 rounded-lg transition-all disabled:opacity-70 flex items-center gap-2"
+                  >
+                    {isSaving ? 'Saving...' : 'Save Profile'}
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
