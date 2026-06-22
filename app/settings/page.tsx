@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Settings, User, Bell, Shield, Palette, Mail, Lock, LogOut, Check } from 'lucide-react';
 
 export default function SettingsPage() {
@@ -12,12 +12,28 @@ export default function SettingsPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('userProfile');
+    if (savedProfile) {
+      try {
+        const parsed = JSON.parse(savedProfile);
+        if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
+        if (parsed.lastName !== undefined) setLastName(parsed.lastName);
+        if (parsed.email !== undefined) setEmail(parsed.email);
+        if (parsed.bio !== undefined) setBio(parsed.bio);
+      } catch (e) {
+        console.error("Failed to parse profile data", e);
+      }
+    }
+  }, []);
+
   const initials = `${firstName.charAt(0) || ''}${lastName.charAt(0) || ''}`.toUpperCase();
 
   const handleSave = () => {
     setIsSaving(true);
     // Simulate API call
     setTimeout(() => {
+      localStorage.setItem('userProfile', JSON.stringify({ firstName, lastName, email, bio }));
       setIsSaving(false);
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
