@@ -34,6 +34,7 @@ export default function SettingsPage() {
     // Simulate API call
     setTimeout(() => {
       localStorage.setItem('userProfile', JSON.stringify({ firstName, lastName, email, bio }));
+      window.dispatchEvent(new Event('profileUpdated'));
       setIsSaving(false);
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);

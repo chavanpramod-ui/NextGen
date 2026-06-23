@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { User, Mail, Check } from 'lucide-react';
 
 export default function ProfilePage() {
@@ -20,12 +20,35 @@ export default function ProfilePage() {
   const [saved, setSaved] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('userProfile');
+    if (savedProfile) {
+      try {
+        const parsed = JSON.parse(savedProfile);
+        if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
+        if (parsed.lastName !== undefined) setLastName(parsed.lastName);
+        if (parsed.email !== undefined) setEmail(parsed.email);
+        if (parsed.bio !== undefined) setBio(parsed.bio);
+        if (parsed.studentId !== undefined) setStudentId(parsed.studentId);
+        if (parsed.university !== undefined) setUniversity(parsed.university);
+        if (parsed.course !== undefined) setCourse(parsed.course);
+        if (parsed.yearOfStudy !== undefined) setYearOfStudy(parsed.yearOfStudy);
+      } catch (e) {
+        console.error("Failed to parse profile data", e);
+      }
+    }
+  }, []);
+
   const initials = `${firstName.charAt(0) || ''}${lastName.charAt(0) || ''}`.toUpperCase();
 
   const handleSave = () => {
     setIsSaving(true);
     // Simulate API call
     setTimeout(() => {
+      localStorage.setItem('userProfile', JSON.stringify({
+        firstName, lastName, email, bio, studentId, university, course, yearOfStudy
+      }));
+      window.dispatchEvent(new Event('profileUpdated'));
       setIsSaving(false);
       setSaved(true);
       setIsEditing(false);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -28,6 +28,28 @@ export function Sidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [firstName, setFirstName] = useState("Alex");
+  const [lastName, setLastName] = useState("Morgan");
+
+  useEffect(() => {
+    const loadProfile = () => {
+      const savedProfile = localStorage.getItem('userProfile');
+      if (savedProfile) {
+        try {
+          const parsed = JSON.parse(savedProfile);
+          if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
+          if (parsed.lastName !== undefined) setLastName(parsed.lastName);
+        } catch (e) {}
+      }
+    };
+    loadProfile();
+    window.addEventListener('profileUpdated', loadProfile);
+    window.addEventListener('storage', loadProfile);
+    return () => {
+      window.removeEventListener('profileUpdated', loadProfile);
+      window.removeEventListener('storage', loadProfile);
+    };
+  }, []);
 
   const navigation = (
     <div className="flex h-full flex-col">
@@ -90,11 +112,11 @@ export function Sidebar() {
         </div>
         <Link href="/profile" className="flex items-center gap-3 rounded-lg bg-slate-50 dark:bg-slate-950/70 p-3 hover:bg-white dark:bg-slate-900 transition-colors" onClick={() => setIsOpen(false)}>
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-300 text-sm font-semibold text-slate-950">
-            A
+            {firstName ? firstName.charAt(0).toUpperCase() : 'A'}
           </div>
           {!isCollapsed && (
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100">Alex Morgan</p>
+              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100">{firstName} {lastName}</p>
               <p className="truncate text-xs text-slate-900 dark:text-slate-500">Pro Learner</p>
             </div>
           )}

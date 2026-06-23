@@ -170,6 +170,26 @@ export default function Dashboard() {
   const [isOptimizing, setIsOptimizing] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [firstName, setFirstName] = useState("Alex");
+
+  useEffect(() => {
+    const loadProfile = () => {
+      const savedProfile = localStorage.getItem('userProfile');
+      if (savedProfile) {
+        try {
+          const parsed = JSON.parse(savedProfile);
+          if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
+        } catch (e) {}
+      }
+    };
+    loadProfile();
+    window.addEventListener('profileUpdated', loadProfile);
+    window.addEventListener('storage', loadProfile);
+    return () => {
+      window.removeEventListener('profileUpdated', loadProfile);
+      window.removeEventListener('storage', loadProfile);
+    };
+  }, []);
 
   useEffect(() => {
     const saved = localStorage.getItem('recentSearches');
@@ -298,7 +318,7 @@ export default function Dashboard() {
       <Suspense fallback={<LoadingSkeletons />}>
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="flex min-w-0 flex-col gap-6">
-            <HeroTile userName="Alex" streakDays={12} />
+            <HeroTile userName={firstName} streakDays={12} />
             <MetricStrip metrics={metrics} />
             <CoursesGrid courses={filteredCourses} onContinue={handleContinueCourse} />
           </div>
