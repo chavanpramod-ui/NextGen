@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { BookOpen, Search, ArrowUpRight, Target, Filter } from 'lucide-react';
 import { CourseTile } from '@/components/CourseTile';
 
@@ -76,6 +76,20 @@ const recommendedCourses = [
 export default function CoursesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [active, setActive] = useState(activeCourses);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsSearchFocused(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleContinueCourse = (id: string) => {
     setActive((prev) =>
@@ -86,6 +100,10 @@ export default function CoursesPage() {
   };
 
   const filteredRecommended = recommendedCourses.filter(course =>
+    course.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const searchResults = [...activeCourses, ...recommendedCourses].filter(course =>
     course.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -108,17 +126,49 @@ export default function CoursesPage() {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <label className="search-control group">
-            <Search size={17} className="text-slate-900 dark:text-slate-500 transition-colors group-focus-within:text-cyan-400" />
-            <span className="sr-only">Search catalog</span>
-            <input
-              type="search"
-              placeholder="Search catalog..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
-            />
-          </label>
+          <div ref={searchContainerRef} className="relative z-50">
+            <label className="search-control group">
+              <Search size={17} className="text-slate-900 dark:text-slate-500 transition-colors group-focus-within:text-cyan-400" />
+              <span className="sr-only">Search catalog</span>
+              <input
+                type="search"
+                placeholder="Search catalog..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
+              />
+            </label>
+            
+            {isSearchFocused && searchQuery && (
+              <div className="absolute top-full left-0 z-50 mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 w-full sm:min-w-[320px]">
+                {searchResults.length > 0 ? (
+                  <ul className="flex max-h-80 flex-col overflow-y-auto">
+                    {searchResults.map((course) => (
+                      <li key={course.id}>
+                        <button
+                          type="button"
+                          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-all hover:bg-slate-100 hover:text-cyan-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-cyan-400"
+                          onClick={() => {
+                            setSearchQuery(course.title);
+                            setIsSearchFocused(false);
+                          }}
+                        >
+                          <Search size={14} className="text-slate-400 opacity-70 shrink-0" />
+                          <span className="truncate font-medium">{course.title}</span>
+                          <span className="ml-auto text-xs whitespace-nowrap text-slate-400 dark:text-slate-500">{course.status}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="p-4 text-center text-sm text-slate-500 dark:text-slate-400">
+                    No results found for "{searchQuery}"
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
           <button type="button" className="secondary-button" aria-label="Filter courses">
             <Filter size={17} />
             Filter
