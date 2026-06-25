@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { BookOpen, Search, ArrowUpRight, Target, Filter } from 'lucide-react';
 import { CourseTile } from '@/components/CourseTile';
 
@@ -74,6 +75,7 @@ const recommendedCourses = [
 ];
 
 export default function CoursesPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [active, setActive] = useState(activeCourses);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -152,6 +154,7 @@ export default function CoursesPage() {
                           onClick={() => {
                             setSearchQuery(course.title);
                             setIsSearchFocused(false);
+                            router.push(`/courses/${course.id}`);
                           }}
                         >
                           <Search size={14} className="text-slate-400 opacity-70 shrink-0" />
