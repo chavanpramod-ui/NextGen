@@ -150,16 +150,16 @@ export default function CoursesPage() {
                       <li key={course.id}>
                         <button
                           type="button"
-                          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-all hover:bg-slate-100 hover:text-cyan-600 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-cyan-400"
+                          className="group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-all duration-300 hover:translate-x-1 hover:bg-cyan-50 hover:text-cyan-700 hover:shadow-sm dark:text-slate-300 dark:hover:bg-cyan-500/10 dark:hover:text-cyan-300"
                           onClick={() => {
                             setSearchQuery(course.title);
                             setIsSearchFocused(false);
                             router.push(`/courses/${course.id}`);
                           }}
                         >
-                          <Search size={14} className="text-slate-400 opacity-70 shrink-0" />
+                          <Search size={14} className="text-slate-400 opacity-70 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:text-cyan-500" />
                           <span className="truncate font-medium">{course.title}</span>
-                          <span className="ml-auto text-xs whitespace-nowrap text-slate-400 dark:text-slate-500">{course.status}</span>
+                          <span className="ml-auto text-xs whitespace-nowrap text-slate-400 dark:text-slate-500 transition-colors duration-300 group-hover:text-cyan-600/70 dark:group-hover:text-cyan-400/70">{course.status}</span>
                         </button>
                       </li>
                     ))}
