@@ -9,7 +9,7 @@ export const initialCourses = [
     accent: 'cyan',
     description: 'Master advanced React concepts including higher-order components, render props, and custom hooks to build scalable applications.',
     instructor: 'Sarah Drasner',
-    videoUrl: 'https://www.youtube.com/embed/0Ghw4c9F6pU', // Replace with your AI video URL
+    videoUrl: 'https://www.youtube.com/embed/Tn6-PIqc4UM', // Replace with your AI video URL
     modules: [
       { id: '1-1', title: 'Context API and Compound Components', completed: true },
       { id: '1-2', title: 'Performance Optimization Techniques', completed: true },
@@ -27,7 +27,7 @@ export const initialCourses = [
     accent: 'violet',
     description: 'Take your TypeScript skills to the next level. Learn about mapped types, conditional types, and advanced type inference.',
     instructor: 'Matt Pocock',
-    videoUrl: 'https://www.youtube.com/embed/h0iH3L-d60o', // Replace with your AI video URL
+    videoUrl: 'https://www.youtube.com/embed/zQnBQ4tB3ZA', // Replace with your AI video URL
     modules: [
       { id: '2-1', title: 'Type vs Interface', completed: true },
       { id: '2-2', title: 'Generics deep dive', completed: false },
@@ -44,7 +44,7 @@ export const initialCourses = [
     accent: 'emerald',
     description: 'Learn the fundamentals of database design, normalization, and efficient querying strategies for modern web applications.',
     instructor: 'Hussein Nasser',
-    videoUrl: 'https://www.youtube.com/embed/ztHopE5Wnpc', // Replace with your AI video URL
+    videoUrl: 'https://www.youtube.com/embed/zsjvFFKOm3c', // Replace with your AI video URL
     modules: [
       { id: '3-1', title: 'Relational Model Basics', completed: true },
       { id: '3-2', title: 'Normalization up to 3NF', completed: true },
@@ -61,7 +61,7 @@ export const initialCourses = [
     accent: 'amber',
     description: 'Discover the core principles of beautiful, accessible, and user-friendly design tailored for frontend developers.',
     instructor: 'Gary Simon',
-    videoUrl: 'https://www.youtube.com/embed/c9Wg6Cb_YlU', // Replace with your AI video URL
+    videoUrl: 'https://www.youtube.com/embed/1Rs2ND1ryYc', // Replace with your AI video URL
     modules: [
       { id: '4-1', title: 'Color Theory & Typography', completed: true },
       { id: '4-2', title: 'Layouts & Spacing', completed: true },
