@@ -150,14 +150,14 @@ export default function CoursesPage() {
                       <li key={course.id}>
                         <button
                           type="button"
-                          className="group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-all duration-300 hover:translate-x-1 hover:bg-cyan-50 hover:text-cyan-700 hover:shadow-sm dark:text-slate-300 dark:hover:bg-cyan-500/10 dark:hover:text-cyan-300"
+                          className="group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 hover:shadow-md dark:text-slate-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
                           onClick={() => {
                             setSearchQuery(course.title);
                             setIsSearchFocused(false);
                             router.push(`/courses/${course.id}`);
                           }}
                         >
-                          <Search size={14} className="text-slate-400 opacity-70 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:text-cyan-500" />
+                          <Search size={14} className="text-slate-400 opacity-70 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:text-cyan-500 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
                           <span className="truncate font-medium">{course.title}</span>
                           <span className="ml-auto text-xs whitespace-nowrap text-slate-400 dark:text-slate-500 transition-colors duration-300 group-hover:text-cyan-600/70 dark:group-hover:text-cyan-400/70">{course.status}</span>
                         </button>

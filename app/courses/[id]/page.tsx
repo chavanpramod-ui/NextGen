@@ -34,6 +34,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   
   const courseData = initialCourses.find(c => c.id === id);
   const [course, setCourse] = useState(courseData);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   if (!course) {
     return (
@@ -122,23 +123,37 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             </div>
           </motion.div>
 
-          {/* Video Player Placeholder */}
+          {/* Video Player Section */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="dashboard-panel aspect-video w-full overflow-hidden relative group cursor-pointer border-slate-300 dark:border-slate-700/50"
+            onClick={() => {
+              if (!isPlaying) setIsPlaying(true);
+            }}
           >
-            <div className="absolute inset-0 bg-white dark:bg-slate-900/80 flex items-center justify-center transition-colors group-hover:bg-white dark:bg-slate-900/60 z-10">
-              <div className="h-20 w-20 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm border border-cyan-400/30 transition-transform group-hover:scale-110">
-                <PlayCircle size={40} className="text-cyan-400 ml-1" />
-              </div>
-            </div>
-            {/* Mock abstract background for the video */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950 opacity-50" />
-            <div className="absolute inset-0" style={{ 
-              backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%)' 
-            }} />
+            {isPlaying && (course as any).videoUrl ? (
+              <iframe
+                src={`${(course as any).videoUrl}?autoplay=1`}
+                className="w-full h-full absolute inset-0 z-20 border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-white dark:bg-slate-900/80 flex items-center justify-center transition-colors group-hover:bg-white dark:bg-slate-900/60 z-10">
+                  <div className="h-20 w-20 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm border border-cyan-400/30 transition-transform group-hover:scale-110">
+                    <PlayCircle size={40} className="text-cyan-400 ml-1" />
+                  </div>
+                </div>
+                {/* Mock abstract background for the video */}
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950 opacity-50" />
+                <div className="absolute inset-0" style={{ 
+                  backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%)' 
+                }} />
+              </>
+            )}
           </motion.div>
         </div>
 
