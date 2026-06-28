@@ -191,10 +191,10 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 <button
                   key={module.id}
                   onClick={() => handleToggleModule(module.id)}
-                  className={`w-full flex items-start gap-4 rounded-xl border p-4 text-left transition-all duration-300 hover:scale-[1.02] ${
+                  className={`w-full flex items-start gap-4 rounded-xl border p-4 text-left transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl ${
                     module.completed 
-                      ? 'border-emerald-400/20 bg-emerald-400/5' 
-                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 hover:border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:bg-slate-800'
+                      ? 'border-emerald-400/20 bg-emerald-400/5 hover:border-emerald-400/40 hover:shadow-emerald-400/10' 
+                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 hover:border-cyan-400/30 hover:bg-slate-100 dark:hover:bg-slate-800/80 hover:shadow-cyan-400/10'
                   }`}
                 >
                   <div className="mt-0.5 shrink-0">

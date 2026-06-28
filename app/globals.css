@@ -113,6 +113,7 @@ input:focus-visible {
     @apply rounded-2xl border shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-3xl transition-all duration-500 relative overflow-hidden;
     background: var(--panel);
     border-color: var(--panel-border);
+    will-change: transform, box-shadow;
   }
   
   .dashboard-panel::before {
@@ -126,8 +127,10 @@ input:focus-visible {
   }
 
   .dashboard-panel:hover {
-    box-shadow: 0 12px 60px rgba(139, 92, 246, 0.12), inset 0 0 0 1px var(--panel-border);
+    transform: translateY(-6px) scale(1.005);
+    box-shadow: 0 30px 80px -15px rgba(139, 92, 246, 0.25), 0 0 30px rgba(34, 211, 238, 0.15), inset 0 0 0 1px var(--panel-border);
     border-color: var(--panel-border);
+    z-index: 10;
   }
 
   .grid-overlay {
