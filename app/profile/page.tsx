@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { User, Mail, Check } from 'lucide-react';
 
 export default function ProfilePage() {
@@ -8,6 +8,8 @@ export default function ProfilePage() {
   const [lastName, setLastName] = useState("Morgan");
   const [email, setEmail] = useState("alex.morgan@example.com");
   const [bio, setBio] = useState("Pro learner trying to master full-stack development. I enjoy building beautiful and responsive web applications.");
+  const [profilePicture, setProfilePicture] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   // Student Details State
   const [studentId, setStudentId] = useState("STU-849201");
@@ -33,6 +35,7 @@ export default function ProfilePage() {
         if (parsed.university !== undefined) setUniversity(parsed.university);
         if (parsed.course !== undefined) setCourse(parsed.course);
         if (parsed.yearOfStudy !== undefined) setYearOfStudy(parsed.yearOfStudy);
+        if (parsed.profilePicture !== undefined) setProfilePicture(parsed.profilePicture);
       } catch (e) {
         console.error("Failed to parse profile data", e);
       }
@@ -46,7 +49,7 @@ export default function ProfilePage() {
     // Simulate API call
     setTimeout(() => {
       localStorage.setItem('userProfile', JSON.stringify({
-        firstName, lastName, email, bio, studentId, university, course, yearOfStudy
+        firstName, lastName, email, bio, studentId, university, course, yearOfStudy, profilePicture
       }));
       window.dispatchEvent(new Event('profileUpdated'));
       setIsSaving(false);
@@ -78,15 +81,40 @@ export default function ProfilePage() {
       <div className="dashboard-panel p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row gap-8">
           <div className="flex flex-col items-center gap-4 shrink-0">
-            <div className="h-24 w-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 p-1">
-              <div className="h-full w-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-3xl font-bold text-cyan-400 transition-all duration-300">
-                {initials || '?'}
+            <div className="h-24 w-24 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 p-1 relative">
+              <div className="h-full w-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-3xl font-bold text-cyan-400 transition-all duration-300 overflow-hidden">
+                {profilePicture ? (
+                  <img src={profilePicture} alt="Profile" className="h-full w-full object-cover" />
+                ) : (
+                  initials || '?'
+                )}
               </div>
             </div>
             {isEditing && (
-              <button className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors">
-                Change avatar
-              </button>
+              <>
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  className="hidden" 
+                  ref={fileInputRef}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        setProfilePicture(reader.result as string);
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                />
+                <button 
+                  onClick={() => fileInputRef.current?.click()}
+                  className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  Change avatar
+                </button>
+              </>
             )}
           </div>
           
