@@ -171,6 +171,7 @@ export default function Dashboard() {
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [firstName, setFirstName] = useState("Alex");
+  const [currentDate, setCurrentDate] = useState('Thursday, Jun 4');
 
   useEffect(() => {
     const loadProfile = () => {
@@ -189,6 +190,16 @@ export default function Dashboard() {
       window.removeEventListener('profileUpdated', loadProfile);
       window.removeEventListener('storage', loadProfile);
     };
+  }, []);
+
+  useEffect(() => {
+    setCurrentDate(
+      new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric',
+      })
+    );
   }, []);
 
   useEffect(() => {
@@ -249,7 +260,7 @@ export default function Dashboard() {
             </span>
             <span className="flex items-center gap-2">
               <CalendarCheck size={15} />
-              Thursday, Jun 4
+              {currentDate}
             </span>
           </div>
           <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-900 dark:text-slate-50 md:text-4xl">

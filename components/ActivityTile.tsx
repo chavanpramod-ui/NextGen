@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart3 } from 'lucide-react';
 import type { Activity } from '@/lib/supabase';
@@ -19,7 +20,18 @@ const activityData = [
 ];
 
 export function ActivityTile({ activity }: ActivityTileProps) {
-  const maxValue = Math.max(...activityData.map((item) => item.value));
+  const [currentDayIndex, setCurrentDayIndex] = useState(3); // Default to Thu
+
+  useEffect(() => {
+    setCurrentDayIndex((new Date().getDay() + 6) % 7);
+  }, []);
+
+  const dynamicActivityData = activityData.map((item, index) => ({
+    ...item,
+    isToday: index === currentDayIndex,
+  }));
+
+  const maxValue = Math.max(...dynamicActivityData.map((item) => item.value));
 
   return (
     <motion.section
@@ -46,7 +58,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
       </div>
 
       <div className="mt-7 flex h-40 items-end gap-2">
-        {activityData.map((item, index) => (
+        {dynamicActivityData.map((item, index) => (
           <div key={item.day} className="flex min-w-0 flex-1 flex-col items-center gap-2">
             <div className="flex h-32 w-full items-end rounded-md bg-slate-50 dark:bg-slate-950/70 p-1">
               <motion.div
