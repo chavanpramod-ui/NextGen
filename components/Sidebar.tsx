@@ -9,6 +9,7 @@ import {
   Bell,
   BookOpen,
   Home,
+  LogIn,
   PanelLeftClose,
   Settings,
   User,
@@ -22,6 +23,7 @@ const navItems = [
   { label: 'Progress', href: '/progress', icon: BarChart2 },
   { label: 'Alerts', href: '/alerts', icon: Bell },
   { label: 'Settings', href: '/settings', icon: Settings },
+  { label: 'Sign In / Auth', href: '/login', icon: LogIn },
 ];
 
 export function Sidebar() {
@@ -30,6 +32,10 @@ export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [firstName, setFirstName] = useState("Alex");
   const [lastName, setLastName] = useState("Morgan");
+
+  if (pathname === '/login' || pathname?.startsWith('/login')) {
+    return null;
+  }
 
   useEffect(() => {
     const loadProfile = () => {
