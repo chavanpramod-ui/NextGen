@@ -135,7 +135,10 @@ export default function LoginPage() {
         course: 'Computer Science & AI',
         yearOfStudy: '3rd Year',
         bio: 'Pro learner trying to master full-stack development & AI systems.',
-        skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Python', 'AI Agents']
+        skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Python', 'AI Agents'],
+        portfolioUrl: 'https://github.com/pramodchavan',
+        linkedinUrl: 'https://linkedin.com/in/pramodchavan',
+        leetcodeUrl: 'https://leetcode.com/u/pramodchavan'
       }));
       window.dispatchEvent(new Event('profileUpdated'));
       router.push('/');

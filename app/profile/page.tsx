@@ -91,6 +91,7 @@ export default function ProfilePage() {
   const [newSkillInput, setNewSkillInput] = useState("");
   const [portfolioUrl, setPortfolioUrl] = useState("https://github.com/pramodchavan");
   const [linkedinUrl, setLinkedinUrl] = useState("https://linkedin.com/in/pramodchavan");
+  const [leetcodeUrl, setLeetcodeUrl] = useState("https://leetcode.com/u/pramodchavan");
   const [activeTab, setActiveTab] = useState<'profile' | 'academic' | 'skills'>('profile');
   const [showIdCardModal, setShowIdCardModal] = useState(false);
   const [copiedId, setCopiedId] = useState(false);
@@ -116,6 +117,7 @@ export default function ProfilePage() {
         if (parsed.skills !== undefined && Array.isArray(parsed.skills)) setSkills(parsed.skills);
         if (parsed.portfolioUrl !== undefined) setPortfolioUrl(parsed.portfolioUrl);
         if (parsed.linkedinUrl !== undefined) setLinkedinUrl(parsed.linkedinUrl);
+        if (parsed.leetcodeUrl !== undefined) setLeetcodeUrl(parsed.leetcodeUrl);
         if (parsed.themeId !== undefined) {
           const found = THEMES.find(t => t.id === parsed.themeId);
           if (found) setSelectedTheme(found);
@@ -133,7 +135,7 @@ export default function ProfilePage() {
     setTimeout(() => {
       localStorage.setItem('userProfile', JSON.stringify({
         firstName, lastName, email, bio, studentId, university, course, yearOfStudy, profilePicture,
-        skills, portfolioUrl, linkedinUrl, themeId: selectedTheme.id
+        skills, portfolioUrl, linkedinUrl, leetcodeUrl, themeId: selectedTheme.id
       }));
       window.dispatchEvent(new Event('profileUpdated'));
       setIsSaving(false);
@@ -425,6 +427,27 @@ export default function ProfilePage() {
                   ) : (
                     <a href={linkedinUrl} target="_blank" rel="noreferrer" className="block text-xs font-medium text-cyan-500 hover:text-cyan-400 hover:underline truncate transition-colors">
                       {linkedinUrl}
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div className="group/item flex items-center gap-3 p-2 rounded-2xl transition-all duration-300 hover:bg-slate-100 dark:hover:bg-white/5">
+                <div className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 shrink-0 transition-all duration-300 group-hover/item:border-cyan-400/50 group-hover/item:text-cyan-400 group-hover/item:scale-110">
+                  <Terminal size={18} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400">LeetCode Profile</label>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={leetcodeUrl}
+                      onChange={(e) => setLeetcodeUrl(e.target.value)}
+                      className={`w-full text-xs bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none transition-all duration-300 ${selectedTheme.focusRing}`}
+                    />
+                  ) : (
+                    <a href={leetcodeUrl} target="_blank" rel="noreferrer" className="block text-xs font-medium text-cyan-500 hover:text-cyan-400 hover:underline truncate transition-colors">
+                      {leetcodeUrl}
                     </a>
                   )}
                 </div>
