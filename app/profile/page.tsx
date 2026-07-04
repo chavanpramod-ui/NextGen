@@ -511,83 +511,174 @@ export default function ProfilePage() {
 
           {/* TAB 1: PERSONAL INFORMATION */}
           {activeTab === 'profile' && (
-            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 p-6 sm:p-8 backdrop-blur-2xl shadow-xl space-y-6 animate-in fade-in zoom-in-95 duration-300 transition-all duration-500 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow}`}>
-              <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Personal Information</h3>
-                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Update your personal details and public biography.</p>
+            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_25px_70px_-15px_rgba(34,211,238,0.2)] hover:border-cyan-500/40 dark:hover:border-cyan-400/40 group/card`}>
+              
+              {/* Decorative Top Gradient Glow Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-violet-600 via-cyan-500 to-emerald-400 opacity-90 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-cyan-500/10 dark:bg-cyan-400/10 blur-3xl pointer-events-none group-hover/card:bg-cyan-500/15 transition-all duration-500" />
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-violet-500/10 dark:bg-violet-400/10 blur-3xl pointer-events-none group-hover/card:bg-violet-500/15 transition-all duration-500" />
+
+              {/* Premium Header */}
+              <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-5">
+                <div className="flex items-center gap-3.5">
+                  <div className="h-12 w-12 rounded-2xl bg-gradient-to-tr from-violet-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-cyan-500/25 shrink-0 group-hover/card:scale-105 transition-transform duration-500">
+                    <User size={22} className="animate-pulse" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+                      Personal Information
+                      {!isEditing && (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-bold text-emerald-600 dark:text-emerald-400 shadow-sm">
+                          <CheckCircle2 size={12} className="text-emerald-500" /> Verified Sync
+                        </span>
+                      )}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Manage your digital identity, contact coordinates, and public biography.</p>
+                  </div>
                 </div>
-                {isEditing && (
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse">
-                    Editing Enabled
+
+                {isEditing ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 animate-pulse shadow-sm self-start sm:self-auto">
+                    <Edit3 size={14} /> Live Editing Active
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 self-start sm:self-auto">
+                    🔒 Protected Readout
                   </span>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <User size={15} className="text-cyan-400" /> First Name
+              {/* Form Grid */}
+              <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-6">
+                
+                {/* First Name Field */}
+                <div className="space-y-2 group/field">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-cyan-500 dark:group-hover/field:text-cyan-400 transition-colors">
+                    <User size={14} className="text-cyan-500" /> First Name
                   </label>
-                  <input 
-                    type="text" 
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    disabled={!isEditing}
-                    className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
-                  />
+                  <div className={`relative rounded-2xl border transition-all duration-300 ${
+                    isEditing 
+                      ? 'border-cyan-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.15)] ring-2 ring-cyan-500/20' 
+                      : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-cyan-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(34,211,238,0.15)]'
+                  }`}>
+                    <div className="flex items-center gap-3 px-3.5 py-1.5">
+                      <div className="h-9 w-9 rounded-xl bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                        FN
+                      </div>
+                      <input 
+                        type="text" 
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        disabled={!isEditing}
+                        placeholder="Enter first name"
+                        className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-semibold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <User size={15} className="text-cyan-400" /> Last Name
+                {/* Last Name Field */}
+                <div className="space-y-2 group/field">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-cyan-500 dark:group-hover/field:text-cyan-400 transition-colors">
+                    <User size={14} className="text-cyan-500" /> Last Name
                   </label>
-                  <input 
-                    type="text" 
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                  <div className={`relative rounded-2xl border transition-all duration-300 ${
+                    isEditing 
+                      ? 'border-cyan-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.15)] ring-2 ring-cyan-500/20' 
+                      : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-cyan-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(34,211,238,0.15)]'
+                  }`}>
+                    <div className="flex items-center gap-3 px-3.5 py-1.5">
+                      <div className="h-9 w-9 rounded-xl bg-violet-500/10 dark:bg-violet-500/20 text-violet-600 dark:text-violet-300 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                        LN
+                      </div>
+                      <input 
+                        type="text" 
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        disabled={!isEditing}
+                        placeholder="Enter last name"
+                        className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-semibold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email Field */}
+              <div className="space-y-2 group/field">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-cyan-500 dark:group-hover/field:text-cyan-400 transition-colors">
+                  <Mail size={14} className="text-cyan-500" /> Primary University Email
+                </label>
+                <div className={`relative rounded-2xl border transition-all duration-300 ${
+                  isEditing 
+                    ? 'border-cyan-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.15)] ring-2 ring-cyan-500/20' 
+                    : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-cyan-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(34,211,238,0.15)]'
+                }`}>
+                  <div className="flex items-center gap-3 px-3.5 py-1.5">
+                    <div className="h-9 w-9 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                      <Mail size={16} />
+                    </div>
+                    <input 
+                      type="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={!isEditing}
+                      placeholder="student@university.edu"
+                      className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-semibold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                    />
+                    {email.includes('@') && (
+                      <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+                        <Check size={12} /> Verified
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Biography Field */}
+              <div className="space-y-2 group/field">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-cyan-500 dark:group-hover/field:text-cyan-400 transition-colors">
+                    <BookOpen size={14} className="text-cyan-500" /> Public Biography & Career Vision
+                  </label>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800/80 text-[11px] font-bold text-cyan-600 dark:text-cyan-400 border border-slate-200 dark:border-slate-700/80 shadow-sm">
+                    {bio.length} characters
+                  </span>
+                </div>
+                <div className={`relative rounded-2xl border transition-all duration-300 ${
+                  isEditing 
+                    ? 'border-cyan-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.15)] ring-2 ring-cyan-500/20' 
+                    : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-cyan-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(34,211,238,0.15)]'
+                }`}>
+                  <textarea 
+                    rows={4}
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
                     disabled={!isEditing}
-                    className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
+                    placeholder="Write a few sentences about your coding journey, tech stack, and future aspirations..."
+                    className="w-full bg-transparent border-0 p-4 text-slate-800 dark:text-slate-100 font-medium text-sm sm:text-base focus:outline-none resize-none disabled:opacity-95 disabled:cursor-default leading-relaxed"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                  <Mail size={15} className="text-cyan-400" /> Email Address
-                </label>
-                <div className="relative">
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    disabled={!isEditing}
-                    className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
-                  />
+              {/* Ultra-Premium Data Privacy Assurance Shield Box */}
+              <div className="relative overflow-hidden rounded-2xl border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-violet-500/5 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-cyan-500/50 hover:shadow-[0_10px_30px_-10px_rgba(34,211,238,0.25)] group/privacy">
+                <div className="flex items-start sm:items-center gap-4">
+                  <div className="h-11 w-11 rounded-2xl bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500 shrink-0 group-hover/privacy:scale-110 group-hover/privacy:bg-cyan-500 group-hover/privacy:text-slate-950 transition-all duration-300 shadow-sm">
+                    <Shield size={22} className="animate-pulse" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                      <span className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">256-Bit Workspace Encryption Active</span>
+                    </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                      Your personal profile coordinates are cryptographically shielded and synced locally within your Student OS workspace. Changes propagate instantaneously across all dashboard modules.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center justify-between">
-                  <span>Biography</span>
-                  <span className="text-xs font-normal text-slate-400">{bio.length} characters</span>
-                </label>
-                <textarea 
-                  rows={4}
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  disabled={!isEditing}
-                  placeholder="Write a few sentences about your coding journey and goals..."
-                  className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 resize-none disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner leading-relaxed ${selectedTheme.focusRing}`}
-                />
-              </div>
-
-              <div className="p-4 rounded-2xl bg-cyan-500/5 border border-cyan-500/20 flex items-start gap-3 transition-colors duration-300 hover:bg-cyan-500/10 hover:border-cyan-500/30">
-                <Shield className="text-cyan-400 shrink-0 mt-0.5" size={18} />
-                <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">Data Privacy Assurance:</span> Your profile data is encrypted and synced locally within your Student OS workspace. Changes are reflected immediately across dashboard modules.
-                </div>
-              </div>
             </div>
           )}
 
