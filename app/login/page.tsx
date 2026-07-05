@@ -24,7 +24,8 @@ import {
   BookOpen,
   Check,
   X,
-  HelpCircle
+  HelpCircle,
+  AtSign
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -37,6 +38,7 @@ export default function LoginPage() {
   const [mode, setMode] = useState<'signin' | 'signup' | 'magic'>('signin');
   
   // Form State
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -81,7 +83,15 @@ export default function LoginPage() {
     setErrorMsg('');
     setSuccessMsg('');
 
-    if (!email.includes('@')) {
+    if (mode === 'signup' && !username.trim()) {
+      setErrorMsg('Please choose a username for your student account.');
+      return;
+    }
+    if (mode === 'signin' && !email && !username) {
+      setErrorMsg('Please enter your Username or Student Email address.');
+      return;
+    }
+    if (mode !== 'signin' && !email.includes('@')) {
       setErrorMsg('Please enter a valid student email address.');
       return;
     }
@@ -97,10 +107,12 @@ export default function LoginPage() {
       if (mode === 'signin') {
         setSuccessMsg('Authentication successful! Launching Student Command Center...');
         // Save demo session
+        const loginId = username || email;
         localStorage.setItem('userProfile', JSON.stringify({
-          firstName: email.split('@')[0].split('.')[0].replace(/^\w/, (c) => c.toUpperCase()) || 'Alex',
+          username: username || loginId.split('@')[0] || 'alex_morgan',
+          firstName: loginId.split('@')[0].split('.')[0].replace(/^\w/, (c) => c.toUpperCase()) || 'Alex',
           lastName: 'Morgan',
-          email: email,
+          email: email || `${username || 'alex'}@university.edu`,
           studentId: 'NG-2026-8841',
           university: 'Global Tech University',
           course: 'Computer Science & AI',
@@ -110,6 +122,17 @@ export default function LoginPage() {
         setTimeout(() => router.push('/'), 1200);
       } else if (mode === 'signup') {
         setSuccessMsg('Account created successfully! Welcome to NextGen Learn.');
+        localStorage.setItem('userProfile', JSON.stringify({
+          username: username || 'alex_morgan',
+          firstName: name ? name.split(' ')[0] : 'Alex',
+          lastName: name ? name.split(' ').slice(1).join(' ') || 'Morgan' : 'Morgan',
+          email: email,
+          studentId: studentId || 'NG-2026-8841',
+          university: 'Global Tech University',
+          course: 'Computer Science & AI',
+          yearOfStudy: '1st Year'
+        }));
+        window.dispatchEvent(new Event('profileUpdated'));
         setTimeout(() => setMode('signin'), 1500);
       } else {
         setSuccessMsg('Magic link sent! Check your student inbox to log in instantly.');
@@ -118,6 +141,7 @@ export default function LoginPage() {
   };
 
   const handleQuickDemo = () => {
+    setUsername('alex_morgan');
     setEmail('alex.morgan@university.edu');
     setPassword('ProStudent2026!');
     setMode('signin');
@@ -127,6 +151,7 @@ export default function LoginPage() {
     setTimeout(() => {
       setIsLoading(false);
       localStorage.setItem('userProfile', JSON.stringify({
+        username: 'alex_morgan',
         firstName: 'Alex',
         lastName: 'Morgan',
         email: 'alex.morgan@university.edu',
@@ -506,63 +531,47 @@ export default function LoginPage() {
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 
-                {/* Extra fields for Register mode */}
+                {/* Username Input (For New Users & Sign In) */}
                 {mode === 'signup' && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="grid grid-cols-2 gap-3"
                   >
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Full Name
-                      </label>
-                      <div className="relative">
-                        <User size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
-                        <input
-                          type="text"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="Alex Morgan"
-                          required={mode === 'signup'}
-                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                        Student ID #
-                      </label>
-                      <div className="relative">
-                        <KeyRound size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
-                        <input
-                          type="text"
-                          value={studentId}
-                          onChange={(e) => setStudentId(e.target.value)}
-                          placeholder="NG-2026-XXXX"
-                          required={mode === 'signup'}
-                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all"
-                        />
-                      </div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1.5">
+                      <AtSign size={13} className="text-cyan-500" /> Student Username <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500 font-bold text-sm">@</span>
+                      <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_.]/g, ''))}
+                        placeholder="alex_morgan"
+                        required={mode === 'signup'}
+                        className="w-full h-11 pl-9 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white font-mono font-bold text-xs sm:text-sm placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      />
+                      {username.length >= 3 && (
+                        <Check size={16} className="absolute right-3.5 top-3 text-emerald-500 animate-in zoom-in" />
+                      )}
                     </div>
                   </motion.div>
                 )}
 
-                {/* Email Input */}
+                {/* Email or Username Input */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                    University Email
+                    {mode === 'signin' ? 'Username or University Email' : 'University Email Address'} {mode === 'signup' && <span className="text-red-500">*</span>}
                   </label>
                   <div className="relative">
                     <Mail size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
                     <input
-                      type="email"
+                      type={mode === 'signin' ? 'text' : 'email'}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="student.name@university.edu"
+                      placeholder={mode === 'signin' ? 'alex_morgan or student@university.edu' : 'student.name@university.edu'}
                       required
-                      className="w-full h-11 pl-10 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all"
+                      className="w-full h-11 pl-10 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                     />
                     {email.includes('@') && email.includes('.') && (
                       <Check size={16} className="absolute right-3.5 top-3 text-emerald-500" />
@@ -574,8 +583,8 @@ export default function LoginPage() {
                 {mode !== 'magic' && (
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
-                        Password
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                        Password {mode === 'signup' && <span className="text-red-500">*</span>}
                       </label>
                       {mode === 'signin' && (
                         <button
@@ -595,7 +604,7 @@ export default function LoginPage() {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••••••"
                         required
-                        className="w-full h-11 pl-10 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all"
+                        className="w-full h-11 pl-10 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                       />
                       <button
                         type="button"
@@ -608,7 +617,7 @@ export default function LoginPage() {
 
                     {/* Dynamic Password Strength Meter for Sign Up */}
                     {mode === 'signup' && password.length > 0 && (
-                      <div className="mt-2.5 space-y-1.5">
+                      <div className="mt-2.5 space-y-1.5 p-2.5 rounded-xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
                         <div className="flex items-center justify-between text-[11px] font-semibold">
                           <span className="text-slate-500 dark:text-slate-400">Security Strength:</span>
                           <span className={`font-bold ${
@@ -632,6 +641,49 @@ export default function LoginPage() {
                       </div>
                     )}
                   </div>
+                )}
+
+                {/* Extra fields for Register mode (Full Name & Student ID) */}
+                {mode === 'signup' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="grid grid-cols-2 gap-3 pt-1"
+                  >
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                        Full Name
+                      </label>
+                      <div className="relative">
+                        <User size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
+                        <input
+                          type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Alex Morgan"
+                          required={mode === 'signup'}
+                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                        Student ID #
+                      </label>
+                      <div className="relative">
+                        <KeyRound size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
+                        <input
+                          type="text"
+                          value={studentId}
+                          onChange={(e) => setStudentId(e.target.value)}
+                          placeholder="NG-2026-XXXX"
+                          required={mode === 'signup'}
+                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
 
                 {/* Remember Me & Terms */}

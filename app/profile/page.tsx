@@ -684,140 +684,252 @@ export default function ProfilePage() {
 
           {/* TAB 2: ACADEMIC DETAILS */}
           {activeTab === 'academic' && (
-            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 p-6 sm:p-8 backdrop-blur-2xl shadow-xl space-y-6 animate-in fade-in zoom-in-95 duration-300 transition-all duration-500 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow}`}>
-              <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Academic Credentials</h3>
-                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Manage your university registration and curriculum program.</p>
+            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_25px_70px_-15px_rgba(168,85,247,0.2)] hover:border-purple-500/40 dark:hover:border-purple-400/40 group/card`}>
+              
+              {/* Decorative Top Gradient Glow Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 opacity-90 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-purple-500/10 dark:bg-purple-400/10 blur-3xl pointer-events-none group-hover/card:bg-purple-500/15 transition-all duration-500" />
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-indigo-500/10 dark:bg-indigo-400/10 blur-3xl pointer-events-none group-hover/card:bg-indigo-500/15 transition-all duration-500" />
+
+              {/* Premium Header */}
+              <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-5">
+                <div className="flex items-center gap-3.5">
+                  <div className="h-12 w-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/25 shrink-0 group-hover/card:scale-105 transition-transform duration-500">
+                    <GraduationCap size={22} className="animate-pulse" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+                      Academic Credentials
+                      {!isEditing && (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-[11px] font-bold text-purple-600 dark:text-purple-400 shadow-sm">
+                          <CheckCircle2 size={12} className="text-purple-500" /> Enrolled Sync
+                        </span>
+                      )}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Manage your university registration, curriculum program, and degree standing.</p>
+                  </div>
                 </div>
-                {isEditing && (
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse">
-                    Editing Enabled
+
+                {isEditing ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 animate-pulse shadow-sm self-start sm:self-auto">
+                    <Edit3 size={14} /> Live Editing Active
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 self-start sm:self-auto">
+                    🔒 Official Records
                   </span>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <Award size={15} className="text-purple-400" /> Student ID Number
+              {/* Form Grid */}
+              <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-6">
+                
+                {/* Student ID Field */}
+                <div className="space-y-2 group/field">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-purple-500 dark:group-hover/field:text-purple-400 transition-colors">
+                    <Award size={14} className="text-purple-500" /> Student ID Number
                   </label>
-                  <input 
-                    type="text" 
-                    value={studentId}
-                    onChange={(e) => setStudentId(e.target.value)}
-                    disabled={!isEditing}
-                    className={`w-full font-mono bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-bold focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
-                  />
+                  <div className={`relative rounded-2xl border transition-all duration-300 ${
+                    isEditing 
+                      ? 'border-purple-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(168,85,247,0.15)] ring-2 ring-purple-500/20' 
+                      : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-purple-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(168,85,247,0.15)]'
+                  }`}>
+                    <div className="flex items-center gap-3 px-3.5 py-1.5">
+                      <div className="h-9 w-9 rounded-xl bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-300 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                        ID
+                      </div>
+                      <input 
+                        type="text" 
+                        value={studentId}
+                        onChange={(e) => setStudentId(e.target.value)}
+                        disabled={!isEditing}
+                        placeholder="e.g. STU-849201"
+                        className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-mono font-bold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <GraduationCap size={15} className="text-purple-400" /> University / Institution
+                {/* University Field */}
+                <div className="space-y-2 group/field">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-purple-500 dark:group-hover/field:text-purple-400 transition-colors">
+                    <GraduationCap size={14} className="text-purple-500" /> University / Institution
                   </label>
-                  <input 
-                    type="text" 
-                    value={university}
-                    onChange={(e) => setUniversity(e.target.value)}
-                    disabled={!isEditing}
-                    className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
-                  />
+                  <div className={`relative rounded-2xl border transition-all duration-300 ${
+                    isEditing 
+                      ? 'border-purple-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(168,85,247,0.15)] ring-2 ring-purple-500/20' 
+                      : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-purple-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(168,85,247,0.15)]'
+                  }`}>
+                    <div className="flex items-center gap-3 px-3.5 py-1.5">
+                      <div className="h-9 w-9 rounded-xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                        UNI
+                      </div>
+                      <input 
+                        type="text" 
+                        value={university}
+                        onChange={(e) => setUniversity(e.target.value)}
+                        disabled={!isEditing}
+                        placeholder="e.g. Stanford University"
+                        className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-semibold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <BookOpen size={15} className="text-purple-400" /> Course / Major
+                {/* Course Major Field */}
+                <div className="space-y-2 group/field">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-purple-500 dark:group-hover/field:text-purple-400 transition-colors">
+                    <BookOpen size={14} className="text-purple-500" /> Course / Major
                   </label>
-                  <input 
-                    type="text" 
-                    value={course}
-                    onChange={(e) => setCourse(e.target.value)}
-                    disabled={!isEditing}
-                    className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
-                  />
+                  <div className={`relative rounded-2xl border transition-all duration-300 ${
+                    isEditing 
+                      ? 'border-purple-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(168,85,247,0.15)] ring-2 ring-purple-500/20' 
+                      : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-purple-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(168,85,247,0.15)]'
+                  }`}>
+                    <div className="flex items-center gap-3 px-3.5 py-1.5">
+                      <div className="h-9 w-9 rounded-xl bg-pink-500/10 dark:bg-pink-500/20 text-pink-600 dark:text-pink-300 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                        DEG
+                      </div>
+                      <input 
+                        type="text" 
+                        value={course}
+                        onChange={(e) => setCourse(e.target.value)}
+                        disabled={!isEditing}
+                        placeholder="e.g. B.S. Computer Science"
+                        className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-semibold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <Calendar size={15} className="text-purple-400" /> Current Academic Standing
+                {/* Academic Standing Field */}
+                <div className="space-y-2 group/field">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5 group-hover/field:text-purple-500 dark:group-hover/field:text-purple-400 transition-colors">
+                    <Calendar size={14} className="text-purple-500" /> Current Academic Standing
                   </label>
-                  <select 
-                    value={yearOfStudy}
-                    onChange={(e) => setYearOfStudy(e.target.value)}
-                    disabled={!isEditing}
-                    className={`w-full bg-white dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 font-medium focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 disabled:opacity-75 disabled:bg-slate-50 dark:disabled:bg-slate-900/40 disabled:hover:border-slate-300 dark:disabled:hover:border-slate-700/80 disabled:cursor-not-allowed shadow-inner ${selectedTheme.focusRing}`}
-                  >
-                    <option value="Freshman" className="bg-white dark:bg-slate-900">Freshman (Year 1)</option>
-                    <option value="Sophomore" className="bg-white dark:bg-slate-900">Sophomore (Year 2)</option>
-                    <option value="Junior" className="bg-white dark:bg-slate-900">Junior (Year 3)</option>
-                    <option value="Senior" className="bg-white dark:bg-slate-900">Senior (Year 4)</option>
-                    <option value="Graduate" className="bg-white dark:bg-slate-900">Graduate / Masters</option>
-                  </select>
+                  <div className={`relative rounded-2xl border transition-all duration-300 ${
+                    isEditing 
+                      ? 'border-purple-500/50 bg-white dark:bg-slate-950 shadow-[0_0_20px_rgba(168,85,247,0.15)] ring-2 ring-purple-500/20' 
+                      : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 group-hover/field:border-purple-400/50 group-hover/field:bg-white dark:group-hover/field:bg-slate-900 group-hover/field:shadow-[0_8px_25px_-5px_rgba(168,85,247,0.15)]'
+                  }`}>
+                    <div className="flex items-center gap-3 px-3.5 py-1.5">
+                      <div className="h-9 w-9 rounded-xl bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 flex items-center justify-center shrink-0 font-bold text-xs group-hover/field:scale-110 transition-transform">
+                        LVL
+                      </div>
+                      <select 
+                        value={yearOfStudy}
+                        onChange={(e) => setYearOfStudy(e.target.value)}
+                        disabled={!isEditing}
+                        className="w-full bg-transparent border-0 py-2 text-slate-900 dark:text-white font-semibold text-sm sm:text-base focus:outline-none disabled:opacity-95 disabled:cursor-default"
+                      >
+                        <option value="Freshman" className="bg-white dark:bg-slate-900">Freshman (Year 1)</option>
+                        <option value="Sophomore" className="bg-white dark:bg-slate-900">Sophomore (Year 2)</option>
+                        <option value="Junior" className="bg-white dark:bg-slate-900">Junior (Year 3)</option>
+                        <option value="Senior" className="bg-white dark:bg-slate-900">Senior (Year 4)</option>
+                        <option value="Graduate" className="bg-white dark:bg-slate-900">Graduate / Masters</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Status Banner */}
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-transparent border border-purple-500/20 flex items-center justify-between transition-all duration-300 hover:border-purple-500/40 hover:shadow-md">
-                <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400">
-                    <GraduationCap size={24} />
+              <div className="relative overflow-hidden rounded-2xl border border-purple-500/30 dark:border-purple-400/30 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-purple-500/50 hover:shadow-[0_10px_30px_-10px_rgba(168,85,247,0.25)] group/banner">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="h-11 w-11 rounded-2xl bg-purple-500/10 dark:bg-purple-400/10 border border-purple-500/30 flex items-center justify-center text-purple-500 shrink-0 group-hover/banner:scale-110 group-hover/banner:bg-purple-500 group-hover/banner:text-slate-950 transition-all duration-300 shadow-sm">
+                      <GraduationCap size={22} className="animate-bounce-slow" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                        <h4 className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white uppercase tracking-wider">Degree Progress: Good Standing</h4>
+                      </div>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">Enrolled full-time for Spring / Fall Semester. Academic record verified by Registrar.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 dark:text-white">Degree Progress: Good Standing</h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">Enrolled full-time for Spring / Fall 2026 Semester.</p>
-                  </div>
+                  <span className="hidden sm:inline-flex px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-extrabold uppercase tracking-wider shadow-sm">
+                    ✓ Active Record
+                  </span>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                  Verified
-                </span>
               </div>
+
             </div>
           )}
 
           {/* TAB 3: SKILLS & TECH STACK */}
           {activeTab === 'skills' && (
-            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 p-6 sm:p-8 backdrop-blur-2xl shadow-xl space-y-6 animate-in fade-in zoom-in-95 duration-300 transition-all duration-500 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow}`}>
-              <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Skills & Technologies</h3>
-                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Showcase your programming languages, frameworks, and tools.</p>
+            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_25px_70px_-15px_rgba(59,130,246,0.2)] hover:border-blue-500/40 dark:hover:border-blue-400/40 group/card`}>
+              
+              {/* Decorative Top Gradient Glow Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 opacity-90 transition-opacity duration-300 group-hover/card:opacity-100" />
+              <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-blue-500/10 dark:bg-blue-400/10 blur-3xl pointer-events-none group-hover/card:bg-blue-500/15 transition-all duration-500" />
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-cyan-500/10 dark:bg-cyan-400/10 blur-3xl pointer-events-none group-hover/card:bg-cyan-500/15 transition-all duration-500" />
+
+              {/* Premium Header */}
+              <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-5">
+                <div className="flex items-center gap-3.5">
+                  <div className="h-12 w-12 rounded-2xl bg-gradient-to-tr from-blue-600 via-cyan-600 to-teal-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 shrink-0 group-hover/card:scale-105 transition-transform duration-500">
+                    <Terminal size={22} className="animate-pulse" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+                      Skills & Technologies
+                      {!isEditing && (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-bold text-blue-600 dark:text-blue-400 shadow-sm">
+                          <CheckCircle2 size={12} className="text-blue-500" /> {skills.length} Indexed
+                        </span>
+                      )}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Showcase your programming languages, frameworks, cloud platforms, and developer tooling.</p>
+                  </div>
                 </div>
-                {isEditing && (
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse">
-                    Click × to remove skills
+
+                {isEditing ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 animate-pulse shadow-sm self-start sm:self-auto">
+                    <Edit3 size={14} /> Click × to remove skills
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10 self-start sm:self-auto">
+                    ⚡ AI Matched Stack
                   </span>
                 )}
               </div>
 
               {/* Add Skill Form when editing */}
               {isEditing && (
-                <form onSubmit={handleAddSkill} className="flex gap-2">
-                  <input
-                    type="text"
-                    value={newSkillInput}
-                    onChange={(e) => setNewSkillInput(e.target.value)}
-                    placeholder="Add a skill (e.g., GraphQL, Docker, Rust)..."
-                    className={`flex-1 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 ${selectedTheme.focusRing}`}
-                  />
+                <form onSubmit={handleAddSkill} className="relative flex gap-3 bg-slate-50/80 dark:bg-slate-950/80 p-2 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-inner">
+                  <div className="flex-1 flex items-center gap-2 px-3">
+                    <Code size={16} className="text-cyan-500 shrink-0" />
+                    <input
+                      type="text"
+                      value={newSkillInput}
+                      onChange={(e) => setNewSkillInput(e.target.value)}
+                      placeholder="Add a skill or tool (e.g., GraphQL, Docker, Rust, PyTorch)..."
+                      className="w-full bg-transparent border-0 py-2 text-sm text-slate-800 dark:text-slate-100 font-medium focus:outline-none placeholder:text-slate-400"
+                    />
+                  </div>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm transition-all duration-300 flex items-center gap-1 shadow-md hover:shadow-cyan-500/30 hover:scale-105 active:scale-95"
+                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-extrabold text-sm transition-all duration-300 flex items-center gap-1.5 shadow-md hover:shadow-cyan-500/30 hover:scale-105 active:scale-95 shrink-0"
                   >
-                    <Plus size={16} /> Add
+                    <Plus size={16} /> Add Skill
                   </button>
                 </form>
               )}
 
               {/* Skills Grid with 3D Hover Lift */}
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="relative flex flex-wrap gap-3 pt-2">
                 {skills.map((skill) => (
                   <div
                     key={skill}
-                    className={`group flex items-center gap-2 px-4 py-2.5 rounded-2xl font-semibold text-sm transition-all duration-300 ${
+                    className={`group flex items-center gap-2.5 px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-300 ${
                       selectedTheme.bg
-                    } ${selectedTheme.border} border ${selectedTheme.text} shadow-sm hover:-translate-y-1 hover:scale-105 hover:shadow-md cursor-default`}
+                    } ${selectedTheme.border} border ${selectedTheme.text} shadow-sm hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/10 cursor-default backdrop-blur-md`}
                   >
-                    <Terminal size={14} className="opacity-70 transition-transform duration-300 group-hover:rotate-12" />
+                    <div className="h-6 w-6 rounded-lg bg-white/40 dark:bg-black/30 flex items-center justify-center shrink-0">
+                      <Terminal size={13} className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                    </div>
                     <span>{skill}</span>
                     {isEditing && (
                       <button
@@ -831,19 +943,30 @@ export default function ProfilePage() {
                   </div>
                 ))}
                 {skills.length === 0 && (
-                  <p className="text-sm text-slate-500 italic py-4">No skills added yet. Click edit profile to add your tech stack!</p>
+                  <div className="w-full text-center py-8 px-4 rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/30">
+                    <p className="text-sm text-slate-500 italic">No technical skills added yet. Click &apos;Edit Profile&apos; to add your tech stack!</p>
+                  </div>
                 )}
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 mt-6 transition-all duration-300 hover:border-blue-500/40 hover:shadow-md">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Sparkles size={16} className="text-cyan-400 animate-spin-slow" />
-                  AI Skill Matching Active
-                </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                  Your listed skills are automatically indexed by NextGen OS to recommend tailored courses, coding challenges, and career milestones.
-                </p>
+              {/* AI Skill Matching Banner */}
+              <div className="relative overflow-hidden rounded-2xl border border-blue-500/30 dark:border-blue-400/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-blue-500/50 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.25)] group/banner">
+                <div className="flex items-start sm:items-center gap-4">
+                  <div className="h-11 w-11 rounded-2xl bg-blue-500/10 dark:bg-blue-400/10 border border-blue-500/30 flex items-center justify-center text-blue-500 shrink-0 group-hover/banner:scale-110 group-hover/banner:bg-blue-500 group-hover/banner:text-white transition-all duration-300 shadow-sm">
+                    <Sparkles size={22} className="animate-spin-slow" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="inline-block h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
+                      <h4 className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">AI Skill Matching & Career Indexing Active</h4>
+                    </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                      Your listed programming languages and frameworks are automatically analyzed by NextGen OS AI to curate personalized learning courses, hackathon recommendations, and career opportunities.
+                    </p>
+                  </div>
+                </div>
               </div>
+
             </div>
           )}
 
