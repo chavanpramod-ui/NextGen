@@ -25,7 +25,8 @@ import {
   Check,
   X,
   HelpCircle,
-  AtSign
+  AtSign,
+  UserPlus
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -56,6 +57,18 @@ export default function LoginPage() {
 
   useEffect(() => {
     setMounted(true);
+    if (typeof window !== 'undefined' && window.location.search.includes('created=true')) {
+      const savedProfileRaw = localStorage.getItem('userProfile');
+      if (savedProfileRaw) {
+        try {
+          const profile = JSON.parse(savedProfileRaw);
+          if (profile.username) setUsername(profile.username);
+          if (profile.email) setEmail(profile.email);
+          setSuccessMsg('🎉 Student account created! Enter your password below to log into the platform.');
+          setMode('signin');
+        } catch (e) {}
+      }
+    }
   }, []);
 
   // Password Strength Calculation for Sign Up
@@ -106,18 +119,47 @@ export default function LoginPage() {
       setIsLoading(false);
       if (mode === 'signin') {
         setSuccessMsg('Authentication successful! Launching Student Command Center...');
-        // Save demo session
-        const loginId = username || email;
-        localStorage.setItem('userProfile', JSON.stringify({
-          username: username || loginId.split('@')[0] || 'alex_morgan',
-          firstName: loginId.split('@')[0].split('.')[0].replace(/^\w/, (c) => c.toUpperCase()) || 'Alex',
-          lastName: 'Morgan',
-          email: email || `${username || 'alex'}@university.edu`,
-          studentId: 'NG-2026-8841',
-          university: 'Global Tech University',
-          course: 'Computer Science & AI',
-          yearOfStudy: '3rd Year'
-        }));
+        // Check if user exists in localStorage
+        const loginId = (username || email).toLowerCase().trim();
+        const existingProfileRaw = localStorage.getItem('userProfile');
+        let matchedProfile: any = null;
+        if (existingProfileRaw) {
+          try {
+            const p = JSON.parse(existingProfileRaw);
+            if ((p.username && p.username.toLowerCase() === loginId) || (p.email && p.email.toLowerCase() === loginId)) {
+              matchedProfile = p;
+            }
+          } catch (e) {}
+        }
+        if (!matchedProfile) {
+          const regRaw = localStorage.getItem('registeredAccounts');
+          if (regRaw) {
+            try {
+              const list = JSON.parse(regRaw);
+              matchedProfile = list.find((item: any) => 
+                (item.username && item.username.toLowerCase() === loginId) || 
+                (item.email && item.email.toLowerCase() === loginId)
+              );
+            } catch (e) {}
+          }
+        }
+
+        if (matchedProfile) {
+          localStorage.setItem('userProfile', JSON.stringify(matchedProfile));
+        } else {
+          // Fallback demo session
+          const fbId = username || email;
+          localStorage.setItem('userProfile', JSON.stringify({
+            username: username || fbId.split('@')[0] || 'alex_morgan',
+            firstName: fbId.split('@')[0].split('.')[0].replace(/^\w/, (c) => c.toUpperCase()) || 'Alex',
+            lastName: 'Morgan',
+            email: email || `${username || 'alex'}@university.edu`,
+            studentId: 'NG-2026-8841',
+            university: 'Global Tech University',
+            course: 'Computer Science & AI',
+            yearOfStudy: '3rd Year'
+          }));
+        }
         window.dispatchEvent(new Event('profileUpdated'));
         setTimeout(() => router.push('/'), 1200);
       } else if (mode === 'signup') {
@@ -375,8 +417,32 @@ export default function LoginPage() {
               <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-cyan-500/10 dark:bg-cyan-400/10 blur-3xl pointer-events-none" />
               <div className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full bg-violet-500/10 dark:bg-violet-400/10 blur-3xl pointer-events-none" />
 
+              {/* Prominent New Student Registration Banner */}
+              <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-cyan-500/15 via-blue-500/10 to-indigo-500/15 border border-cyan-500/30 dark:border-cyan-400/20 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shrink-0 shadow-md">
+                    <UserPlus size={20} className="animate-pulse" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <span>New Student? No Account?</span> <Sparkles size={14} className="text-cyan-500" />
+                    </h4>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-tight">
+                      Create your account first, then log in to access the platform!
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/signup"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl font-extrabold text-xs text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:via-blue-500 hover:to-indigo-500 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-1.5 shrink-0 transition-transform hover:scale-105 active:scale-95"
+                >
+                  <span>Sign Up Here</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+
               {/* Mode Switcher Tabs */}
-              <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800 mb-6">
+              <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800 mb-6 relative z-10">
                 <button
                   type="button"
                   onClick={() => { setMode('signin'); setErrorMsg(''); setSuccessMsg(''); }}
