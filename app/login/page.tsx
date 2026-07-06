@@ -157,7 +157,10 @@ export default function LoginPage() {
             studentId: 'NG-2026-8841',
             university: 'Global Tech University',
             course: 'Computer Science & AI',
-            yearOfStudy: '3rd Year'
+            yearOfStudy: '3rd Year',
+            portfolioUrl: '',
+            linkedinUrl: '',
+            leetcodeUrl: ''
           }));
         }
         window.dispatchEvent(new Event('profileUpdated'));
@@ -165,14 +168,19 @@ export default function LoginPage() {
       } else if (mode === 'signup') {
         setSuccessMsg('Account created successfully! Welcome to NextGen Learn.');
         localStorage.setItem('userProfile', JSON.stringify({
-          username: username || 'alex_morgan',
-          firstName: name ? name.split(' ')[0] : 'Alex',
-          lastName: name ? name.split(' ').slice(1).join(' ') || 'Morgan' : 'Morgan',
+          username: username || 'new_student',
+          firstName: name ? name.split(' ')[0] : 'Student',
+          lastName: name ? name.split(' ').slice(1).join(' ') || '' : '',
           email: email,
-          studentId: studentId || 'NG-2026-8841',
-          university: 'Global Tech University',
-          course: 'Computer Science & AI',
-          yearOfStudy: '1st Year'
+          studentId: studentId.trim() || 'ID-NOT-PROVIDED',
+          university: 'My University (Edit in Profile)',
+          course: 'General Studies (Edit in Profile)',
+          yearOfStudy: '1st Year',
+          bio: '',
+          skills: [],
+          portfolioUrl: '',
+          linkedinUrl: '',
+          leetcodeUrl: ''
         }));
         window.dispatchEvent(new Event('profileUpdated'));
         setTimeout(() => setMode('signin'), 1500);

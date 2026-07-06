@@ -89,9 +89,9 @@ export default function ProfilePage() {
   const [selectedTheme, setSelectedTheme] = useState(THEMES[0]);
   const [skills, setSkills] = useState<string[]>(["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Python"]);
   const [newSkillInput, setNewSkillInput] = useState("");
-  const [portfolioUrl, setPortfolioUrl] = useState("https://github.com/pramodchavan");
-  const [linkedinUrl, setLinkedinUrl] = useState("https://linkedin.com/in/pramodchavan");
-  const [leetcodeUrl, setLeetcodeUrl] = useState("https://leetcode.com/u/pramodchavan");
+  const [portfolioUrl, setPortfolioUrl] = useState("");
+  const [linkedinUrl, setLinkedinUrl] = useState("");
+  const [leetcodeUrl, setLeetcodeUrl] = useState("");
   const [activeTab, setActiveTab] = useState<'profile' | 'academic' | 'skills'>('profile');
   const [showIdCardModal, setShowIdCardModal] = useState(false);
   const [copiedId, setCopiedId] = useState(false);
@@ -101,31 +101,36 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const savedProfile = localStorage.getItem('userProfile');
-    if (savedProfile) {
-      try {
-        const parsed = JSON.parse(savedProfile);
-        if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
-        if (parsed.lastName !== undefined) setLastName(parsed.lastName);
-        if (parsed.email !== undefined) setEmail(parsed.email);
-        if (parsed.bio !== undefined) setBio(parsed.bio);
-        if (parsed.studentId !== undefined) setStudentId(parsed.studentId);
-        if (parsed.university !== undefined) setUniversity(parsed.university);
-        if (parsed.course !== undefined) setCourse(parsed.course);
-        if (parsed.yearOfStudy !== undefined) setYearOfStudy(parsed.yearOfStudy);
-        if (parsed.profilePicture !== undefined) setProfilePicture(parsed.profilePicture);
-        if (parsed.skills !== undefined && Array.isArray(parsed.skills)) setSkills(parsed.skills);
-        if (parsed.portfolioUrl !== undefined) setPortfolioUrl(parsed.portfolioUrl);
-        if (parsed.linkedinUrl !== undefined) setLinkedinUrl(parsed.linkedinUrl);
-        if (parsed.leetcodeUrl !== undefined) setLeetcodeUrl(parsed.leetcodeUrl);
-        if (parsed.themeId !== undefined) {
-          const found = THEMES.find(t => t.id === parsed.themeId);
-          if (found) setSelectedTheme(found);
+    const loadProfile = () => {
+      const savedProfile = localStorage.getItem('userProfile');
+      if (savedProfile) {
+        try {
+          const parsed = JSON.parse(savedProfile);
+          if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
+          if (parsed.lastName !== undefined) setLastName(parsed.lastName);
+          if (parsed.email !== undefined) setEmail(parsed.email);
+          if (parsed.bio !== undefined) setBio(parsed.bio);
+          if (parsed.studentId !== undefined) setStudentId(parsed.studentId);
+          if (parsed.university !== undefined) setUniversity(parsed.university);
+          if (parsed.course !== undefined) setCourse(parsed.course);
+          if (parsed.yearOfStudy !== undefined) setYearOfStudy(parsed.yearOfStudy);
+          if (parsed.profilePicture !== undefined) setProfilePicture(parsed.profilePicture);
+          if (parsed.skills !== undefined && Array.isArray(parsed.skills)) setSkills(parsed.skills);
+          if (parsed.portfolioUrl !== undefined) setPortfolioUrl(parsed.portfolioUrl || "");
+          if (parsed.linkedinUrl !== undefined) setLinkedinUrl(parsed.linkedinUrl || "");
+          if (parsed.leetcodeUrl !== undefined) setLeetcodeUrl(parsed.leetcodeUrl || "");
+          if (parsed.themeId !== undefined) {
+            const found = THEMES.find(t => t.id === parsed.themeId);
+            if (found) setSelectedTheme(found);
+          }
+        } catch (e) {
+          console.error("Failed to parse profile data", e);
         }
-      } catch (e) {
-        console.error("Failed to parse profile data", e);
       }
-    }
+    };
+    loadProfile();
+    window.addEventListener('profileUpdated', loadProfile);
+    return () => window.removeEventListener('profileUpdated', loadProfile);
   }, []);
 
   const initials = `${firstName.charAt(0) || ''}${lastName.charAt(0) || ''}`.toUpperCase();
@@ -384,10 +389,19 @@ export default function ProfilePage() {
 
           {/* Social & Tech Links Card with Stable Hover Glow */}
           <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 p-6 backdrop-blur-2xl shadow-xl flex flex-col gap-4 transition-all duration-500 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow}`}>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-white/10 pb-3">
-              <Globe size={18} className="text-cyan-400" />
-              Connected Profiles
-            </h3>
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-3">
+              <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Globe size={18} className="text-cyan-400" />
+                Connected Profiles
+              </h3>
+              <button
+                type="button"
+                onClick={() => setIsEditing(!isEditing)}
+                className="text-[11px] font-extrabold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 bg-cyan-500/10 dark:bg-cyan-400/10 hover:bg-cyan-500/20 px-2.5 py-1 rounded-lg transition-all flex items-center gap-1 shadow-sm"
+              >
+                <span>{isEditing ? "Done Editing" : "✏️ Edit Links"}</span>
+              </button>
+            </div>
 
             <div className="space-y-3">
               <div className="group/item flex items-center gap-3 p-2 rounded-2xl transition-all duration-300 hover:bg-slate-100 dark:hover:bg-white/5">
@@ -395,18 +409,32 @@ export default function ProfilePage() {
                   <Code size={18} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400">GitHub Profile</label>
+                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center justify-between">
+                    <span>GitHub Profile</span>
+                    {!portfolioUrl && !isEditing && (
+                      <span className="text-[10px] text-amber-500 font-bold">Not Connected</span>
+                    )}
+                  </label>
                   {isEditing ? (
                     <input
                       type="text"
                       value={portfolioUrl}
                       onChange={(e) => setPortfolioUrl(e.target.value)}
+                      placeholder="https://github.com/yourusername"
                       className={`w-full text-xs bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none transition-all duration-300 ${selectedTheme.focusRing}`}
                     />
-                  ) : (
+                  ) : portfolioUrl && portfolioUrl.trim() !== '' ? (
                     <a href={portfolioUrl} target="_blank" rel="noreferrer" className="block text-xs font-medium text-cyan-500 hover:text-cyan-400 hover:underline truncate transition-colors">
                       {portfolioUrl}
                     </a>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setIsEditing(true)}
+                      className="text-left text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 flex items-center gap-1 mt-0.5 transition-all group-hover/item:translate-x-1"
+                    >
+                      <span>⚡ + Give & Connect Personal GitHub</span>
+                    </button>
                   )}
                 </div>
               </div>
@@ -416,18 +444,32 @@ export default function ProfilePage() {
                   <Layers size={18} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400">LinkedIn / Career</label>
+                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center justify-between">
+                    <span>LinkedIn / Career</span>
+                    {!linkedinUrl && !isEditing && (
+                      <span className="text-[10px] text-amber-500 font-bold">Not Connected</span>
+                    )}
+                  </label>
                   {isEditing ? (
                     <input
                       type="text"
                       value={linkedinUrl}
                       onChange={(e) => setLinkedinUrl(e.target.value)}
+                      placeholder="https://linkedin.com/in/yourusername"
                       className={`w-full text-xs bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none transition-all duration-300 ${selectedTheme.focusRing}`}
                     />
-                  ) : (
+                  ) : linkedinUrl && linkedinUrl.trim() !== '' ? (
                     <a href={linkedinUrl} target="_blank" rel="noreferrer" className="block text-xs font-medium text-cyan-500 hover:text-cyan-400 hover:underline truncate transition-colors">
                       {linkedinUrl}
                     </a>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setIsEditing(true)}
+                      className="text-left text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 flex items-center gap-1 mt-0.5 transition-all group-hover/item:translate-x-1"
+                    >
+                      <span>⚡ + Give & Connect Personal LinkedIn</span>
+                    </button>
                   )}
                 </div>
               </div>
@@ -437,18 +479,32 @@ export default function ProfilePage() {
                   <Terminal size={18} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400">LeetCode Profile</label>
+                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center justify-between">
+                    <span>LeetCode Profile</span>
+                    {!leetcodeUrl && !isEditing && (
+                      <span className="text-[10px] text-amber-500 font-bold">Not Connected</span>
+                    )}
+                  </label>
                   {isEditing ? (
                     <input
                       type="text"
                       value={leetcodeUrl}
                       onChange={(e) => setLeetcodeUrl(e.target.value)}
+                      placeholder="https://leetcode.com/u/yourusername"
                       className={`w-full text-xs bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none transition-all duration-300 ${selectedTheme.focusRing}`}
                     />
-                  ) : (
+                  ) : leetcodeUrl && leetcodeUrl.trim() !== '' ? (
                     <a href={leetcodeUrl} target="_blank" rel="noreferrer" className="block text-xs font-medium text-cyan-500 hover:text-cyan-400 hover:underline truncate transition-colors">
                       {leetcodeUrl}
                     </a>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setIsEditing(true)}
+                      className="text-left text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 flex items-center gap-1 mt-0.5 transition-all group-hover/item:translate-x-1"
+                    >
+                      <span>⚡ + Give & Connect Personal LeetCode</span>
+                    </button>
                   )}
                 </div>
               </div>

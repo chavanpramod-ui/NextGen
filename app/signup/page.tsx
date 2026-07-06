@@ -47,6 +47,13 @@ export default function SignUpPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [course, setCourse] = useState('Computer Science & AI');
   const [yearOfStudy, setYearOfStudy] = useState('1st Year');
+  const [studentId, setStudentId] = useState('');
+  const [university, setUniversity] = useState('');
+  const [bio, setBio] = useState('');
+  const [skillsInput, setSkillsInput] = useState('');
+  const [portfolioUrl, setPortfolioUrl] = useState('');
+  const [linkedinUrl, setLinkedinUrl] = useState('');
+  const [leetcodeUrl, setLeetcodeUrl] = useState('');
   const [agreeTerms, setAgreeTerms] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -128,15 +135,15 @@ export default function SignUpPage() {
         lastName: name.split(' ').slice(1).join(' ') || 'User',
         email: email,
         password: password, // For simulation verification on login page
-        studentId: `NG-2026-${Math.floor(1000 + Math.random() * 9000)}`,
-        university: 'Global Tech University',
+        studentId: studentId.trim() || 'STU-ID-PENDING',
+        university: university.trim() || 'University Not Specified',
         course: course,
         yearOfStudy: yearOfStudy,
-        bio: `New student studying ${course} at Global Tech University. Passionate about AI & modern software engineering.`,
-        skills: ['JavaScript', 'HTML/CSS', 'Python', 'React', 'Problem Solving', 'Git'],
-        portfolioUrl: `https://github.com/${username}`,
-        linkedinUrl: `https://linkedin.com/in/${username}`,
-        leetcodeUrl: `https://leetcode.com/u/${username}`,
+        bio: bio.trim(),
+        skills: skillsInput.trim() ? skillsInput.split(',').map(s => s.trim()).filter(Boolean) : [],
+        portfolioUrl: portfolioUrl.trim(),
+        linkedinUrl: linkedinUrl.trim(),
+        leetcodeUrl: leetcodeUrl.trim(),
         createdAt: new Date().toISOString()
       };
 
@@ -498,6 +505,111 @@ export default function SignUpPage() {
                   </div>
                 </div>
 
+                {/* Row 5: University Name & Student ID */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                      <Building2 size={14} className="text-cyan-500" /> University / Institution <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={university}
+                      onChange={(e) => setUniversity(e.target.value)}
+                      placeholder="e.g. Stanford University, IIT Bombay, Harvard"
+                      required
+                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                      <KeyRound size={14} className="text-cyan-500" /> Student ID / Roll Number <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={studentId}
+                      onChange={(e) => setStudentId(e.target.value)}
+                      placeholder="e.g. STU-2026-8841 or Roll No."
+                      required
+                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-mono font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 6: Personal Biography & Skills */}
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                      <BookOpen size={14} className="text-cyan-500" /> Personal Biography / Career Vision
+                    </label>
+                    <textarea
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                      rows={2}
+                      placeholder="Tell us about your academic goals, projects, and career aspirations..."
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner resize-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <Award size={14} className="text-cyan-500" /> Skills & Technologies (Comma Separated)
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-normal">e.g. React, Python, JavaScript, SQL</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={skillsInput}
+                      onChange={(e) => setSkillsInput(e.target.value)}
+                      placeholder="React, Next.js, Python, TypeScript, Problem Solving"
+                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                    />
+                  </div>
+                </div>
+
+                {/* Personal Connected Profiles Section (Optional) */}
+                <div className="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                      <span>Personal Connected Profiles</span>
+                    </h4>
+                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Optional • Give & Edit Your Own Links</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">GitHub Profile</label>
+                      <input
+                        type="url"
+                        value={portfolioUrl}
+                        onChange={(e) => setPortfolioUrl(e.target.value)}
+                        placeholder="https://github.com/..."
+                        className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">LinkedIn Profile</label>
+                      <input
+                        type="url"
+                        value={linkedinUrl}
+                        onChange={(e) => setLinkedinUrl(e.target.value)}
+                        placeholder="https://linkedin.com/in/..."
+                        className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">LeetCode Profile</label>
+                      <input
+                        type="url"
+                        value={leetcodeUrl}
+                        onChange={(e) => setLeetcodeUrl(e.target.value)}
+                        placeholder="https://leetcode.com/u/..."
+                        className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {/* Terms Checkbox */}
                 <div className="pt-2">
                   <label className="flex items-start gap-3 cursor-pointer select-none group">
@@ -608,7 +720,7 @@ export default function SignUpPage() {
                         STUDENT ID
                       </span>
                       <p className="text-[11px] font-mono text-slate-300 mt-1 font-semibold">
-                        NG-2026-ACTIVE
+                        {studentId.trim() || 'STU-ID-PENDING'}
                       </p>
                     </div>
                   </div>
@@ -619,8 +731,8 @@ export default function SignUpPage() {
                       <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
                         University
                       </span>
-                      <span className="font-bold text-xs sm:text-sm text-white flex items-center gap-1 mt-0.5">
-                        <Building2 size={13} className="text-cyan-400 shrink-0" /> Global Tech Univ.
+                      <span className="font-bold text-xs sm:text-sm text-white flex items-center gap-1 mt-0.5 truncate">
+                        <Building2 size={13} className="text-cyan-400 shrink-0" /> {university.trim() || 'Your University'}
                       </span>
                     </div>
                     <div>
