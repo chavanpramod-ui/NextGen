@@ -14,8 +14,8 @@ const THEMES = [
     name: 'Cyber Neon', 
     gradient: 'from-cyan-500 via-blue-600 to-indigo-600', 
     border: 'border-cyan-400/50', 
-    hoverBorder: 'hover:border-cyan-500/40 dark:hover:border-cyan-400/30',
-    hoverShadow: 'hover:shadow-2xl hover:shadow-cyan-500/5 dark:hover:shadow-[0_20px_50px_rgba(6,182,212,0.12)]',
+    hoverBorder: 'hover:border-cyan-400 dark:hover:border-cyan-300',
+    hoverShadow: 'hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] dark:hover:shadow-[0_0_45px_rgba(34,211,238,0.45)]',
     text: 'text-cyan-400', 
     bg: 'bg-cyan-500/10', 
     glow: 'shadow-[0_0_35px_rgba(34,211,238,0.35)]',
@@ -26,8 +26,8 @@ const THEMES = [
     name: 'Emerald Frost', 
     gradient: 'from-emerald-500 via-teal-600 to-cyan-600', 
     border: 'border-emerald-400/50', 
-    hoverBorder: 'hover:border-emerald-500/40 dark:hover:border-emerald-400/30',
-    hoverShadow: 'hover:shadow-2xl hover:shadow-emerald-500/5 dark:hover:shadow-[0_20px_50px_rgba(16,185,129,0.12)]',
+    hoverBorder: 'hover:border-emerald-400 dark:hover:border-emerald-300',
+    hoverShadow: 'hover:shadow-[0_0_35px_rgba(16,185,129,0.35)] dark:hover:shadow-[0_0_45px_rgba(16,185,129,0.45)]',
     text: 'text-emerald-400', 
     bg: 'bg-emerald-500/10', 
     glow: 'shadow-[0_0_35px_rgba(16,185,129,0.35)]',
@@ -38,8 +38,8 @@ const THEMES = [
     name: 'Sunset Glow', 
     gradient: 'from-amber-500 via-rose-500 to-purple-600', 
     border: 'border-rose-400/50', 
-    hoverBorder: 'hover:border-rose-500/40 dark:hover:border-rose-400/30',
-    hoverShadow: 'hover:shadow-2xl hover:shadow-rose-500/5 dark:hover:shadow-[0_20px_50px_rgba(244,63,94,0.12)]',
+    hoverBorder: 'hover:border-rose-400 dark:hover:border-rose-300',
+    hoverShadow: 'hover:shadow-[0_0_35px_rgba(244,63,94,0.35)] dark:hover:shadow-[0_0_45px_rgba(244,63,94,0.45)]',
     text: 'text-rose-400', 
     bg: 'bg-rose-500/10', 
     glow: 'shadow-[0_0_35px_rgba(244,63,94,0.35)]',
@@ -50,8 +50,8 @@ const THEMES = [
     name: 'Royal Violet', 
     gradient: 'from-violet-600 via-purple-600 to-pink-500', 
     border: 'border-purple-400/50', 
-    hoverBorder: 'hover:border-purple-500/40 dark:hover:border-purple-400/30',
-    hoverShadow: 'hover:shadow-2xl hover:shadow-purple-500/5 dark:hover:shadow-[0_20px_50px_rgba(168,85,247,0.12)]',
+    hoverBorder: 'hover:border-purple-400 dark:hover:border-purple-300',
+    hoverShadow: 'hover:shadow-[0_0_35px_rgba(168,85,247,0.35)] dark:hover:shadow-[0_0_45px_rgba(168,85,247,0.45)]',
     text: 'text-purple-400', 
     bg: 'bg-purple-500/10', 
     glow: 'shadow-[0_0_35px_rgba(168,85,247,0.35)]',
@@ -62,8 +62,8 @@ const THEMES = [
     name: 'Crimson Pulse', 
     gradient: 'from-red-500 via-rose-600 to-orange-500', 
     border: 'border-red-400/50', 
-    hoverBorder: 'hover:border-red-500/40 dark:hover:border-red-400/30',
-    hoverShadow: 'hover:shadow-2xl hover:shadow-red-500/5 dark:hover:shadow-[0_20px_50px_rgba(239,68,68,0.12)]',
+    hoverBorder: 'hover:border-red-400 dark:hover:border-red-300',
+    hoverShadow: 'hover:shadow-[0_0_35px_rgba(239,68,68,0.35)] dark:hover:shadow-[0_0_45px_rgba(239,68,68,0.45)]',
     text: 'text-red-400', 
     bg: 'bg-red-500/10', 
     glow: 'shadow-[0_0_35px_rgba(239,68,68,0.35)]',
@@ -567,7 +567,7 @@ export default function ProfilePage() {
 
           {/* TAB 1: PERSONAL INFORMATION */}
           {activeTab === 'profile' && (
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:bg-white/95 dark:hover:bg-[#0c0e19]/90 hover:border-slate-300/80 dark:hover:border-white/20 hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.6)] group/card">
+            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:bg-white/95 dark:hover:bg-[#0c0e19]/90 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow} group/card`}>
               
               {/* Decorative Top Gradient Glow Bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-violet-600 via-cyan-500 to-emerald-400 opacity-90 transition-opacity duration-300 group-hover/card:opacity-100" />
@@ -718,7 +718,7 @@ export default function ProfilePage() {
               </div>
 
               {/* Ultra-Premium Data Privacy Assurance Shield Box */}
-              <div className="relative overflow-hidden rounded-2xl border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-violet-500/5 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-cyan-500/50 hover:shadow-[0_10px_30px_-10px_rgba(34,211,238,0.25)] group/privacy">
+              <div className="relative overflow-hidden rounded-2xl border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-violet-500/5 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] group/privacy">
                 <div className="flex items-start sm:items-center gap-4">
                   <div className="h-11 w-11 rounded-2xl bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500 shrink-0 group-hover/privacy:scale-110 group-hover/privacy:bg-cyan-500 group-hover/privacy:text-slate-950 transition-all duration-300 shadow-sm">
                     <Shield size={22} className="animate-pulse" />
@@ -740,7 +740,7 @@ export default function ProfilePage() {
 
           {/* TAB 2: ACADEMIC DETAILS */}
           {activeTab === 'academic' && (
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:bg-white/95 dark:hover:bg-[#0c0e19]/90 hover:border-slate-300/80 dark:hover:border-white/20 hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.6)] group/card">
+            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:bg-white/95 dark:hover:bg-[#0c0e19]/90 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow} group/card`}>
               
               {/* Decorative Top Gradient Glow Bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 opacity-90 transition-opacity duration-300 group-hover/card:opacity-100" />
@@ -890,7 +890,7 @@ export default function ProfilePage() {
               </div>
 
               {/* Status Banner */}
-              <div className="relative overflow-hidden rounded-2xl border border-purple-500/30 dark:border-purple-400/30 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-purple-500/50 hover:shadow-[0_10px_30px_-10px_rgba(168,85,247,0.25)] group/banner">
+              <div className="relative overflow-hidden rounded-2xl border border-purple-500/30 dark:border-purple-400/30 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.35)] group/banner">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3.5">
                     <div className="h-11 w-11 rounded-2xl bg-purple-500/10 dark:bg-purple-400/10 border border-purple-500/30 flex items-center justify-center text-purple-500 shrink-0 group-hover/banner:scale-110 group-hover/banner:bg-purple-500 group-hover/banner:text-slate-950 transition-all duration-300 shadow-sm">
@@ -915,7 +915,7 @@ export default function ProfilePage() {
 
           {/* TAB 3: SKILLS & TECH STACK */}
           {activeTab === 'skills' && (
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:bg-white/95 dark:hover:bg-[#0c0e19]/90 hover:border-slate-300/80 dark:hover:border-white/20 hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.6)] group/card">
+            <div className={`relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 backdrop-blur-3xl shadow-2xl space-y-8 animate-in fade-in zoom-in-95 duration-500 transition-all duration-500 hover:bg-white/95 dark:hover:bg-[#0c0e19]/90 ${selectedTheme.hoverBorder} ${selectedTheme.hoverShadow} group/card`}>
               
               {/* Decorative Top Gradient Glow Bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 opacity-90 transition-opacity duration-300 group-hover/card:opacity-100" />
@@ -1006,7 +1006,7 @@ export default function ProfilePage() {
               </div>
 
               {/* AI Skill Matching Banner */}
-              <div className="relative overflow-hidden rounded-2xl border border-blue-500/30 dark:border-blue-400/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-blue-500/50 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.25)] group/banner">
+              <div className="relative overflow-hidden rounded-2xl border border-blue-500/30 dark:border-blue-400/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.35)] group/banner">
                 <div className="flex items-start sm:items-center gap-4">
                   <div className="h-11 w-11 rounded-2xl bg-blue-500/10 dark:bg-blue-400/10 border border-blue-500/30 flex items-center justify-center text-blue-500 shrink-0 group-hover/banner:scale-110 group-hover/banner:bg-blue-500 group-hover/banner:text-white transition-all duration-300 shadow-sm">
                     <Sparkles size={22} className="animate-spin-slow" />
