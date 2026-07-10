@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { BarChart3, CalendarCheck, Clock3 } from 'lucide-react';
+import { BarChart3, CalendarCheck, Clock3, Flame, TrendingUp, Zap } from 'lucide-react';
 import type { Activity } from '@/lib/supabase';
 
 interface ActivityTileProps {
@@ -81,82 +81,151 @@ export function ActivityTile({ activity }: ActivityTileProps) {
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="dashboard-panel p-5"
+      className="group/tile relative overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-b from-white via-white to-slate-50/90 p-6 shadow-[0_10px_35px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_20px_45px_-15px_rgba(34,211,238,0.18)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950/90 dark:hover:border-cyan-500/40"
     >
-      <div className="flex items-start justify-between gap-4">
+      {/* Ambient Top Glow & Highlight Bar */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-gradient-to-br from-cyan-400/15 via-teal-400/10 to-transparent blur-3xl transition-opacity duration-500 group-hover/tile:opacity-100" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+
+      {/* Header */}
+      <div className="relative z-10 flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-cyan-600 dark:text-cyan-300">
-            Activity
-          </p>
-          <h2 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-700 dark:text-cyan-300">
+              <Zap size={11} className="text-cyan-500" />
+              Activity Feed
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Live
+            </span>
+          </div>
+          <h2 className="mt-2.5 text-xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
             Weekly consistency
           </h2>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-            {activity?.title ?? 'Minutes learned per day'}
+          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+            {activity?.title ?? 'Minutes learned per day • Continuous telemetry'}
           </p>
         </div>
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-cyan-400/30 dark:border-cyan-300/20 bg-cyan-400/10 dark:bg-cyan-300/10 text-cyan-700 dark:text-cyan-200">
-          <BarChart3 size={19} />
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/15 via-cyan-400/5 to-transparent text-cyan-600 shadow-[0_0_18px_rgba(34,211,238,0.18)] transition-all duration-300 group-hover/tile:scale-105 group-hover/tile:border-cyan-400/50 group-hover/tile:shadow-[0_0_24px_rgba(34,211,238,0.35)] dark:text-cyan-300">
+          <BarChart3 size={20} />
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-cyan-500/20 dark:border-cyan-400/15 bg-gradient-to-r from-cyan-500/5 via-slate-500/5 to-emerald-500/5 dark:from-cyan-500/10 dark:via-slate-800/40 dark:to-emerald-500/10 px-3.5 py-2.5 backdrop-blur-md shadow-sm">
-        <div className="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-200">
-          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-300">
+      {/* Ultra-Premium Dual Capsule Date & Time HUD Strip */}
+      <div className="relative z-10 mt-5 flex flex-wrap items-center justify-between gap-2.5 rounded-xl border border-slate-200/80 bg-slate-100/70 p-1.5 shadow-inner backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/60">
+        <div className="flex items-center gap-2.5 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-1.5 shadow-xs dark:border-slate-800/60 dark:bg-slate-900/90">
+          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-xs">
             <CalendarCheck size={13} />
           </div>
-          <span suppressHydrationWarning>{currentDateFormatted}</span>
+          <span className="text-xs font-semibold text-slate-800 dark:text-slate-200" suppressHydrationWarning>
+            {currentDateFormatted}
+          </span>
         </div>
-        <div className="flex items-center gap-2 text-xs font-medium text-slate-700 dark:text-slate-200">
-          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-300">
+        <div className="flex items-center gap-2.5 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-1.5 shadow-xs dark:border-slate-800/60 dark:bg-slate-900/90">
+          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-xs">
             <Clock3 size={13} />
           </div>
-          <span className="font-mono tracking-tight" suppressHydrationWarning>{currentTimeFormatted}</span>
+          <span className="font-mono text-xs font-bold tracking-tight text-slate-800 dark:text-slate-200" suppressHydrationWarning>
+            {currentTimeFormatted}
+          </span>
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
         </div>
       </div>
 
-      <div className="mt-6 flex h-40 items-end gap-2">
-        {dynamicActivityData.map((item, index) => (
-          <div key={item.day} className="flex min-w-0 flex-1 flex-col items-center gap-2">
-            <div className="flex h-32 w-full items-end rounded-md bg-slate-50 dark:bg-slate-950/70 p-1">
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: `${(item.value / maxValue) * 100}%` }}
-                transition={{ delay: index * 0.04, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                title={`${item.dateStr} ${item.isToday ? '(Today)' : ''}: ${item.value} minutes learned`}
-                className={`w-full rounded-sm transition-all duration-300 origin-bottom hover:scale-x-125 ${
+      {/* Bar Chart Section */}
+      <div className="relative z-10 mt-6 pt-2">
+        {/* Background Grid Guide Lines */}
+        <div className="pointer-events-none absolute inset-x-0 top-3 flex h-36 flex-col justify-between opacity-35 dark:opacity-20">
+          <div className="w-full border-b border-dashed border-slate-300 dark:border-slate-700" />
+          <div className="w-full border-b border-dashed border-slate-300 dark:border-slate-700" />
+          <div className="w-full border-b border-dashed border-slate-300 dark:border-slate-700" />
+        </div>
+
+        <div className="relative flex h-44 items-end gap-2.5">
+          {dynamicActivityData.map((item, index) => (
+            <div key={item.day} className="group/bar flex min-w-0 flex-1 flex-col items-center gap-2">
+              <div className="relative flex h-36 w-full items-end rounded-xl border border-slate-200/60 bg-slate-100/70 p-1.5 transition-colors duration-300 group-hover/bar:border-cyan-400/40 dark:border-slate-800/60 dark:bg-slate-950/70">
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{ height: `${(item.value / maxValue) * 100}%` }}
+                  transition={{ delay: index * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  title={`${item.dateStr} ${item.isToday ? '(Today)' : ''}: ${item.value} mins learned`}
+                  className={`relative w-full rounded-lg transition-all duration-300 origin-bottom group-hover/bar:scale-x-105 ${
+                    item.isToday
+                      ? 'bg-gradient-to-t from-cyan-600 via-cyan-400 to-teal-300 shadow-[0_0_20px_rgba(34,211,238,0.55)]'
+                      : 'bg-gradient-to-t from-slate-300 via-slate-200 to-slate-100 dark:from-slate-700 dark:via-slate-600 dark:to-slate-500 group-hover/bar:from-cyan-500 group-hover/bar:via-teal-400 group-hover/bar:to-emerald-300 group-hover/bar:shadow-[0_0_18px_rgba(52,211,153,0.4)]'
+                  }`}
+                >
+                  {/* Glowing Top Indicator Cap */}
+                  <div className={`absolute inset-x-0.5 top-0.5 h-1 rounded-full ${
+                    item.isToday ? 'bg-white/80 shadow-[0_0_8px_#fff]' : 'bg-white/40 group-hover/bar:bg-white/80'
+                  }`} />
+                </motion.div>
+              </div>
+
+              {/* Day & Date Pill */}
+              <div
+                className={`flex flex-col items-center rounded-lg px-1.5 py-1 transition-all duration-300 leading-none w-full ${
                   item.isToday
-                    ? 'bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]'
-                    : 'bg-slate-200 dark:bg-slate-700 hover:bg-emerald-400 hover:shadow-[0_0_15px_rgba(52,211,153,0.5)]'
+                    ? 'border border-cyan-400/40 bg-cyan-500/15 text-cyan-700 dark:text-cyan-200 shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 group-hover/bar:text-cyan-600 dark:group-hover/bar:text-cyan-300'
                 }`}
-              />
+              >
+                <span className={`text-[11px] ${item.isToday ? 'font-bold' : 'font-medium'}`}>
+                  {item.day.charAt(0)}
+                </span>
+                <span
+                  suppressHydrationWarning
+                  className={`mt-1 text-[10px] ${item.isToday ? 'font-extrabold text-cyan-600 dark:text-cyan-300' : 'text-slate-400 dark:text-slate-500'}`}
+                >
+                  {item.dateNum}
+                </span>
+              </div>
             </div>
-            <div className="flex flex-col items-center leading-none">
-              <span className={`text-xs ${item.isToday ? 'font-semibold text-cyan-700 dark:text-cyan-200' : 'text-slate-700 dark:text-slate-400'}`}>
-                {item.day.charAt(0)}
-              </span>
-              <span suppressHydrationWarning className={`mt-1 text-[10px] ${item.isToday ? 'font-bold text-cyan-600 dark:text-cyan-300' : 'text-slate-400 dark:text-slate-500'}`}>
-                {item.dateNum}
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      <div className="mt-5 grid grid-cols-2 gap-3 border-t border-slate-200 dark:border-slate-800 pt-4">
-        <div>
-          <p className="text-2xl font-semibold text-slate-900 dark:text-slate-50">6.1h</p>
-          <p className="text-xs text-slate-600 dark:text-slate-400">
-            This week <span suppressHydrationWarning className="text-[11px] text-slate-400 dark:text-slate-500">({weekStart} – {weekEnd})</span>
+      {/* Ultra-Premium Dual Stat Pods */}
+      <div className="relative z-10 mt-6 grid grid-cols-2 gap-3.5 border-t border-slate-200/80 pt-5 dark:border-slate-800/80">
+        <div className="group/stat rounded-xl border border-slate-200/70 bg-gradient-to-br from-slate-50 to-white p-3.5 transition-all duration-300 hover:border-cyan-400/40 hover:shadow-md dark:border-slate-800/70 dark:from-slate-900/60 dark:to-slate-900/30">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Total Study Time
+            </span>
+            <TrendingUp size={14} className="text-cyan-500" />
+          </div>
+          <p className="mt-1.5 text-2xl font-black tracking-tight text-slate-900 dark:text-slate-50">
+            6.1h
+          </p>
+          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+            This week{' '}
+            <span suppressHydrationWarning className="font-medium text-slate-400 dark:text-slate-500">
+              ({weekStart} – {weekEnd})
+            </span>
           </p>
         </div>
-        <div>
-          <p className="text-2xl font-semibold text-slate-900 dark:text-slate-50">82%</p>
-          <p className="text-xs text-slate-600 dark:text-slate-400">Consistency</p>
+
+        <div className="group/stat rounded-xl border border-slate-200/70 bg-gradient-to-br from-slate-50 to-white p-3.5 transition-all duration-300 hover:border-emerald-400/40 hover:shadow-md dark:border-slate-800/70 dark:from-slate-900/60 dark:to-slate-900/30">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Consistency Score
+            </span>
+            <Flame size={14} className="text-emerald-500" />
+          </div>
+          <p className="mt-1.5 text-2xl font-black tracking-tight text-slate-900 dark:text-slate-50">
+            82%
+          </p>
+          <div className="mt-2 flex items-center gap-2">
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+              <div className="h-full w-[82%] rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400" />
+            </div>
+            <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">A+</span>
+          </div>
         </div>
       </div>
     </motion.section>
