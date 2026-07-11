@@ -5,10 +5,14 @@ import { useRouter } from 'next/navigation';
 import { Suspense, useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
+  AlertCircle,
+  ArrowRight,
   ArrowUpRight,
   CalendarCheck,
+  CheckCircle2,
   Clock3,
   Cpu,
+  Flame,
   GraduationCap,
   Loader2,
   Search,
@@ -72,47 +76,111 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
 
 function PriorityPanel({ priorities }: { priorities: typeof initialPriorities }) {
   return (
-    <section className="dashboard-panel p-5">
-      <div className="flex items-center justify-between gap-4">
+    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_20px_50px_-15px_rgba(6,182,212,0.18)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-500/40 sm:p-6">
+      {/* Ambient Radial Glow */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-500/15 blur-3xl transition-opacity duration-700 group-hover/queue:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl transition-opacity duration-700 group-hover/queue:opacity-100 dark:bg-violet-500/20" />
+
+      {/* Top Luminous Border Beam */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)]" />
+
+      <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-cyan-600 dark:text-cyan-400">
-            Mission control
-          </p>
-          <h2 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">Priority queue</h2>
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-700 shadow-xs backdrop-blur-md dark:border-cyan-400/30 dark:text-cyan-300">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-500" />
+            </span>
+            Mission Control
+          </div>
+          <div className="mt-2.5 flex items-center gap-2.5">
+            <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Priority Queue
+            </h2>
+            <span className="rounded-full border border-slate-300/80 bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+              {priorities.length} Active
+            </span>
+          </div>
         </div>
+
         <button
           type="button"
-          className="icon-button"
+          className="group/btn inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-600 hover:scale-105 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-cyan-400/50 dark:hover:text-cyan-300"
           aria-label="Open priority queue"
           title="Open priority queue"
         >
-          <ArrowUpRight size={18} />
+          <ArrowUpRight size={18} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
         </button>
       </div>
 
-      <div className="mt-5 space-y-3">
-        {priorities.map((item) => (
-          <motion.div
-            layout
-            key={item.title}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-            className="group flex items-center justify-between gap-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-3 transition-colors hover:border-slate-400 dark:border-slate-600 hover:bg-slate-100 dark:bg-slate-800/60"
-          >
-            <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100 transition-colors group-hover:text-cyan-600 dark:group-hover:text-cyan-100">{item.title}</p>
-              <p className="mt-1 text-xs text-slate-900 dark:text-slate-500">{item.time}</p>
-            </div>
-            <span className={`rounded-md border px-2 py-1 text-xs font-medium ${
-              item.tone === 'High' ? 'border-rose-400/30 text-rose-300 bg-rose-400/10' :
-              item.tone === 'Medium' ? 'border-amber-400/30 text-amber-300 bg-amber-400/10' :
-              'border-slate-400 dark:border-slate-600 text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'
-            }`}>
-              {item.tone}
-            </span>
-          </motion.div>
-        ))}
+      <div className="relative z-10 mt-5 space-y-3">
+        {priorities.map((item) => {
+          const isHigh = item.tone === 'High';
+          const isMedium = item.tone === 'Medium';
+
+          return (
+            <motion.div
+              layout
+              key={item.title}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+              className={`group flex items-center justify-between gap-3 rounded-2xl border bg-white/90 p-3.5 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md dark:bg-slate-900/80 ${
+                isHigh
+                  ? 'border-l-4 border-slate-200/80 border-l-rose-500 hover:border-rose-400/60 dark:border-slate-800/80 dark:border-l-rose-500 dark:hover:border-rose-400/50'
+                  : isMedium
+                  ? 'border-l-4 border-slate-200/80 border-l-amber-500 hover:border-amber-400/60 dark:border-slate-800/80 dark:border-l-amber-500 dark:hover:border-amber-400/50'
+                  : 'border-l-4 border-slate-200/80 border-l-cyan-500 hover:border-cyan-400/60 dark:border-slate-800/80 dark:border-l-cyan-500 dark:hover:border-cyan-400/50'
+              }`}
+            >
+              <div className="flex min-w-0 items-center gap-3">
+                <button
+                  type="button"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-slate-50 text-slate-400 transition-colors hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-600 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-cyan-400 dark:hover:text-cyan-300"
+                  aria-label={`Mark "${item.title}" complete`}
+                >
+                  <CheckCircle2 size={15} />
+                </button>
+
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-slate-800 transition-colors group-hover:text-cyan-600 dark:text-slate-100 dark:group-hover:text-cyan-300">
+                    {item.title}
+                  </p>
+                  <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <Clock3 size={12} className="text-slate-400" />
+                    <span>{item.time}</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex shrink-0 items-center gap-2">
+                <span
+                  className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold ${
+                    isHigh
+                      ? 'border-rose-400/40 bg-rose-500/10 text-rose-700 shadow-[0_0_12px_rgba(244,63,94,0.15)] dark:border-rose-400/30 dark:text-rose-300'
+                      : isMedium
+                      ? 'border-amber-400/40 bg-amber-500/10 text-amber-700 dark:border-amber-400/30 dark:text-amber-300'
+                      : 'border-cyan-400/40 bg-cyan-500/10 text-cyan-700 dark:border-cyan-400/30 dark:text-cyan-300'
+                  }`}
+                >
+                  {isHigh ? <Flame size={11} className="text-rose-500" /> : null}
+                  {item.tone}
+                </span>
+
+                <ArrowRight size={14} className="text-slate-400 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100 dark:text-slate-500" />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Live AI Optimization Footer */}
+      <div className="relative z-10 mt-5 flex items-center justify-between border-t border-slate-200/60 pt-3.5 text-xs font-medium text-slate-500 dark:border-slate-800/60 dark:text-slate-400">
+        <div className="flex items-center gap-1.5">
+          <Sparkles size={13} className="text-cyan-500" />
+          <span>AI Queue Optimization: <strong className="text-slate-700 dark:text-slate-200">Active</strong></span>
+        </div>
+        <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">100% Synced</span>
       </div>
     </section>
   );
