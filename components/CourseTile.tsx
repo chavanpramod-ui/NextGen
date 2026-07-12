@@ -32,10 +32,10 @@ const accentClasses: Record<string, string> = {
 };
 
 const hoverClasses: Record<string, string> = {
-  amber: 'hover:border-amber-400/40 hover:shadow-[0_8px_30px_rgba(251,191,36,0.2)]',
-  cyan: 'hover:border-cyan-400/40 hover:shadow-[0_8px_30px_rgba(34,211,238,0.2)]',
-  emerald: 'hover:border-emerald-400/40 hover:shadow-[0_8px_30px_rgba(52,211,153,0.2)]',
-  violet: 'hover:border-violet-400/40 hover:shadow-[0_8px_30px_rgba(139,92,246,0.2)]',
+  amber: 'hover:border-amber-400/80 hover:shadow-[0_20px_50px_-10px_rgba(251,191,36,0.35)] hover:-translate-y-2 hover:scale-[1.025]',
+  cyan: 'hover:border-cyan-400/80 hover:shadow-[0_20px_50px_-10px_rgba(34,211,238,0.35)] hover:-translate-y-2 hover:scale-[1.025]',
+  emerald: 'hover:border-emerald-400/80 hover:shadow-[0_20px_50px_-10px_rgba(52,211,153,0.35)] hover:-translate-y-2 hover:scale-[1.025]',
+  violet: 'hover:border-violet-400/80 hover:shadow-[0_20px_50px_-10px_rgba(139,92,246,0.35)] hover:-translate-y-2 hover:scale-[1.025]',
 };
 
 function CourseIcon({ iconName }: { iconName: string }) {

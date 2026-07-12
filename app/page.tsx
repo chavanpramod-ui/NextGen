@@ -76,13 +76,13 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
 
 function PriorityPanel({ priorities }: { priorities: typeof initialPriorities }) {
   return (
-    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_20px_50px_-15px_rgba(6,182,212,0.18)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-500/40 sm:p-6">
+    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-400/80 hover:shadow-[0_25px_60px_-12px_rgba(6,182,212,0.3)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-400/60 sm:p-6">
       {/* Ambient Radial Glow */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-500/15 blur-3xl transition-opacity duration-700 group-hover/queue:opacity-100 dark:bg-cyan-500/25" />
-      <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl transition-opacity duration-700 group-hover/queue:opacity-100 dark:bg-violet-500/20" />
+      <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-125 group-hover/queue:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-125 group-hover/queue:opacity-100 dark:bg-violet-500/20" />
 
       {/* Top Luminous Border Beam */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/queue:h-[3px] group-hover/queue:shadow-[0_0_25px_rgba(6,182,212,1)]" />
 
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
@@ -105,7 +105,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
 
         <button
           type="button"
-          className="group/btn inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-600 hover:scale-105 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-cyan-400/50 dark:hover:text-cyan-300"
+          className="group/btn inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-cyan-400 hover:bg-cyan-500/15 hover:text-cyan-600 hover:shadow-[0_0_20px_rgba(6,182,212,0.35)] dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-cyan-400/60 dark:hover:text-cyan-300"
           aria-label="Open priority queue"
           title="Open priority queue"
         >
@@ -125,25 +125,29 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-              className={`group flex items-center justify-between gap-3 rounded-2xl border bg-white/90 p-3.5 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md dark:bg-slate-900/80 ${
+              className={`group flex items-center justify-between gap-3 rounded-2xl border bg-white/90 p-3.5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:scale-[1.015] dark:bg-slate-900/80 ${
                 isHigh
-                  ? 'border-l-4 border-slate-200/80 border-l-rose-500 hover:border-rose-400/60 dark:border-slate-800/80 dark:border-l-rose-500 dark:hover:border-rose-400/50'
+                  ? 'border-l-4 border-slate-200/80 border-l-rose-500 hover:border-rose-400/80 hover:bg-gradient-to-r hover:from-rose-500/10 hover:via-white hover:to-rose-500/5 hover:shadow-[0_12px_30px_-8px_rgba(244,63,94,0.35)] dark:border-slate-800/80 dark:border-l-rose-500 dark:hover:border-rose-400/70 dark:hover:from-rose-500/20 dark:hover:via-slate-900 dark:hover:to-rose-950/40'
                   : isMedium
-                  ? 'border-l-4 border-slate-200/80 border-l-amber-500 hover:border-amber-400/60 dark:border-slate-800/80 dark:border-l-amber-500 dark:hover:border-amber-400/50'
-                  : 'border-l-4 border-slate-200/80 border-l-cyan-500 hover:border-cyan-400/60 dark:border-slate-800/80 dark:border-l-cyan-500 dark:hover:border-cyan-400/50'
+                  ? 'border-l-4 border-slate-200/80 border-l-amber-500 hover:border-amber-400/80 hover:bg-gradient-to-r hover:from-amber-500/10 hover:via-white hover:to-amber-500/5 hover:shadow-[0_12px_30px_-8px_rgba(245,158,11,0.35)] dark:border-slate-800/80 dark:border-l-amber-500 dark:hover:border-amber-400/70 dark:hover:from-amber-500/20 dark:hover:via-slate-900 dark:hover:to-amber-950/40'
+                  : 'border-l-4 border-slate-200/80 border-l-cyan-500 hover:border-cyan-400/80 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:via-white hover:to-cyan-500/5 hover:shadow-[0_12px_30px_-8px_rgba(6,182,212,0.35)] dark:border-slate-800/80 dark:border-l-cyan-500 dark:hover:border-cyan-400/70 dark:hover:from-cyan-500/20 dark:hover:via-slate-900 dark:hover:to-cyan-950/40'
               }`}
             >
               <div className="flex min-w-0 items-center gap-3">
                 <button
                   type="button"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-slate-50 text-slate-400 transition-colors hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-600 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-cyan-400 dark:hover:text-cyan-300"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-slate-50 text-slate-400 transition-all duration-300 hover:scale-125 hover:rotate-6 hover:border-emerald-500 hover:bg-emerald-500/20 hover:text-emerald-500 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] dark:border-slate-700 dark:bg-slate-800 dark:hover:border-emerald-400 dark:hover:text-emerald-300"
                   aria-label={`Mark "${item.title}" complete`}
                 >
                   <CheckCircle2 size={15} />
                 </button>
 
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold text-slate-800 transition-colors group-hover:text-cyan-600 dark:text-slate-100 dark:group-hover:text-cyan-300">
+                  <p className={`truncate text-sm font-semibold text-slate-800 transition-colors duration-300 dark:text-slate-100 ${
+                    isHigh ? 'group-hover:text-rose-600 dark:group-hover:text-rose-300' :
+                    isMedium ? 'group-hover:text-amber-600 dark:group-hover:text-amber-300' :
+                    'group-hover:text-cyan-600 dark:group-hover:text-cyan-300'
+                  }`}>
                     {item.title}
                   </p>
                   <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -155,7 +159,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
 
               <div className="flex shrink-0 items-center gap-2">
                 <span
-                  className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold ${
+                  className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold transition-all duration-300 group-hover:scale-105 ${
                     isHigh
                       ? 'border-rose-400/40 bg-rose-500/10 text-rose-700 shadow-[0_0_12px_rgba(244,63,94,0.15)] dark:border-rose-400/30 dark:text-rose-300'
                       : isMedium
@@ -167,7 +171,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
                   {item.tone}
                 </span>
 
-                <ArrowRight size={14} className="text-slate-400 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100 dark:text-slate-500" />
+                <ArrowRight size={14} className="text-slate-400 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 group-hover:text-cyan-500 dark:text-slate-400 dark:group-hover:text-cyan-300" />
               </div>
             </motion.div>
           );

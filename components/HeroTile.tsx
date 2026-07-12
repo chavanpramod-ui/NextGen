@@ -125,8 +125,8 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
         {/* Right Column: Stacked Telemetry Pods */}
         <div className="flex flex-col gap-4">
           {/* Learning Streak Pod */}
-          <div className="group/streak relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-white/90 to-amber-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:border-amber-400/60 hover:shadow-[0_15px_35px_-10px_rgba(245,158,11,0.25)] dark:border-amber-400/20 dark:from-amber-500/15 dark:via-slate-900/90 dark:to-slate-900/60">
-            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/20 blur-2xl transition-opacity group-hover/streak:opacity-100" />
+          <div className="group/streak relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-white/90 to-amber-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.015] hover:border-amber-400/80 hover:shadow-[0_20px_45px_-10px_rgba(245,158,11,0.35)] dark:border-amber-400/20 dark:from-amber-500/15 dark:via-slate-900/90 dark:to-slate-900/60 dark:hover:border-amber-400/70">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/20 blur-2xl transition-all duration-500 group-hover/streak:scale-150 group-hover/streak:opacity-100" />
             
             <div className="relative z-10 flex items-center justify-between">
               <span className="text-[11px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
@@ -165,7 +165,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
                   <div
                     className={`h-2 w-2 rounded-full transition-all duration-300 ${
                       d.done
-                        ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]'
+                        ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)] group-hover/streak:scale-125'
                         : 'bg-slate-300 dark:bg-slate-700'
                     }`}
                   />
@@ -175,8 +175,8 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
           </div>
 
           {/* Today Plan Pod */}
-          <div className="group/plan relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-white/90 to-emerald-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:border-emerald-400/60 hover:shadow-[0_15px_35px_-10px_rgba(16,185,129,0.25)] dark:border-emerald-400/20 dark:from-emerald-500/15 dark:via-slate-900/90 dark:to-slate-900/60">
-            <div className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-emerald-500/20 blur-2xl transition-opacity group-hover/plan:opacity-100" />
+          <div className="group/plan relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-white/90 to-emerald-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.015] hover:border-emerald-400/80 hover:shadow-[0_20px_45px_-10px_rgba(16,185,129,0.35)] dark:border-emerald-400/20 dark:from-emerald-500/15 dark:via-slate-900/90 dark:to-slate-900/60 dark:hover:border-emerald-400/70">
+            <div className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-emerald-500/20 blur-2xl transition-all duration-500 group-hover/plan:scale-150 group-hover/plan:opacity-100" />
 
             <div className="relative z-10 flex items-center justify-between gap-2">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
@@ -192,11 +192,11 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
               {todayPlanItems.map((item, index) => (
                 <div
                   key={item.label}
-                  className="group/item flex items-center justify-between gap-3 rounded-xl border border-slate-200/70 bg-white/80 p-2.5 transition-all duration-300 hover:scale-[1.02] hover:border-cyan-400/40 hover:bg-white hover:shadow-sm dark:border-slate-800/70 dark:bg-slate-900/70 dark:hover:border-cyan-500/40 dark:hover:bg-slate-800/90"
+                  className="group/item flex items-center justify-between gap-3 rounded-xl border border-slate-200/70 bg-white/80 p-2.5 transition-all duration-300 hover:scale-[1.025] hover:-translate-y-0.5 hover:border-cyan-400/70 hover:bg-white hover:shadow-md dark:border-slate-800/70 dark:bg-slate-900/70 dark:hover:border-cyan-400/60 dark:hover:bg-slate-800"
                 >
                   <div className="flex min-w-0 items-center gap-2.5">
                     <span
-                      className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-all ${
+                      className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-all duration-300 group-hover/item:scale-110 ${
                         item.active
                           ? 'bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-xs'
                           : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 group-hover/item:text-cyan-500'
@@ -204,7 +204,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
                     >
                       {index + 1}
                     </span>
-                    <span className="truncate text-xs font-semibold text-slate-800 dark:text-slate-200">
+                    <span className="truncate text-xs font-semibold text-slate-800 transition-colors group-hover/item:text-cyan-600 dark:text-slate-200 dark:group-hover/item:text-cyan-300">
                       {item.label}
                     </span>
                   </div>
