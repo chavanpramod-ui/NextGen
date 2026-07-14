@@ -46,28 +46,67 @@ const initialPriorities = [
 
 function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
   return (
-    <section className="grid gap-3 md:grid-cols-3" aria-label="Learning metrics">
+    <section className="grid gap-4 md:grid-cols-3" aria-label="Learning metrics">
       {metrics.map((metric, idx) => {
         const Icon = metric.icon;
+        const themes = [
+          {
+            border: 'hover:border-cyan-400/80 dark:hover:border-cyan-400/60',
+            bg: 'from-white via-cyan-50/40 to-slate-50/90 dark:from-slate-900 dark:via-cyan-950/25 dark:to-slate-950',
+            beam: 'via-cyan-500/80 shadow-[0_0_15px_rgba(6,182,212,0.8)]',
+            aurora: 'bg-cyan-500/15 dark:bg-cyan-500/25',
+            iconContainer: 'border-cyan-400/40 bg-gradient-to-br from-cyan-500/20 via-cyan-500/5 to-transparent text-cyan-600 dark:text-cyan-300 shadow-[0_0_18px_rgba(6,182,212,0.22)]',
+            badgeText: 'text-cyan-700 dark:text-cyan-300 border-cyan-400/30 bg-cyan-500/10',
+            valueGradient: 'from-cyan-600 via-teal-500 to-cyan-500 dark:from-cyan-400 dark:via-teal-300 dark:to-cyan-300'
+          },
+          {
+            border: 'hover:border-violet-400/80 dark:hover:border-violet-400/60',
+            bg: 'from-white via-violet-50/40 to-slate-50/90 dark:from-slate-900 dark:via-violet-950/25 dark:to-slate-950',
+            beam: 'via-violet-500/80 shadow-[0_0_15px_rgba(139,92,246,0.8)]',
+            aurora: 'bg-violet-500/15 dark:bg-violet-500/25',
+            iconContainer: 'border-violet-400/40 bg-gradient-to-br from-violet-500/20 via-violet-500/5 to-transparent text-violet-600 dark:text-violet-300 shadow-[0_0_18px_rgba(139,92,246,0.22)]',
+            badgeText: 'text-violet-700 dark:text-violet-300 border-violet-400/30 bg-violet-500/10',
+            valueGradient: 'from-violet-600 via-purple-500 to-violet-500 dark:from-violet-400 dark:via-purple-300 dark:to-violet-300'
+          },
+          {
+            border: 'hover:border-amber-400/80 dark:hover:border-amber-400/60',
+            bg: 'from-white via-amber-50/40 to-slate-50/90 dark:from-slate-900 dark:via-amber-950/25 dark:to-slate-950',
+            beam: 'via-amber-500/80 shadow-[0_0_15px_rgba(245,158,11,0.8)]',
+            aurora: 'bg-amber-500/15 dark:bg-amber-500/25',
+            iconContainer: 'border-amber-400/40 bg-gradient-to-br from-amber-500/20 via-amber-500/5 to-transparent text-amber-600 dark:text-amber-300 shadow-[0_0_18px_rgba(245,158,11,0.22)]',
+            badgeText: 'text-amber-700 dark:text-amber-300 border-amber-400/30 bg-amber-500/10',
+            valueGradient: 'from-amber-600 via-orange-500 to-amber-500 dark:from-amber-400 dark:via-orange-300 dark:to-amber-300'
+          }
+        ][idx % 3];
 
         return (
           <motion.article 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.1, duration: 0.4 }}
+            transition={{ delay: idx * 0.1, duration: 0.5 }}
             key={metric.label} 
-            className="dashboard-panel p-4"
+            className={`group/metric relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br ${themes.bg} p-5 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-1.5 ${themes.border} dark:border-slate-800/80 sm:p-6`}
           >
-            <div className="flex items-start justify-between gap-4">
+            {/* Ambient Radial Aurora */}
+            <div className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full ${themes.aurora} blur-2xl transition-all duration-700 group-hover/metric:scale-150 group-hover/metric:opacity-100`} />
+
+            {/* Top Luminous Border Beam */}
+            <div className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent ${themes.beam} to-transparent transition-all duration-500 group-hover/metric:h-[3px]`} />
+
+            <div className="relative z-10 flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-900 dark:text-slate-500">
+                <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${themes.badgeText}`}>
                   {metric.label}
+                </span>
+                <p className={`mt-3 bg-gradient-to-r ${themes.valueGradient} bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl`}>
+                  {metric.value}
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-50">{metric.value}</p>
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{metric.detail}</p>
+                <p className="mt-1.5 text-xs font-medium text-slate-600 dark:text-slate-400">
+                  {metric.detail}
+                </p>
               </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
-                <Icon size={18} />
+              <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border backdrop-blur-md transition-all duration-300 group-hover/metric:scale-110 group-hover/metric:rotate-6 ${themes.iconContainer}`}>
+                <Icon size={22} />
               </div>
             </div>
           </motion.article>
@@ -551,34 +590,87 @@ export default function Dashboard() {
           <aside className="flex min-w-0 flex-col gap-6">
             <ActivityTile />
             <PriorityPanel priorities={priorities} />
-            <section className="dashboard-panel p-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-400/30 bg-emerald-400/10 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.15)]">
-                  <GraduationCap size={19} />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-slate-900 dark:text-slate-100">Next milestone</p>
-                  <p className="text-xs text-slate-900 dark:text-slate-500">Frontend Architecture badge</p>
+            <motion.section 
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="group/milestone relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 p-5 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-400/80 hover:shadow-[0_25px_60px_-12px_rgba(16,185,129,0.3)] dark:border-slate-800/80 dark:from-slate-900 dark:via-emerald-950/25 dark:to-slate-950 dark:hover:border-emerald-400/60 sm:p-6"
+            >
+              {/* Ambient Radial Auroras */}
+              <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-125 group-hover/milestone:opacity-100 dark:bg-emerald-500/25" />
+              <div className="pointer-events-none absolute -bottom-16 -left-16 h-52 w-52 rounded-full bg-teal-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-125 group-hover/milestone:opacity-100 dark:bg-teal-500/20" />
+
+              {/* Top Luminous Border Beam */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-500 group-hover/milestone:h-[3px] group-hover/milestone:shadow-[0_0_25px_rgba(16,185,129,1)]" />
+
+              {/* Header Strip */}
+              <div className="relative z-10 flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent text-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.22)] backdrop-blur-md transition-all duration-300 group-hover/milestone:scale-110 group-hover/milestone:rotate-6 dark:border-emerald-400/30 dark:text-emerald-400">
+                    <GraduationCap size={22} />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                        Next milestone
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold text-emerald-700 shadow-2xs dark:border-emerald-400/30 dark:text-emerald-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Target Badge
+                      </span>
+                    </div>
+                    <h3 className="mt-1 text-lg font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-xl">
+                      Frontend Architecture badge
+                    </h3>
+                  </div>
                 </div>
               </div>
-              <div className="mt-5 flex items-end justify-between gap-4">
-                <div>
-                  <motion.p 
-                    key={tasksRemaining}
-                    initial={{ scale: 1.5, color: '#34d399' }}
-                    animate={{ scale: 1, color: '#f8fafc' }}
-                    className="text-3xl font-semibold"
-                  >
-                    {tasksRemaining}
-                  </motion.p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">tasks remaining</p>
+
+              {/* Progress & Stat Strip */}
+              <div className="relative z-10 mt-6 rounded-2xl border border-slate-200/80 bg-white/80 p-4 shadow-inner backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80">
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      Remaining Work
+                    </span>
+                    <div className="mt-1 flex items-baseline gap-2">
+                      <motion.span 
+                        key={tasksRemaining}
+                        initial={{ scale: 1.4 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                        className="bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-600 bg-clip-text text-4xl font-black text-transparent dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400"
+                      >
+                        {tasksRemaining}
+                      </motion.span>
+                      <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                        tasks remaining
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-gradient-to-r from-emerald-500/15 to-teal-500/15 px-3 py-1.5 text-xs font-bold text-emerald-700 shadow-xs dark:border-emerald-400/30 dark:text-emerald-300">
+                    <TrendingUp size={15} className="text-emerald-500" />
+                    <span>On pace</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                  <TrendingUp size={16} />
-                  On pace
+
+                {/* Animated progress bar toward badge completion */}
+                <div className="mt-4 border-t border-slate-200/60 pt-3 dark:border-slate-800/60">
+                  <div className="mb-1.5 flex items-center justify-between text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    <span>Milestone Completion</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">75%</span>
+                  </div>
+                  <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-slate-200/80 dark:bg-slate-800">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: '75%' }}
+                      transition={{ duration: 1, ease: 'easeOut' }}
+                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-400 shadow-[0_0_12px_rgba(16,185,129,0.6)]"
+                    />
+                  </div>
                 </div>
               </div>
-            </section>
+            </motion.section>
           </aside>
         </div>
       </Suspense>
