@@ -171,7 +171,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 <span className="text-slate-600 dark:text-slate-400">{course.progress}% Completed</span>
                 <span className="font-medium text-slate-900 dark:text-slate-100">{course.progress === 100 ? 'Done' : 'In Progress'}</span>
               </div>
-              <ProgressIndicator progress={course.progress} size="large" />
+              <ProgressIndicator progress={course.progress} size="large" accent={course.accent} />
             </div>
           </motion.section>
 

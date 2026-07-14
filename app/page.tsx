@@ -200,25 +200,96 @@ function CoursesGrid({
   courses: typeof initialCourses, 
   onContinue: (id: string) => void 
 }) {
+  const router = useRouter();
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filters = ['All', 'In progress', 'Next sprint', 'Practice', 'Review'];
+
+  const displayedCourses = useMemo(() => {
+    if (activeFilter === 'All') return courses;
+    return courses.filter((c) => c.status.toLowerCase() === activeFilter.toLowerCase());
+  }, [courses, activeFilter]);
+
   return (
-    <section aria-labelledby="courses-heading">
-      <div className="mb-4 flex items-center justify-between gap-4">
+    <section 
+      aria-labelledby="courses-heading"
+      className="group/roadmap relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/80 hover:shadow-[0_28px_65px_-12px_rgba(6,182,212,0.3)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/60 sm:p-7"
+    >
+      {/* Ambient Radial Glows */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-125 group-hover/roadmap:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-125 group-hover/roadmap:opacity-100 dark:bg-violet-500/20" />
+
+      {/* Top Luminous Border Beam */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/roadmap:h-[3px] group-hover/roadmap:shadow-[0_0_25px_rgba(6,182,212,1)]" />
+
+      {/* Header */}
+      <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-900 dark:text-slate-500">
-            Active tracks
-          </p>
-          <h2 id="courses-heading" className="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-50">
-            Learning roadmap
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-cyan-700 shadow-xs backdrop-blur-md dark:border-cyan-400/30 dark:text-cyan-300">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
+            </span>
+            Active Tracks
+          </div>
+          <h2 id="courses-heading" className="mt-2.5 text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+            Learning{' '}
+            <span className="bg-gradient-to-r from-cyan-600 via-teal-500 to-violet-600 bg-clip-text text-transparent dark:from-cyan-400 dark:via-teal-300 dark:to-violet-400">
+              roadmap
+            </span>
           </h2>
         </div>
-        <button type="button" className="secondary-button">
-          View all
-          <ArrowUpRight size={16} />
-        </button>
+
+        <div className="flex items-center gap-3">
+          <button 
+            type="button" 
+            onClick={() => router.push('/courses')}
+            className="group/btn inline-flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white/90 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-teal-500/10 hover:text-cyan-700 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:border-cyan-400/60 dark:hover:text-cyan-300"
+          >
+            <span>View all tracks</span>
+            <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+          </button>
+        </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {courses.map((course, idx) => (
+      {/* Interactive Track Filter Strip */}
+      <div className="relative z-10 mt-6 flex flex-wrap items-center gap-2 border-b border-slate-200/60 pb-5 dark:border-slate-800/60">
+        {filters.map((filter) => {
+          const count = filter === 'All' 
+            ? courses.length 
+            : courses.filter((c) => c.status.toLowerCase() === filter.toLowerCase()).length;
+          
+          if (filter !== 'All' && count === 0) return null;
+          
+          const isSelected = activeFilter === filter;
+          
+          return (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              className={`flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all duration-300 ${
+                isSelected
+                  ? 'border border-cyan-400/60 bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-[0_0_18px_rgba(6,182,212,0.4)] scale-105'
+                  : 'border border-slate-200/80 bg-white/70 text-slate-600 hover:border-cyan-400/40 hover:bg-white hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-400 dark:hover:border-cyan-400/40 dark:hover:bg-slate-900 dark:hover:text-slate-200'
+              }`}
+            >
+              <span>{filter}</span>
+              <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-extrabold ${
+                isSelected
+                  ? 'bg-white/20 text-white'
+                  : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+              }`}>
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Grid of Cards */}
+      <div className="relative z-10 mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        {displayedCourses.map((course, idx) => (
           <CourseTile
             key={course.id}
             id={course.id}
