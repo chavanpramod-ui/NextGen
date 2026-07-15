@@ -25,21 +25,21 @@ interface CourseTileProps {
 }
 
 const cardThemes: Record<string, string> = {
-  amber: 'border-amber-300/60 dark:border-amber-500/30 bg-gradient-to-br from-white via-amber-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-amber-950/25 dark:to-slate-950 hover:border-amber-400 dark:hover:border-amber-400/80 hover:shadow-[0_20px_50px_-12px_rgba(245,158,11,0.35)]',
-  cyan: 'border-cyan-300/60 dark:border-cyan-500/30 bg-gradient-to-br from-white via-cyan-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-cyan-950/25 dark:to-slate-950 hover:border-cyan-400 dark:hover:border-cyan-400/80 hover:shadow-[0_20px_50px_-12px_rgba(6,182,212,0.35)]',
-  emerald: 'border-emerald-300/60 dark:border-emerald-500/30 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-emerald-950/25 dark:to-slate-950 hover:border-emerald-400 dark:hover:border-emerald-400/80 hover:shadow-[0_20px_50px_-12px_rgba(16,185,129,0.35)]',
-  violet: 'border-violet-300/60 dark:border-violet-500/30 bg-gradient-to-br from-white via-violet-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-violet-950/25 dark:to-slate-950 hover:border-violet-400 dark:hover:border-violet-400/80 hover:shadow-[0_20px_50px_-12px_rgba(139,92,246,0.35)]',
-  rose: 'border-rose-300/60 dark:border-rose-500/30 bg-gradient-to-br from-white via-rose-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-rose-950/25 dark:to-slate-950 hover:border-rose-400 dark:hover:border-rose-400/80 hover:shadow-[0_20px_50px_-12px_rgba(244,63,94,0.35)]',
-  indigo: 'border-indigo-300/60 dark:border-indigo-500/30 bg-gradient-to-br from-white via-indigo-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-indigo-950/25 dark:to-slate-950 hover:border-indigo-400 dark:hover:border-indigo-400/80 hover:shadow-[0_20px_50px_-12px_rgba(99,102,241,0.35)]',
+  amber: 'border-amber-300/60 dark:border-amber-500/30 bg-gradient-to-br from-white via-amber-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-amber-950/25 dark:to-slate-950 hover:border-amber-400 dark:hover:border-amber-400/90 hover:shadow-[0_28px_75px_-12px_rgba(245,158,11,0.45),0_0_35px_-5px_rgba(245,158,11,0.28)]',
+  cyan: 'border-cyan-300/60 dark:border-cyan-500/30 bg-gradient-to-br from-white via-cyan-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-cyan-950/25 dark:to-slate-950 hover:border-cyan-400 dark:hover:border-cyan-400/90 hover:shadow-[0_28px_75px_-12px_rgba(6,182,212,0.45),0_0_35px_-5px_rgba(6,182,212,0.28)]',
+  emerald: 'border-emerald-300/60 dark:border-emerald-500/30 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-emerald-950/25 dark:to-slate-950 hover:border-emerald-400 dark:hover:border-emerald-400/90 hover:shadow-[0_28px_75px_-12px_rgba(16,185,129,0.45),0_0_35px_-5px_rgba(16,185,129,0.28)]',
+  violet: 'border-violet-300/60 dark:border-violet-500/30 bg-gradient-to-br from-white via-violet-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-violet-950/25 dark:to-slate-950 hover:border-violet-400 dark:hover:border-violet-400/90 hover:shadow-[0_28px_75px_-12px_rgba(139,92,246,0.45),0_0_35px_-5px_rgba(139,92,246,0.28)]',
+  rose: 'border-rose-300/60 dark:border-rose-500/30 bg-gradient-to-br from-white via-rose-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-rose-950/25 dark:to-slate-950 hover:border-rose-400 dark:hover:border-rose-400/90 hover:shadow-[0_28px_75px_-12px_rgba(244,63,94,0.45),0_0_35px_-5px_rgba(244,63,94,0.28)]',
+  indigo: 'border-indigo-300/60 dark:border-indigo-500/30 bg-gradient-to-br from-white via-indigo-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-indigo-950/25 dark:to-slate-950 hover:border-indigo-400 dark:hover:border-indigo-400/90 hover:shadow-[0_28px_75px_-12px_rgba(99,102,241,0.45),0_0_35px_-5px_rgba(99,102,241,0.28)]',
 };
 
 const topBeams: Record<string, string> = {
-  amber: 'bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-[0_0_15px_rgba(245,158,11,0.85)]',
-  cyan: 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.85)]',
-  emerald: 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.85)]',
-  violet: 'bg-gradient-to-r from-transparent via-violet-400 to-transparent shadow-[0_0_15px_rgba(139,92,246,0.85)]',
-  rose: 'bg-gradient-to-r from-transparent via-rose-400 to-transparent shadow-[0_0_15px_rgba(244,63,94,0.85)]',
-  indigo: 'bg-gradient-to-r from-transparent via-indigo-400 to-transparent shadow-[0_0_15px_rgba(99,102,241,0.85)]',
+  amber: 'bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-[0_0_15px_rgba(245,158,11,0.85)] group-hover:shadow-[0_0_28px_rgba(245,158,11,1)]',
+  cyan: 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.85)] group-hover:shadow-[0_0_28px_rgba(6,182,212,1)]',
+  emerald: 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.85)] group-hover:shadow-[0_0_28px_rgba(16,185,129,1)]',
+  violet: 'bg-gradient-to-r from-transparent via-violet-400 to-transparent shadow-[0_0_15px_rgba(139,92,246,0.85)] group-hover:shadow-[0_0_28px_rgba(139,92,246,1)]',
+  rose: 'bg-gradient-to-r from-transparent via-rose-400 to-transparent shadow-[0_0_15px_rgba(244,63,94,0.85)] group-hover:shadow-[0_0_28px_rgba(244,63,94,1)]',
+  indigo: 'bg-gradient-to-r from-transparent via-indigo-400 to-transparent shadow-[0_0_15px_rgba(99,102,241,0.85)] group-hover:shadow-[0_0_28px_rgba(99,102,241,1)]',
 };
 
 const ambientGlows: Record<string, string> = {
@@ -137,15 +137,15 @@ export function CourseTile({
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -6, scale: 1.02 }}
+      whileHover={{ y: -9, scale: 1.025, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
       className={`dashboard-panel group relative flex min-h-[235px] flex-col justify-between overflow-hidden rounded-3xl border p-5 transition-all duration-300 ${cardTheme}`}
     >
       {/* Top Luminous Neon Border Beam */}
       <div className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] transition-all duration-500 group-hover:h-[3px] ${topBeam}`} />
 
       {/* Ambient Corner Radial Auroras */}
-      <div className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 opacity-60 ${ambientGlow}`} />
-      <div className={`pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 opacity-40 ${ambientGlow}`} />
+      <div className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full blur-2xl transition-all duration-700 group-hover:scale-[1.7] group-hover:opacity-100 opacity-60 ${ambientGlow}`} />
+      <div className={`pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 rounded-full blur-2xl transition-all duration-700 group-hover:scale-[1.7] group-hover:opacity-100 opacity-40 ${ambientGlow}`} />
 
       <div className="relative z-10">
         <div className="flex items-start justify-between gap-4">

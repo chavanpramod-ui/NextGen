@@ -53,14 +53,14 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
         rotateY,
         transformStyle: 'preserve-3d',
       }}
-      className="group/hero relative min-h-[380px] overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-6 shadow-[0_20px_50px_-15px_rgba(124,58,237,0.08)] transition-all duration-500 hover:border-violet-400/40 hover:shadow-[0_25px_60px_-15px_rgba(124,58,237,0.18)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-violet-500/40 sm:p-7 lg:p-8"
+      className="group/hero relative min-h-[380px] overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-6 shadow-[0_20px_50px_-15px_rgba(124,58,237,0.08)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:border-violet-400/90 hover:shadow-[0_35px_90px_-15px_rgba(139,92,246,0.38),0_0_45px_-5px_rgba(6,182,212,0.25)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-violet-400/80 sm:p-7 lg:p-8"
     >
       {/* Ambient Mesh Auroras */}
-      <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-violet-600/15 blur-[110px] transition-opacity duration-700 group-hover/hero:opacity-100 dark:bg-violet-600/25" />
-      <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-cyan-500/15 blur-[110px] transition-opacity duration-700 group-hover/hero:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-violet-600/15 blur-[110px] transition-all duration-700 group-hover/hero:scale-125 group-hover/hero:opacity-100 dark:bg-violet-600/25" />
+      <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-cyan-500/15 blur-[110px] transition-all duration-700 group-hover/hero:scale-125 group-hover/hero:opacity-100 dark:bg-cyan-500/25" />
 
       {/* Top Luminous Border Beam */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet-500/80 to-transparent shadow-[0_0_20px_rgba(139,92,246,0.8)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-violet-500/80 via-cyan-500/80 to-transparent shadow-[0_0_20px_rgba(139,92,246,0.8)] transition-all duration-500 group-hover/hero:h-[3px] group-hover/hero:shadow-[0_0_30px_rgba(139,92,246,1)]" />
 
       <div className="relative z-10 grid h-full gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
         {/* Left Column: Welcome & Action Controls */}

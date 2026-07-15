@@ -81,11 +81,14 @@ export function ActivityTile({ activity }: ActivityTileProps) {
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="group/tile relative overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-b from-white via-white to-slate-50/90 p-6 shadow-[0_10px_35px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_20px_45px_-15px_rgba(34,211,238,0.18)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950/90 dark:hover:border-cyan-500/40"
+      className="group/tile relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-cyan-50/20 to-slate-50/90 p-6 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.012] hover:border-cyan-400/90 hover:shadow-[0_32px_85px_-15px_rgba(6,182,212,0.38),0_0_40px_-5px_rgba(6,182,212,0.22)] dark:border-slate-800/80 dark:from-slate-900 dark:via-cyan-950/20 dark:to-slate-950 dark:hover:border-cyan-400/80"
     >
-      {/* Ambient Top Glow & Highlight Bar */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-gradient-to-br from-cyan-400/15 via-teal-400/10 to-transparent blur-3xl transition-opacity duration-500 group-hover/tile:opacity-100" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+      {/* Ambient Radial Auroras */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-teal-500/15 blur-3xl transition-all duration-700 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-teal-500/20" />
+
+      {/* Top Luminous Border Beam */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/tile:h-[3px] group-hover/tile:shadow-[0_0_28px_rgba(6,182,212,1)]" />
 
       {/* Header */}
       <div className="relative z-10 flex items-start justify-between gap-4">

@@ -182,11 +182,11 @@ export default function CoursesPage() {
       <div className="flex flex-col gap-8">
         <section 
           aria-labelledby="active-courses"
-          className="group/sec relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/80 hover:shadow-[0_28px_65px_-12px_rgba(6,182,212,0.3)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/60 sm:p-7"
+          className="group/sec relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:border-cyan-400/90 hover:shadow-[0_35px_90px_-15px_rgba(6,182,212,0.38),0_0_45px_-5px_rgba(6,182,212,0.22)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-7"
         >
           {/* Ambient Radial Auroras */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/sec:scale-125 group-hover/sec:opacity-100 dark:bg-cyan-500/25" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/sec:h-[3px]" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/sec:scale-150 group-hover/sec:opacity-100 dark:bg-cyan-500/25" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/sec:h-[3px] group-hover/sec:shadow-[0_0_30px_rgba(6,182,212,1)]" />
 
           <div className="relative z-10 mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -226,10 +226,10 @@ export default function CoursesPage() {
 
         <section 
           aria-labelledby="recommended-courses"
-          className="group/sec2 relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400/80 hover:shadow-[0_28px_65px_-12px_rgba(16,185,129,0.3)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-emerald-400/60 sm:p-7"
+          className="group/sec2 relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:border-emerald-400/90 hover:shadow-[0_35px_90px_-15px_rgba(16,185,129,0.38),0_0_45px_-5px_rgba(16,185,129,0.22)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-emerald-400/80 sm:p-7"
         >
-          <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/sec2:scale-125 group-hover/sec2:opacity-100 dark:bg-emerald-500/25" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/80 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-500 group-hover/sec2:h-[3px]" />
+          <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/sec2:scale-150 group-hover/sec2:opacity-100 dark:bg-emerald-500/25" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/80 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-500 group-hover/sec2:h-[3px] group-hover/sec2:shadow-[0_0_30px_rgba(16,185,129,1)]" />
 
           <div className="relative z-10 mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>

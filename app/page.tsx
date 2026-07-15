@@ -51,27 +51,27 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
         const Icon = metric.icon;
         const themes = [
           {
-            border: 'hover:border-cyan-400/80 dark:hover:border-cyan-400/60',
+            border: 'hover:-translate-y-2 hover:scale-[1.015] hover:border-cyan-400/90 hover:shadow-[0_28px_75px_-12px_rgba(6,182,212,0.42),0_0_35px_-5px_rgba(6,182,212,0.25)] dark:hover:border-cyan-400/80',
             bg: 'from-white via-cyan-50/40 to-slate-50/90 dark:from-slate-900 dark:via-cyan-950/25 dark:to-slate-950',
-            beam: 'via-cyan-500/80 shadow-[0_0_15px_rgba(6,182,212,0.8)]',
+            beam: 'via-cyan-500/80 shadow-[0_0_15px_rgba(6,182,212,0.8)] group-hover/metric:shadow-[0_0_28px_rgba(6,182,212,1)]',
             aurora: 'bg-cyan-500/15 dark:bg-cyan-500/25',
             iconContainer: 'border-cyan-400/40 bg-gradient-to-br from-cyan-500/20 via-cyan-500/5 to-transparent text-cyan-600 dark:text-cyan-300 shadow-[0_0_18px_rgba(6,182,212,0.22)]',
             badgeText: 'text-cyan-700 dark:text-cyan-300 border-cyan-400/30 bg-cyan-500/10',
             valueGradient: 'from-cyan-600 via-teal-500 to-cyan-500 dark:from-cyan-400 dark:via-teal-300 dark:to-cyan-300'
           },
           {
-            border: 'hover:border-violet-400/80 dark:hover:border-violet-400/60',
+            border: 'hover:-translate-y-2 hover:scale-[1.015] hover:border-violet-400/90 hover:shadow-[0_28px_75px_-12px_rgba(139,92,246,0.42),0_0_35px_-5px_rgba(139,92,246,0.25)] dark:hover:border-violet-400/80',
             bg: 'from-white via-violet-50/40 to-slate-50/90 dark:from-slate-900 dark:via-violet-950/25 dark:to-slate-950',
-            beam: 'via-violet-500/80 shadow-[0_0_15px_rgba(139,92,246,0.8)]',
+            beam: 'via-violet-500/80 shadow-[0_0_15px_rgba(139,92,246,0.8)] group-hover/metric:shadow-[0_0_28px_rgba(139,92,246,1)]',
             aurora: 'bg-violet-500/15 dark:bg-violet-500/25',
             iconContainer: 'border-violet-400/40 bg-gradient-to-br from-violet-500/20 via-violet-500/5 to-transparent text-violet-600 dark:text-violet-300 shadow-[0_0_18px_rgba(139,92,246,0.22)]',
             badgeText: 'text-violet-700 dark:text-violet-300 border-violet-400/30 bg-violet-500/10',
             valueGradient: 'from-violet-600 via-purple-500 to-violet-500 dark:from-violet-400 dark:via-purple-300 dark:to-violet-300'
           },
           {
-            border: 'hover:border-amber-400/80 dark:hover:border-amber-400/60',
+            border: 'hover:-translate-y-2 hover:scale-[1.015] hover:border-amber-400/90 hover:shadow-[0_28px_75px_-12px_rgba(245,158,11,0.42),0_0_35px_-5px_rgba(245,158,11,0.25)] dark:hover:border-amber-400/80',
             bg: 'from-white via-amber-50/40 to-slate-50/90 dark:from-slate-900 dark:via-amber-950/25 dark:to-slate-950',
-            beam: 'via-amber-500/80 shadow-[0_0_15px_rgba(245,158,11,0.8)]',
+            beam: 'via-amber-500/80 shadow-[0_0_15px_rgba(245,158,11,0.8)] group-hover/metric:shadow-[0_0_28px_rgba(245,158,11,1)]',
             aurora: 'bg-amber-500/15 dark:bg-amber-500/25',
             iconContainer: 'border-amber-400/40 bg-gradient-to-br from-amber-500/20 via-amber-500/5 to-transparent text-amber-600 dark:text-amber-300 shadow-[0_0_18px_rgba(245,158,11,0.22)]',
             badgeText: 'text-amber-700 dark:text-amber-300 border-amber-400/30 bg-amber-500/10',
@@ -85,10 +85,10 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1, duration: 0.5 }}
             key={metric.label} 
-            className={`group/metric relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br ${themes.bg} p-5 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-1.5 ${themes.border} dark:border-slate-800/80 sm:p-6`}
+            className={`group/metric relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br ${themes.bg} p-5 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 ${themes.border} dark:border-slate-800/80 sm:p-6`}
           >
             {/* Ambient Radial Aurora */}
-            <div className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full ${themes.aurora} blur-2xl transition-all duration-700 group-hover/metric:scale-150 group-hover/metric:opacity-100`} />
+            <div className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full ${themes.aurora} blur-2xl transition-all duration-700 group-hover/metric:scale-[1.7] group-hover/metric:opacity-100`} />
 
             {/* Top Luminous Border Beam */}
             <div className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent ${themes.beam} to-transparent transition-all duration-500 group-hover/metric:h-[3px]`} />
@@ -118,13 +118,13 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
 
 function PriorityPanel({ priorities }: { priorities: typeof initialPriorities }) {
   return (
-    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-400/80 hover:shadow-[0_25px_60px_-12px_rgba(6,182,212,0.3)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-400/60 sm:p-6">
+    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.012] hover:border-cyan-400/90 hover:shadow-[0_32px_85px_-15px_rgba(6,182,212,0.38),0_0_42px_-5px_rgba(139,92,246,0.24)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-6">
       {/* Ambient Radial Glow */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-125 group-hover/queue:opacity-100 dark:bg-cyan-500/25" />
-      <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-125 group-hover/queue:opacity-100 dark:bg-violet-500/20" />
+      <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-150 group-hover/queue:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-150 group-hover/queue:opacity-100 dark:bg-violet-500/20" />
 
       {/* Top Luminous Border Beam */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/queue:h-[3px] group-hover/queue:shadow-[0_0_25px_rgba(6,182,212,1)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 via-violet-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/queue:h-[3px] group-hover/queue:shadow-[0_0_30px_rgba(6,182,212,1)]" />
 
       <div className="relative z-10 flex items-center justify-between gap-4">
         <div>
@@ -252,14 +252,14 @@ function CoursesGrid({
   return (
     <section 
       aria-labelledby="courses-heading"
-      className="group/roadmap relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/80 hover:shadow-[0_28px_65px_-12px_rgba(6,182,212,0.3)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/60 sm:p-7"
+      className="group/roadmap relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:border-cyan-400/90 hover:shadow-[0_35px_90px_-15px_rgba(6,182,212,0.38),0_0_45px_-5px_rgba(6,182,212,0.22)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-7"
     >
       {/* Ambient Radial Glows */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-125 group-hover/roadmap:opacity-100 dark:bg-cyan-500/25" />
-      <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-125 group-hover/roadmap:opacity-100 dark:bg-violet-500/20" />
+      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-150 group-hover/roadmap:opacity-100 dark:bg-cyan-500/25" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-150 group-hover/roadmap:opacity-100 dark:bg-violet-500/20" />
 
       {/* Top Luminous Border Beam */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/roadmap:h-[3px] group-hover/roadmap:shadow-[0_0_25px_rgba(6,182,212,1)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/roadmap:h-[3px] group-hover/roadmap:shadow-[0_0_30px_rgba(6,182,212,1)]" />
 
       {/* Header */}
       <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -594,14 +594,14 @@ export default function Dashboard() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="group/milestone relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 p-5 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-1.5 hover:border-emerald-400/80 hover:shadow-[0_25px_60px_-12px_rgba(16,185,129,0.3)] dark:border-slate-800/80 dark:from-slate-900 dark:via-emerald-950/25 dark:to-slate-950 dark:hover:border-emerald-400/60 sm:p-6"
+              className="group/milestone relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 p-5 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.012] hover:border-emerald-400/90 hover:shadow-[0_32px_85px_-15px_rgba(16,185,129,0.38),0_0_42px_-5px_rgba(20,184,166,0.24)] dark:border-slate-800/80 dark:from-slate-900 dark:via-emerald-950/25 dark:to-slate-950 dark:hover:border-emerald-400/80 sm:p-6"
             >
               {/* Ambient Radial Auroras */}
-              <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-125 group-hover/milestone:opacity-100 dark:bg-emerald-500/25" />
-              <div className="pointer-events-none absolute -bottom-16 -left-16 h-52 w-52 rounded-full bg-teal-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-125 group-hover/milestone:opacity-100 dark:bg-teal-500/20" />
+              <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-150 group-hover/milestone:opacity-100 dark:bg-emerald-500/25" />
+              <div className="pointer-events-none absolute -bottom-16 -left-16 h-52 w-52 rounded-full bg-teal-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-150 group-hover/milestone:opacity-100 dark:bg-teal-500/20" />
 
               {/* Top Luminous Border Beam */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-500 group-hover/milestone:h-[3px] group-hover/milestone:shadow-[0_0_25px_rgba(16,185,129,1)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/80 via-teal-500/80 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-500 group-hover/milestone:h-[3px] group-hover/milestone:shadow-[0_0_30px_rgba(16,185,129,1)]" />
 
               {/* Header Strip */}
               <div className="relative z-10 flex items-start justify-between gap-4">
