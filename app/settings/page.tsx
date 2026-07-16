@@ -3,30 +3,56 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Settings, User, Bell, Shield, Palette, Mail, Lock, LogOut, Check, KeyRound } from 'lucide-react';
+import {
+  sidebarThemeList,
+  sidebarThemes,
+  SidebarThemePreset,
+} from '@/components/sidebarThemes';
 
 export default function SettingsPage() {
   const [firstName, setFirstName] = useState("Alex");
   const [lastName, setLastName] = useState("Morgan");
   const [email, setEmail] = useState("alex.morgan@example.com");
   const [bio, setBio] = useState("Pro learner trying to master full-stack development. I enjoy building beautiful and responsive web applications.");
+  const [sidebarTheme, setSidebarTheme] = useState<SidebarThemePreset>('classic');
   
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    const savedProfile = localStorage.getItem('userProfile');
-    if (savedProfile) {
-      try {
-        const parsed = JSON.parse(savedProfile);
-        if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
-        if (parsed.lastName !== undefined) setLastName(parsed.lastName);
-        if (parsed.email !== undefined) setEmail(parsed.email);
-        if (parsed.bio !== undefined) setBio(parsed.bio);
-      } catch (e) {
-        console.error("Failed to parse profile data", e);
+    const loadData = () => {
+      const savedProfile = localStorage.getItem('userProfile');
+      if (savedProfile) {
+        try {
+          const parsed = JSON.parse(savedProfile);
+          if (parsed.firstName !== undefined) setFirstName(parsed.firstName);
+          if (parsed.lastName !== undefined) setLastName(parsed.lastName);
+          if (parsed.email !== undefined) setEmail(parsed.email);
+          if (parsed.bio !== undefined) setBio(parsed.bio);
+        } catch (e) {
+          console.error("Failed to parse profile data", e);
+        }
       }
-    }
+
+      const savedTheme = localStorage.getItem('sidebarTheme') as SidebarThemePreset;
+      if (savedTheme && sidebarThemes[savedTheme]) {
+        setSidebarTheme(savedTheme);
+      }
+    };
+    loadData();
+    window.addEventListener('sidebarThemeUpdated', loadData);
+    window.addEventListener('storage', loadData);
+    return () => {
+      window.removeEventListener('sidebarThemeUpdated', loadData);
+      window.removeEventListener('storage', loadData);
+    };
   }, []);
+
+  const handleSelectSidebarTheme = (themeId: SidebarThemePreset) => {
+    setSidebarTheme(themeId);
+    localStorage.setItem('sidebarTheme', themeId);
+    window.dispatchEvent(new Event('sidebarThemeUpdated'));
+  };
 
   const initials = `${firstName.charAt(0) || ''}${lastName.charAt(0) || ''}`.toUpperCase();
 
@@ -155,6 +181,51 @@ export default function SettingsPage() {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Appearance & Sidebar Theme Section */}
+          <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+              <Palette size={20} className="text-cyan-500" />
+              Appearance & Sidebar Customization
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 -mt-2">
+              Personalize your navigation aesthetic. Choose from 4 curated sidebar theme presets or switch app lighting modes.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+              {sidebarThemeList.map((t) => {
+                const isSelected = sidebarTheme === t.id;
+                return (
+                  <div
+                    key={t.id}
+                    onClick={() => handleSelectSidebarTheme(t.id)}
+                    className={`cursor-pointer rounded-2xl border p-4 flex flex-col gap-3 transition-all duration-300 relative overflow-hidden ${
+                      isSelected
+                        ? 'border-cyan-400 bg-cyan-400/10 dark:bg-cyan-400/5 shadow-[0_8px_25px_rgba(6,182,212,0.2)] scale-[1.02]'
+                        : 'border-slate-300 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:border-slate-400 dark:hover:border-slate-700 hover:bg-white dark:hover:bg-slate-900/70'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-slate-900 dark:text-slate-100 text-sm">{t.name}</span>
+                      {isSelected && (
+                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-400 text-slate-950">
+                          <Check size={12} strokeWidth={3} />
+                        </span>
+                      )}
+                    </div>
+                    <div className={`h-12 w-full rounded-xl border bg-gradient-to-br ${t.swatchGradient} ${t.swatchBorder} shadow-sm flex items-center justify-center`}>
+                      <span className="text-[11px] font-bold text-white tracking-wider uppercase px-2 py-0.5 rounded bg-black/40 backdrop-blur-xs">
+                        {t.name}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                      {t.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
