@@ -276,11 +276,14 @@ export default function SettingsPage() {
       {/* Main Layout: Sidebar Tabs + Content Area */}
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Navigation Sidebar */}
-        <div className="w-full lg:w-72 shrink-0 flex flex-col gap-3 sticky top-6">
-          <div className="dashboard-panel p-3.5 flex flex-col gap-2">
-            <p className="px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 select-none">
-              Navigation Menu
-            </p>
+        <div className="w-full lg:w-72 shrink-0 flex flex-col gap-4 sticky top-6">
+          <div className="dashboard-panel p-3 flex flex-col gap-1.5 relative overflow-hidden bg-white/40 dark:bg-slate-950/40">
+            <div className="px-4 pb-2 pt-2 flex items-center gap-2.5">
+              <div className="h-5 w-1.5 rounded-full bg-gradient-to-b from-cyan-400 to-violet-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] bg-gradient-to-r from-slate-800 to-slate-500 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent select-none">
+                Navigation Menu
+              </p>
+            </div>
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isSelected = activeTab === tab.id;
@@ -288,23 +291,46 @@ export default function SettingsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`group flex items-center justify-between px-4 py-3.5 rounded-2xl font-medium transition-all duration-300 text-left relative overflow-hidden ${
+                  className={`group flex items-center justify-between px-4 py-3.5 rounded-2xl transition-colors duration-300 text-left relative z-10 outline-none ${
                     isSelected
-                      ? 'border border-cyan-500/40 bg-gradient-to-r from-cyan-500/15 via-cyan-500/5 to-transparent text-cyan-600 dark:text-cyan-300 font-semibold shadow-[0_8px_20px_-6px_rgba(6,182,212,0.25)] scale-[1.01]'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-800/50 border border-transparent'
+                      ? 'text-cyan-700 dark:text-cyan-300'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                   }`}
                 >
+                  {/* Animated Active Background */}
                   {isSelected && (
-                    <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+                    <motion.div
+                      layoutId="activeSettingsNavTab"
+                      className="absolute inset-0 rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-500/15 via-cyan-500/5 to-transparent shadow-[0_8px_20px_-6px_rgba(6,182,212,0.25)] -z-10"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
                   )}
+                  
+                  {/* Animated Left Glow Indicator */}
+                  {isSelected && (
+                    <motion.span 
+                      layoutId="activeSettingsNavGlow"
+                      className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.8)] z-0" 
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+
+                  {/* Hover Background for Inactive Tabs */}
+                  {!isSelected && (
+                    <div className="absolute inset-0 rounded-2xl bg-slate-200/50 dark:bg-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10" />
+                  )}
+                  
                   <div className="flex items-center gap-3 min-w-0">
-                    <Icon size={19} className={`shrink-0 transition-transform duration-300 group-hover:scale-110 ${isSelected ? 'text-cyan-500 dark:text-cyan-300' : 'text-slate-400 dark:text-slate-500'}`} />
-                    <span className="truncate text-sm">{tab.label}</span>
+                    <Icon size={18} className={`shrink-0 transition-all duration-300 ${isSelected ? 'text-cyan-500 dark:text-cyan-300 scale-110 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]' : 'text-slate-400 dark:text-slate-500 group-hover:scale-110'}`} />
+                    <span className={`truncate text-sm transition-all duration-200 ${isSelected ? 'font-bold tracking-tight' : 'font-medium'}`}>
+                      {tab.label}
+                    </span>
                   </div>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-colors shrink-0 ${
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-all shrink-0 shadow-sm ${
                     isSelected
-                      ? 'bg-cyan-400/20 border-cyan-400/40 text-cyan-600 dark:text-cyan-300'
-                      : 'bg-slate-200/60 dark:bg-slate-800/60 border-slate-300/60 dark:border-slate-700/60 text-slate-500 dark:text-slate-400'
+                      ? 'bg-cyan-400/20 border-cyan-400/40 text-cyan-600 dark:text-cyan-300 scale-105'
+                      : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700/80 text-slate-500 dark:text-slate-400 group-hover:border-slate-300 dark:group-hover:border-slate-600'
                   }`}>
                     {tab.badge}
                   </span>
