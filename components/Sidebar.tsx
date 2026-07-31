@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   BarChart2,
   Bell,
@@ -16,6 +16,7 @@ import {
   Settings,
   User,
   Sparkles,
+  LogOut,
 } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import {
@@ -56,6 +57,7 @@ const navSections: NavSection[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [firstName, setFirstName] = useState("Alex");
@@ -279,6 +281,17 @@ export function Sidebar() {
                 <Palette size={17} />
               </button>
               <ThemeToggle />
+              <button
+                type="button"
+                onClick={() => {
+                  localStorage.removeItem('userProfile');
+                  router.push('/login');
+                }}
+                title="Log Out"
+                className="h-9 w-9 rounded-xl flex items-center justify-center transition-all text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-400"
+              >
+                <LogOut size={17} />
+              </button>
             </div>
           </div>
         ) : (
@@ -304,6 +317,17 @@ export function Sidebar() {
               <Palette size={17} />
             </button>
             <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => {
+                localStorage.removeItem('userProfile');
+                router.push('/login');
+              }}
+              title="Log Out"
+              className="h-9 w-9 rounded-xl flex items-center justify-center transition-all text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-400"
+            >
+              <LogOut size={17} />
+            </button>
           </div>
         )}
       </div>
