@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ShieldCheck, Lock, ArrowRight, Loader2, KeyRound } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
