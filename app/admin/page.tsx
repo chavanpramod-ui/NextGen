@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, BookOpen, Activity, Search, Filter, MoreVertical, Trash2, Edit } from 'lucide-react';
-import { COURSE_MOCK_DATA, ACTIVITY_MOCK_DATA } from '@/lib/mockData';
+import { Users, BookOpen, Activity, Search, Filter, Trash2, Edit } from 'lucide-react';
+import { initialCourses } from '@/lib/mockData';
 
-// Reusing some mock data structure but formatting it for an admin table view
 const mockUsers = [
   { id: '1', name: 'Alex Morgan', email: 'alex@student.edu', role: 'Student', status: 'Active', joined: '2023-09-01' },
   { id: '2', name: 'Sam Taylor', email: 'sam.t@student.edu', role: 'Student', status: 'Inactive', joined: '2023-08-15' },
@@ -51,7 +50,7 @@ export default function AdminDashboardPage() {
               transition={{ delay: idx * 0.1 }}
               className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-sm flex items-center gap-5"
             >
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center \${stat.bg} \${stat.color}` }>
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${stat.bg} ${stat.color}`}>
                 <Icon size={24} />
               </div>
               <div>
@@ -70,7 +69,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab('users')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors \${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === 'users'
                   ? 'bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white'
                   : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
@@ -80,7 +79,7 @@ export default function AdminDashboardPage() {
             </button>
             <button
               onClick={() => setActiveTab('courses')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors \${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === 'courses'
                   ? 'bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white'
                   : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
@@ -143,10 +142,10 @@ export default function AdminDashboardPage() {
                     </span>
                   </td>
                   <td className="p-4 sm:px-6 hidden md:table-cell">
-                    <span className={`inline-flex items-center gap-1.5 text-xs font-medium \${
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-medium ${
                       user.status === 'Active' ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500'
                     }`}>
-                      <span className={`w-1.5 h-1.5 rounded-full \${user.status === 'Active' ? 'bg-emerald-500' : 'bg-slate-400'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${user.status === 'Active' ? 'bg-emerald-500' : 'bg-slate-400'}`} />
                       {user.status}
                     </span>
                   </td>
@@ -166,7 +165,7 @@ export default function AdminDashboardPage() {
                 </tr>
               ))}
 
-              {activeTab === 'courses' && COURSE_MOCK_DATA.map((course) => (
+              {activeTab === 'courses' && initialCourses.map((course) => (
                 <tr key={course.id} className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors group">
                   <td className="p-4 sm:px-6">
                     <div className="font-medium text-slate-900 dark:text-white flex items-center gap-3">
@@ -177,7 +176,7 @@ export default function AdminDashboardPage() {
                   <td className="p-4 sm:px-6 hidden sm:table-cell">
                     <div className="flex items-center gap-2">
                       <div className="h-1.5 w-24 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
-                        <div className="h-full bg-indigo-500 rounded-full" style={{ width: \`\${course.progress}%\` }} />
+                        <div className="h-full bg-indigo-500 rounded-full" style={{ width: `${course.progress}%` }} />
                       </div>
                       <span className="text-xs text-slate-500 dark:text-slate-400">{course.progress}%</span>
                     </div>
