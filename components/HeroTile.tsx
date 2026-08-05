@@ -53,7 +53,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
         rotateY,
         transformStyle: 'preserve-3d',
       }}
-      className="group/hero relative min-h-[380px] overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-6 shadow-[0_20px_50px_-15px_rgba(124,58,237,0.08)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:border-violet-400/90 hover:shadow-[0_35px_90px_-15px_rgba(139,92,246,0.38),0_0_45px_-5px_rgba(6,182,212,0.25)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-violet-400/80 sm:p-7 lg:p-8"
+      className="group/hero relative min-h-[380px] overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-6 shadow-[0_20px_50px_-15px_rgba(124,58,237,0.08)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-violet-400/90 hover:shadow-[0_40px_100px_-10px_rgba(139,92,246,0.7),0_0_60px_-5px_rgba(139,92,246,0.5)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-violet-400/80 sm:p-7 lg:p-8"
     >
       {/* Ambient Mesh Auroras */}
       <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-violet-600/15 blur-[110px] transition-all duration-700 group-hover/hero:scale-125 group-hover/hero:opacity-100 dark:bg-violet-600/25" />
@@ -92,7 +92,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <button
                 type="button"
-                className="group/btn inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-[0_10px_25px_-5px_rgba(6,182,212,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_30px_-5px_rgba(139,92,246,0.55)] active:scale-[0.98]"
+                className="group/btn inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 px-6 py-3.5 text-sm font-bold text-white shadow-[0_10px_25px_-5px_rgba(6,182,212,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_40px_100px_-10px_rgba(139,92,246,0.7),0_0_60px_-5px_rgba(139,92,246,0.5)] active:scale-[0.98]"
               >
                 <PlayCircle size={18} className="transition-transform duration-300 group-hover/btn:scale-110" />
                 <span>Resume session</span>
@@ -125,7 +125,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
         {/* Right Column: Stacked Telemetry Pods */}
         <div className="flex flex-col gap-4">
           {/* Learning Streak Pod */}
-          <div className="group/streak relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-white/90 to-amber-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.015] hover:border-amber-400/80 hover:shadow-[0_20px_45px_-10px_rgba(245,158,11,0.35)] dark:border-amber-400/20 dark:from-amber-500/15 dark:via-slate-900/90 dark:to-slate-900/60 dark:hover:border-amber-400/70">
+          <div className="group/streak relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-white/90 to-amber-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-3.5 hover:scale-[1.03] hover:border-amber-400/80 hover:shadow-[0_40px_100px_-10px_rgba(245,158,11,0.7),0_0_60px_-5px_rgba(245,158,11,0.5)] dark:border-amber-400/20 dark:from-amber-500/15 dark:via-slate-900/90 dark:to-slate-900/60 dark:hover:border-amber-400/70">
             <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-500/20 blur-2xl transition-all duration-500 group-hover/streak:scale-150 group-hover/streak:opacity-100" />
             
             <div className="relative z-10 flex items-center justify-between">
@@ -175,7 +175,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
           </div>
 
           {/* Today Plan Pod */}
-          <div className="group/plan relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-white/90 to-emerald-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.015] hover:border-emerald-400/80 hover:shadow-[0_20px_45px_-10px_rgba(16,185,129,0.35)] dark:border-emerald-400/20 dark:from-emerald-500/15 dark:via-slate-900/90 dark:to-slate-900/60 dark:hover:border-emerald-400/70">
+          <div className="group/plan relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 via-white/90 to-emerald-500/5 p-5 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-3.5 hover:scale-[1.03] hover:border-emerald-400/80 hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] dark:border-emerald-400/20 dark:from-emerald-500/15 dark:via-slate-900/90 dark:to-slate-900/60 dark:hover:border-emerald-400/70">
             <div className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-emerald-500/20 blur-2xl transition-all duration-500 group-hover/plan:scale-150 group-hover/plan:opacity-100" />
 
             <div className="relative z-10 flex items-center justify-between gap-2">

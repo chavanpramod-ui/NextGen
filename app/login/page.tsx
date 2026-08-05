@@ -795,7 +795,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full h-12 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 text-white font-bold text-sm shadow-[0_0_25px_rgba(139,92,246,0.35)] hover:shadow-[0_0_35px_rgba(34,211,238,0.5)] hover:scale-[1.01] active:scale-98 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 group"
+                  className="w-full h-12 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 text-white font-bold text-sm shadow-[0_0_25px_rgba(139,92,246,0.35)] hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] hover:scale-[1.03] active:scale-98 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 group"
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">

@@ -212,7 +212,7 @@ export default function ProgressPage() {
               <Award size={17} className="text-amber-500" />
               Download Report
             </button>
-            <button className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_25px_-4px_rgba(14,165,233,0.4)] hover:scale-[1.02] hover:shadow-[0_12px_30px_-4px_rgba(14,165,233,0.6)] transition-all active:scale-95">
+            <button className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_25px_-4px_rgba(14,165,233,0.4)] hover:scale-[1.02] hover:shadow-[0_40px_100px_-10px_rgba(14,165,233,0.7),0_0_60px_-5px_rgba(14,165,233,0.5)] transition-all active:scale-95">
               <Zap size={17} className="fill-white" />
               Start Next Module
             </button>

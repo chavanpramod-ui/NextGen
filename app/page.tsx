@@ -51,7 +51,7 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
         const Icon = metric.icon;
         const themes = [
           {
-            border: 'hover:-translate-y-2 hover:scale-[1.015] hover:border-cyan-400/90 hover:shadow-[0_28px_75px_-12px_rgba(6,182,212,0.42),0_0_35px_-5px_rgba(6,182,212,0.25)] dark:hover:border-cyan-400/80',
+            border: 'hover:-translate-y-3 hover:scale-[1.03] hover:border-cyan-400/90 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:hover:border-cyan-400/80',
             bg: 'from-white via-cyan-50/40 to-slate-50/90 dark:from-slate-900 dark:via-cyan-950/25 dark:to-slate-950',
             beam: 'via-cyan-500/80 shadow-[0_0_15px_rgba(6,182,212,0.8)] group-hover/metric:shadow-[0_0_28px_rgba(6,182,212,1)]',
             aurora: 'bg-cyan-500/15 dark:bg-cyan-500/25',
@@ -60,7 +60,7 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
             valueGradient: 'from-cyan-600 via-teal-500 to-cyan-500 dark:from-cyan-400 dark:via-teal-300 dark:to-cyan-300'
           },
           {
-            border: 'hover:-translate-y-2 hover:scale-[1.015] hover:border-violet-400/90 hover:shadow-[0_28px_75px_-12px_rgba(139,92,246,0.42),0_0_35px_-5px_rgba(139,92,246,0.25)] dark:hover:border-violet-400/80',
+            border: 'hover:-translate-y-3 hover:scale-[1.03] hover:border-violet-400/90 hover:shadow-[0_40px_100px_-10px_rgba(139,92,246,0.7),0_0_60px_-5px_rgba(139,92,246,0.5)] dark:hover:border-violet-400/80',
             bg: 'from-white via-violet-50/40 to-slate-50/90 dark:from-slate-900 dark:via-violet-950/25 dark:to-slate-950',
             beam: 'via-violet-500/80 shadow-[0_0_15px_rgba(139,92,246,0.8)] group-hover/metric:shadow-[0_0_28px_rgba(139,92,246,1)]',
             aurora: 'bg-violet-500/15 dark:bg-violet-500/25',
@@ -69,7 +69,7 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
             valueGradient: 'from-violet-600 via-purple-500 to-violet-500 dark:from-violet-400 dark:via-purple-300 dark:to-violet-300'
           },
           {
-            border: 'hover:-translate-y-2 hover:scale-[1.015] hover:border-amber-400/90 hover:shadow-[0_28px_75px_-12px_rgba(245,158,11,0.42),0_0_35px_-5px_rgba(245,158,11,0.25)] dark:hover:border-amber-400/80',
+            border: 'hover:-translate-y-3 hover:scale-[1.03] hover:border-amber-400/90 hover:shadow-[0_40px_100px_-10px_rgba(245,158,11,0.7),0_0_60px_-5px_rgba(245,158,11,0.5)] dark:hover:border-amber-400/80',
             bg: 'from-white via-amber-50/40 to-slate-50/90 dark:from-slate-900 dark:via-amber-950/25 dark:to-slate-950',
             beam: 'via-amber-500/80 shadow-[0_0_15px_rgba(245,158,11,0.8)] group-hover/metric:shadow-[0_0_28px_rgba(245,158,11,1)]',
             aurora: 'bg-amber-500/15 dark:bg-amber-500/25',
@@ -118,7 +118,7 @@ function MetricStrip({ metrics }: { metrics: typeof initialMetrics }) {
 
 function PriorityPanel({ priorities }: { priorities: typeof initialPriorities }) {
   return (
-    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.012] hover:border-cyan-400/90 hover:shadow-[0_32px_85px_-15px_rgba(6,182,212,0.38),0_0_42px_-5px_rgba(139,92,246,0.24)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-6">
+    <section className="group/queue relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-5 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.08)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-cyan-400/90 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-6">
       {/* Ambient Radial Glow */}
       <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-150 group-hover/queue:opacity-100 dark:bg-cyan-500/25" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/queue:scale-150 group-hover/queue:opacity-100 dark:bg-violet-500/20" />
@@ -147,7 +147,7 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
 
         <button
           type="button"
-          className="group/btn inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-cyan-400 hover:bg-cyan-500/15 hover:text-cyan-600 hover:shadow-[0_0_20px_rgba(6,182,212,0.35)] dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-cyan-400/60 dark:hover:text-cyan-300"
+          className="group/btn inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/80 bg-white/80 text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-cyan-400 hover:bg-cyan-500/15 hover:text-cyan-600 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-cyan-400/60 dark:hover:text-cyan-300"
           aria-label="Open priority queue"
           title="Open priority queue"
         >
@@ -167,18 +167,18 @@ function PriorityPanel({ priorities }: { priorities: typeof initialPriorities })
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-              className={`group flex items-center justify-between gap-3 rounded-2xl border bg-white/90 p-3.5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:scale-[1.015] dark:bg-slate-900/80 ${
+              className={`group flex items-center justify-between gap-3 rounded-2xl border bg-white/90 p-3.5 shadow-xs transition-all duration-300 hover:-translate-y-3 hover:scale-[1.03] dark:bg-slate-900/80 ${
                 isHigh
-                  ? 'border-l-4 border-slate-200/80 border-l-rose-500 hover:border-rose-400/80 hover:bg-gradient-to-r hover:from-rose-500/10 hover:via-white hover:to-rose-500/5 hover:shadow-[0_12px_30px_-8px_rgba(244,63,94,0.35)] dark:border-slate-800/80 dark:border-l-rose-500 dark:hover:border-rose-400/70 dark:hover:from-rose-500/20 dark:hover:via-slate-900 dark:hover:to-rose-950/40'
+                  ? 'border-l-4 border-slate-200/80 border-l-rose-500 hover:border-rose-400/80 hover:bg-gradient-to-r hover:from-rose-500/10 hover:via-white hover:to-rose-500/5 hover:shadow-[0_40px_100px_-10px_rgba(244,63,94,0.7),0_0_60px_-5px_rgba(244,63,94,0.5)] dark:border-slate-800/80 dark:border-l-rose-500 dark:hover:border-rose-400/70 dark:hover:from-rose-500/20 dark:hover:via-slate-900 dark:hover:to-rose-950/40'
                   : isMedium
-                  ? 'border-l-4 border-slate-200/80 border-l-amber-500 hover:border-amber-400/80 hover:bg-gradient-to-r hover:from-amber-500/10 hover:via-white hover:to-amber-500/5 hover:shadow-[0_12px_30px_-8px_rgba(245,158,11,0.35)] dark:border-slate-800/80 dark:border-l-amber-500 dark:hover:border-amber-400/70 dark:hover:from-amber-500/20 dark:hover:via-slate-900 dark:hover:to-amber-950/40'
-                  : 'border-l-4 border-slate-200/80 border-l-cyan-500 hover:border-cyan-400/80 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:via-white hover:to-cyan-500/5 hover:shadow-[0_12px_30px_-8px_rgba(6,182,212,0.35)] dark:border-slate-800/80 dark:border-l-cyan-500 dark:hover:border-cyan-400/70 dark:hover:from-cyan-500/20 dark:hover:via-slate-900 dark:hover:to-cyan-950/40'
+                  ? 'border-l-4 border-slate-200/80 border-l-amber-500 hover:border-amber-400/80 hover:bg-gradient-to-r hover:from-amber-500/10 hover:via-white hover:to-amber-500/5 hover:shadow-[0_40px_100px_-10px_rgba(245,158,11,0.7),0_0_60px_-5px_rgba(245,158,11,0.5)] dark:border-slate-800/80 dark:border-l-amber-500 dark:hover:border-amber-400/70 dark:hover:from-amber-500/20 dark:hover:via-slate-900 dark:hover:to-amber-950/40'
+                  : 'border-l-4 border-slate-200/80 border-l-cyan-500 hover:border-cyan-400/80 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:via-white hover:to-cyan-500/5 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800/80 dark:border-l-cyan-500 dark:hover:border-cyan-400/70 dark:hover:from-cyan-500/20 dark:hover:via-slate-900 dark:hover:to-cyan-950/40'
               }`}
             >
               <div className="flex min-w-0 items-center gap-3">
                 <button
                   type="button"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-slate-50 text-slate-400 transition-all duration-300 hover:scale-125 hover:rotate-6 hover:border-emerald-500 hover:bg-emerald-500/20 hover:text-emerald-500 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] dark:border-slate-700 dark:bg-slate-800 dark:hover:border-emerald-400 dark:hover:text-emerald-300"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-slate-50 text-slate-400 transition-all duration-300 hover:scale-125 hover:rotate-6 hover:border-emerald-500 hover:bg-emerald-500/20 hover:text-emerald-500 hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] dark:border-slate-700 dark:bg-slate-800 dark:hover:border-emerald-400 dark:hover:text-emerald-300"
                   aria-label={`Mark "${item.title}" complete`}
                 >
                   <CheckCircle2 size={15} />
@@ -252,7 +252,7 @@ function CoursesGrid({
   return (
     <section 
       aria-labelledby="courses-heading"
-      className="group/roadmap relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] hover:border-cyan-400/90 hover:shadow-[0_35px_90px_-15px_rgba(6,182,212,0.38),0_0_45px_-5px_rgba(6,182,212,0.22)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-7"
+      className="group/roadmap relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-cyan-400/90 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-7"
     >
       {/* Ambient Radial Glows */}
       <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/roadmap:scale-150 group-hover/roadmap:opacity-100 dark:bg-cyan-500/25" />
@@ -283,7 +283,7 @@ function CoursesGrid({
           <button 
             type="button" 
             onClick={() => router.push('/courses')}
-            className="group/btn inline-flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white/90 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-teal-500/10 hover:text-cyan-700 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:border-cyan-400/60 dark:hover:text-cyan-300"
+            className="group/btn inline-flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white/90 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-teal-500/10 hover:text-cyan-700 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:border-cyan-400/60 dark:hover:text-cyan-300"
           >
             <span>View all tracks</span>
             <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -436,7 +436,7 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8">
-      <header className="group/header relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_20px_55px_-15px_rgba(6,182,212,0.14)] transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-400/90 hover:bg-gradient-to-br hover:from-white hover:via-cyan-500/[0.03] hover:to-violet-500/[0.04] hover:shadow-[0_30px_80px_-12px_rgba(6,182,212,0.35)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 dark:hover:from-slate-900 dark:hover:via-cyan-950/20 dark:hover:to-violet-950/20 dark:hover:shadow-[0_30px_80px_-12px_rgba(6,182,212,0.4)] sm:p-8">
+      <header className="group/header relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_20px_55px_-15px_rgba(6,182,212,0.14)] transition-all duration-500 hover:-translate-y-3.5 hover:border-cyan-400/90 hover:bg-gradient-to-br hover:from-white hover:via-cyan-500/[0.03] hover:to-violet-500/[0.04] hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 dark:hover:from-slate-900 dark:hover:via-cyan-950/20 dark:hover:to-violet-950/20 dark:hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] sm:p-8">
         {/* Ambient Radial Auroras */}
         <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/header:scale-150 group-hover/header:opacity-100 dark:bg-cyan-500/25" />
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl transition-all duration-700 group-hover/header:scale-150 group-hover/header:opacity-100 dark:bg-violet-500/20" />
@@ -448,7 +448,7 @@ export default function Dashboard() {
           <div className="min-w-0">
             {/* Top Badge Strip */}
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 px-3 py-1 text-xs font-bold text-cyan-700 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-cyan-400 hover:bg-cyan-500/20 hover:shadow-[0_0_18px_rgba(6,182,212,0.35)] dark:border-cyan-400/30 dark:text-cyan-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 px-3 py-1 text-xs font-bold text-cyan-700 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-cyan-400 hover:bg-cyan-500/20 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-cyan-400/30 dark:text-cyan-300">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
@@ -457,12 +457,12 @@ export default function Dashboard() {
                 Next-Gen Dashboard
               </span>
 
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700 shadow-2xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-violet-400 hover:bg-violet-500/10 hover:text-violet-700 hover:shadow-[0_0_18px_rgba(139,92,246,0.25)] dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:text-violet-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700 shadow-2xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-violet-400 hover:bg-violet-500/10 hover:text-violet-700 hover:shadow-[0_40px_100px_-10px_rgba(139,92,246,0.7),0_0_60px_-5px_rgba(139,92,246,0.5)] dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:text-violet-300">
                 <CalendarCheck size={13} className="text-violet-500" />
                 {currentDate}
               </span>
 
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-700 transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-emerald-400 hover:bg-emerald-500/20 hover:shadow-[0_0_18px_rgba(16,185,129,0.35)] dark:border-emerald-400/30 dark:text-emerald-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-700 transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-emerald-400 hover:bg-emerald-500/20 hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] dark:border-emerald-400/30 dark:text-emerald-300">
                 <Activity size={13} className="text-emerald-500" />
                 Live Workspace
               </span>
@@ -486,7 +486,7 @@ export default function Dashboard() {
           <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center">
             {/* Search Bar HUD */}
             <div className="relative z-50 group">
-              <label className="flex items-center rounded-2xl border border-slate-200/80 bg-white/90 px-3.5 py-2.5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-cyan-400 hover:shadow-[0_12px_30px_-5px_rgba(6,182,212,0.3)] focus-within:border-cyan-500 focus-within:ring-4 focus-within:ring-cyan-500/15 dark:border-slate-800 dark:bg-slate-900/90 dark:hover:border-cyan-400/80 dark:focus-within:border-cyan-400">
+              <label className="flex items-center rounded-2xl border border-slate-200/80 bg-white/90 px-3.5 py-2.5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-cyan-400 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] focus-within:border-cyan-500 focus-within:ring-4 focus-within:ring-cyan-500/15 dark:border-slate-800 dark:bg-slate-900/90 dark:hover:border-cyan-400/80 dark:focus-within:border-cyan-400">
                 <Search size={16} className="text-slate-400 transition-colors group-focus-within:text-cyan-500 shrink-0" />
                 <span className="sr-only">Search courses</span>
                 <input
@@ -514,7 +514,7 @@ export default function Dashboard() {
                         <li key={course.id}>
                           <button
                             type="button"
-                            className="group/item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-slate-700 transition-all duration-300 hover:scale-[1.015] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 dark:text-slate-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
+                            className="group/item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-slate-700 transition-all duration-300 hover:scale-[1.03] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 dark:text-slate-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
                             onClick={() => {
                               setSearchQuery(course.title);
                               router.push(`/courses/${course.id}`);
@@ -545,7 +545,7 @@ export default function Dashboard() {
                       <li key={i}>
                         <button
                           type="button"
-                          className="group/item flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-700 transition-all duration-300 hover:scale-[1.015] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 dark:text-slate-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
+                          className="group/item flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-700 transition-all duration-300 hover:scale-[1.03] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 dark:text-slate-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
                           onClick={() => {
                             setSearchQuery(term);
                           }}
@@ -565,7 +565,7 @@ export default function Dashboard() {
               type="button"
               onClick={handleOptimize}
               disabled={isOptimizing}
-              className="group/opt relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 px-6 py-3 text-sm font-bold text-white shadow-[0_0_25px_rgba(139,92,246,0.45)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-gradient-to-r hover:from-cyan-500 hover:via-indigo-600 hover:to-violet-600 hover:shadow-[0_15px_35px_rgba(6,182,212,0.7)] active:scale-95 disabled:opacity-75"
+              className="group/opt relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 px-6 py-3 text-sm font-bold text-white shadow-[0_0_25px_rgba(139,92,246,0.45)] transition-all duration-300 hover:-translate-y-3 hover:scale-105 hover:bg-gradient-to-r hover:from-cyan-500 hover:via-indigo-600 hover:to-violet-600 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] active:scale-95 disabled:opacity-75"
             >
               <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 transition-opacity duration-300 group-hover/opt:opacity-100" />
               {isOptimizing ? (
@@ -594,7 +594,7 @@ export default function Dashboard() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="group/milestone relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 p-5 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.012] hover:border-emerald-400/90 hover:shadow-[0_32px_85px_-15px_rgba(16,185,129,0.38),0_0_42px_-5px_rgba(20,184,166,0.24)] dark:border-slate-800/80 dark:from-slate-900 dark:via-emerald-950/25 dark:to-slate-950 dark:hover:border-emerald-400/80 sm:p-6"
+              className="group/milestone relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 p-5 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-emerald-400/90 hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] dark:border-slate-800/80 dark:from-slate-900 dark:via-emerald-950/25 dark:to-slate-950 dark:hover:border-emerald-400/80 sm:p-6"
             >
               {/* Ambient Radial Auroras */}
               <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/milestone:scale-150 group-hover/milestone:opacity-100 dark:bg-emerald-500/25" />

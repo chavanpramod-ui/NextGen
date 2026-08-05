@@ -15,7 +15,7 @@ const THEMES = [
     gradient: 'from-cyan-500 via-blue-600 to-indigo-600', 
     border: 'border-cyan-400/50', 
     hoverBorder: 'hover:border-cyan-400 dark:hover:border-cyan-300',
-    hoverShadow: 'hover:shadow-[0_0_35px_rgba(34,211,238,0.35)] dark:hover:shadow-[0_0_45px_rgba(34,211,238,0.45)]',
+    hoverShadow: 'hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] dark:hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)]',
     text: 'text-cyan-400', 
     bg: 'bg-cyan-500/10', 
     glow: 'shadow-[0_0_35px_rgba(34,211,238,0.35)]',
@@ -27,7 +27,7 @@ const THEMES = [
     gradient: 'from-emerald-500 via-teal-600 to-cyan-600', 
     border: 'border-emerald-400/50', 
     hoverBorder: 'hover:border-emerald-400 dark:hover:border-emerald-300',
-    hoverShadow: 'hover:shadow-[0_0_35px_rgba(16,185,129,0.35)] dark:hover:shadow-[0_0_45px_rgba(16,185,129,0.45)]',
+    hoverShadow: 'hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] dark:hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)]',
     text: 'text-emerald-400', 
     bg: 'bg-emerald-500/10', 
     glow: 'shadow-[0_0_35px_rgba(16,185,129,0.35)]',
@@ -39,7 +39,7 @@ const THEMES = [
     gradient: 'from-amber-500 via-rose-500 to-purple-600', 
     border: 'border-rose-400/50', 
     hoverBorder: 'hover:border-rose-400 dark:hover:border-rose-300',
-    hoverShadow: 'hover:shadow-[0_0_35px_rgba(244,63,94,0.35)] dark:hover:shadow-[0_0_45px_rgba(244,63,94,0.45)]',
+    hoverShadow: 'hover:shadow-[0_40px_100px_-10px_rgba(244,63,94,0.7),0_0_60px_-5px_rgba(244,63,94,0.5)] dark:hover:shadow-[0_40px_100px_-10px_rgba(244,63,94,0.7),0_0_60px_-5px_rgba(244,63,94,0.5)]',
     text: 'text-rose-400', 
     bg: 'bg-rose-500/10', 
     glow: 'shadow-[0_0_35px_rgba(244,63,94,0.35)]',
@@ -51,7 +51,7 @@ const THEMES = [
     gradient: 'from-violet-600 via-purple-600 to-pink-500', 
     border: 'border-purple-400/50', 
     hoverBorder: 'hover:border-purple-400 dark:hover:border-purple-300',
-    hoverShadow: 'hover:shadow-[0_0_35px_rgba(168,85,247,0.35)] dark:hover:shadow-[0_0_45px_rgba(168,85,247,0.45)]',
+    hoverShadow: 'hover:shadow-[0_40px_100px_-10px_rgba(168,85,247,0.7),0_0_60px_-5px_rgba(168,85,247,0.5)] dark:hover:shadow-[0_40px_100px_-10px_rgba(168,85,247,0.7),0_0_60px_-5px_rgba(168,85,247,0.5)]',
     text: 'text-purple-400', 
     bg: 'bg-purple-500/10', 
     glow: 'shadow-[0_0_35px_rgba(168,85,247,0.35)]',
@@ -63,7 +63,7 @@ const THEMES = [
     gradient: 'from-red-500 via-rose-600 to-orange-500', 
     border: 'border-red-400/50', 
     hoverBorder: 'hover:border-red-400 dark:hover:border-red-300',
-    hoverShadow: 'hover:shadow-[0_0_35px_rgba(239,68,68,0.35)] dark:hover:shadow-[0_0_45px_rgba(239,68,68,0.45)]',
+    hoverShadow: 'hover:shadow-[0_40px_100px_-10px_rgba(239,68,68,0.7),0_0_60px_-5px_rgba(239,68,68,0.5)] dark:hover:shadow-[0_40px_100px_-10px_rgba(239,68,68,0.7),0_0_60px_-5px_rgba(239,68,68,0.5)]',
     text: 'text-red-400', 
     bg: 'bg-red-500/10', 
     glow: 'shadow-[0_0_35px_rgba(239,68,68,0.35)]',
@@ -207,7 +207,7 @@ export default function ProfilePage() {
             {/* Digital ID Card Button with Shimmer and Neon Hover */}
             <button
               onClick={() => setShowIdCardModal(true)}
-              className="group relative inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-white/15 bg-white/80 dark:bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-cyan-400/60 dark:hover:border-cyan-400/60 hover:text-cyan-500 dark:hover:text-cyan-300 transition-all duration-300 shadow-sm hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:scale-[1.03] active:scale-95 overflow-hidden"
+              className="group relative inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-white/15 bg-white/80 dark:bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/10 hover:border-cyan-400/60 dark:hover:border-cyan-400/60 hover:text-cyan-500 dark:hover:text-cyan-300 transition-all duration-300 shadow-sm hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] hover:scale-[1.03] active:scale-95 overflow-hidden"
             >
               <CreditCard size={16} className="text-cyan-400 transition-transform duration-300 group-hover:rotate-12" />
               <span>Digital ID Card</span>
@@ -216,7 +216,7 @@ export default function ProfilePage() {
             {!isEditing ? (
               <button 
                 onClick={() => setIsEditing(true)}
-                className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:shadow-[0_0_35px_rgba(34,211,238,0.7)] hover:scale-[1.03] active:scale-95 transition-all duration-300 overflow-hidden"
+                className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] hover:scale-[1.03] active:scale-95 transition-all duration-300 overflow-hidden"
               >
                 {/* Button Light Shimmer */}
                 <span className="absolute inset-0 w-1/2 h-full bg-white/25 skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-1000 ease-out pointer-events-none" />
@@ -234,7 +234,7 @@ export default function ProfilePage() {
                 <button 
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.7)] hover:scale-[1.03] active:scale-95 transition-all duration-300 disabled:opacity-70 overflow-hidden"
+                  className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] hover:scale-[1.03] active:scale-95 transition-all duration-300 disabled:opacity-70 overflow-hidden"
                 >
                   <span className="absolute inset-0 w-1/2 h-full bg-white/25 skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-1000 ease-out pointer-events-none" />
                   {isSaving ? (
@@ -292,7 +292,7 @@ export default function ProfilePage() {
             
             {/* Avatar Circle with Hover Overlay */}
             <div className="relative mt-8 mb-4 group cursor-pointer">
-              <div className={`h-32 w-32 rounded-full bg-gradient-to-tr ${selectedTheme.gradient} p-1.5 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(34,211,238,0.5)] ${selectedTheme.glow}`}>
+              <div className={`h-32 w-32 rounded-full bg-gradient-to-tr ${selectedTheme.gradient} p-1.5 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] ${selectedTheme.glow}`}>
                 <div className="h-full w-full rounded-full bg-white dark:bg-slate-950 flex items-center justify-center text-4xl font-extrabold text-slate-800 dark:text-white overflow-hidden relative">
                   {profilePicture ? (
                     <img src={profilePicture} alt="Profile" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -718,7 +718,7 @@ export default function ProfilePage() {
               </div>
 
               {/* Ultra-Premium Data Privacy Assurance Shield Box */}
-              <div className="relative overflow-hidden rounded-2xl border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-violet-500/5 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.35)] group/privacy">
+              <div className="relative overflow-hidden rounded-2xl border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-violet-500/5 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.03] hover:border-cyan-400 hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] group/privacy">
                 <div className="flex items-start sm:items-center gap-4">
                   <div className="h-11 w-11 rounded-2xl bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500 shrink-0 group-hover/privacy:scale-110 group-hover/privacy:bg-cyan-500 group-hover/privacy:text-slate-950 transition-all duration-300 shadow-sm">
                     <Shield size={22} className="animate-pulse" />
@@ -890,7 +890,7 @@ export default function ProfilePage() {
               </div>
 
               {/* Status Banner */}
-              <div className="relative overflow-hidden rounded-2xl border border-purple-500/30 dark:border-purple-400/30 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.35)] group/banner">
+              <div className="relative overflow-hidden rounded-2xl border border-purple-500/30 dark:border-purple-400/30 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.03] hover:border-purple-400 hover:shadow-[0_40px_100px_-10px_rgba(168,85,247,0.7),0_0_60px_-5px_rgba(168,85,247,0.5)] group/banner">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3.5">
                     <div className="h-11 w-11 rounded-2xl bg-purple-500/10 dark:bg-purple-400/10 border border-purple-500/30 flex items-center justify-center text-purple-500 shrink-0 group-hover/banner:scale-110 group-hover/banner:bg-purple-500 group-hover/banner:text-slate-950 transition-all duration-300 shadow-sm">
@@ -1006,7 +1006,7 @@ export default function ProfilePage() {
               </div>
 
               {/* AI Skill Matching Banner */}
-              <div className="relative overflow-hidden rounded-2xl border border-blue-500/30 dark:border-blue-400/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.01] hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.35)] group/banner">
+              <div className="relative overflow-hidden rounded-2xl border border-blue-500/30 dark:border-blue-400/30 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent p-5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.03] hover:border-blue-400 hover:shadow-[0_40px_100px_-10px_rgba(59,130,246,0.7),0_0_60px_-5px_rgba(59,130,246,0.5)] group/banner">
                 <div className="flex items-start sm:items-center gap-4">
                   <div className="h-11 w-11 rounded-2xl bg-blue-500/10 dark:bg-blue-400/10 border border-blue-500/30 flex items-center justify-center text-blue-500 shrink-0 group-hover/banner:scale-110 group-hover/banner:bg-blue-500 group-hover/banner:text-white transition-all duration-300 shadow-sm">
                     <Sparkles size={22} className="animate-spin-slow" />

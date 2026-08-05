@@ -81,7 +81,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="group/tile relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-cyan-50/20 to-slate-50/90 p-6 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.012] hover:border-cyan-400/90 hover:shadow-[0_32px_85px_-15px_rgba(6,182,212,0.38),0_0_40px_-5px_rgba(6,182,212,0.22)] dark:border-slate-800/80 dark:from-slate-900 dark:via-cyan-950/20 dark:to-slate-950 dark:hover:border-cyan-400/80"
+      className="group/tile relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-cyan-50/20 to-slate-50/90 p-6 shadow-[0_15px_40px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-cyan-400/90 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800/80 dark:from-slate-900 dark:via-cyan-950/20 dark:to-slate-950 dark:hover:border-cyan-400/80"
     >
       {/* Ambient Radial Auroras */}
       <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-cyan-500/25" />
