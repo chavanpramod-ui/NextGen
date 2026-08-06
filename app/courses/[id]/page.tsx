@@ -38,9 +38,9 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
 
   if (!course) {
     return (
-      <div className="flex min-h-screen items-center justify-center p-8 text-center text-slate-600 dark:text-slate-400">
+      <div className="flex min-h-screen items-center justify-center p-8 text-center text-zinc-600 dark:text-zinc-400">
         <div>
-          <h2 className="mb-4 text-2xl font-semibold text-slate-900 dark:text-slate-100">Course not found</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Course not found</h2>
           <button onClick={() => router.push('/')} className="primary-button">
             Return to Dashboard
           </button>
@@ -67,10 +67,10 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
   };
 
   const accentColors: Record<string, string> = {
-    cyan: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30 shadow-[0_0_15px_rgba(34,211,238,0.15)]',
-    violet: 'text-violet-400 bg-violet-400/10 border-violet-400/30 shadow-[0_0_15px_rgba(139,92,246,0.15)]',
-    emerald: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/30 shadow-[0_0_15px_rgba(52,211,153,0.15)]',
-    amber: 'text-amber-400 bg-amber-400/10 border-amber-400/30 shadow-[0_0_15px_rgba(251,191,36,0.15)]',
+    cyan: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30 shadow-sm',
+    violet: 'text-violet-400 bg-violet-400/10 border-violet-400/30 shadow-sm',
+    emerald: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/30 shadow-sm',
+    amber: 'text-amber-400 bg-amber-400/10 border-amber-400/30 shadow-sm',
   };
 
   const currentAccent = accentColors[course.accent] || accentColors.cyan;
@@ -81,7 +81,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
       <header className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <button
           onClick={() => router.push('/')}
-          className="group flex w-fit items-center gap-2 rounded-lg py-2 pl-2 pr-4 text-sm font-medium text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:bg-slate-800/50 hover:text-slate-900 dark:text-slate-100"
+          className="group flex w-fit items-center gap-2 rounded-lg py-2 pl-2 pr-4 text-sm font-medium text-zinc-600 dark:text-zinc-400 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 hover:text-zinc-900 dark:text-zinc-100"
         >
           <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
           Back to Dashboard
@@ -102,22 +102,22 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-md border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/50 px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 backdrop-blur-md">
+                  <span className="rounded-md border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800/50 px-2 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300 backdrop-blur-md">
                     {course.status}
                   </span>
-                  <span className="flex items-center gap-1 text-sm text-slate-600 dark:text-slate-400">
+                  <span className="flex items-center gap-1 text-sm text-zinc-600 dark:text-zinc-400">
                     <Clock size={14} />
                     {course.duration}
                   </span>
                 </div>
-                <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-900 dark:text-slate-50 md:text-4xl">
+                <h1 className="mt-3 text-3xl font-semibold tracking-normal text-zinc-900 dark:text-zinc-50 md:text-4xl">
                   {course.title}
                 </h1>
-                <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p className="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   {course.description}
                 </p>
-                <div className="mt-4 text-sm text-slate-900 dark:text-slate-500">
-                  Instructor: <span className="font-medium text-slate-700 dark:text-slate-300">{course.instructor}</span>
+                <div className="mt-4 text-sm text-zinc-900 dark:text-zinc-500">
+                  Instructor: <span className="font-medium text-zinc-700 dark:text-zinc-300">{course.instructor}</span>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="dashboard-panel aspect-video w-full overflow-hidden relative group cursor-pointer border-slate-300 dark:border-slate-700/50"
+            className="dashboard-panel aspect-video w-full overflow-hidden relative group cursor-pointer border-zinc-300 dark:border-zinc-700/50"
             onClick={() => {
               if (!isPlaying) setIsPlaying(true);
             }}
@@ -142,8 +142,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
               />
             ) : (
               <>
-                <div className="absolute inset-0 bg-white dark:bg-slate-900/80 flex items-center justify-center transition-colors group-hover:bg-white dark:bg-slate-900/60 z-10">
-                  <div className="h-20 w-20 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm border border-cyan-400/30 transition-transform group-hover:scale-110">
+                <div className="absolute inset-0 bg-white dark:bg-zinc-900/80 flex items-center justify-center transition-colors group-hover:bg-white dark:bg-zinc-900/60 z-10">
+                  <div className="h-20 w-20 rounded-full bg-cyan-500/20 flex items-center justify-center backdrop-blur-sm border border-cyan-400/30 transition-transform group-">
                     <PlayCircle size={40} className="text-cyan-400 ml-1" />
                   </div>
                 </div>
@@ -165,11 +165,11 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             transition={{ delay: 0.2 }}
             className="dashboard-panel p-6"
           >
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Course Progress</h2>
+            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Course Progress</h2>
             <div className="mt-6">
               <div className="mb-2 flex items-center justify-between text-sm">
-                <span className="text-slate-600 dark:text-slate-400">{course.progress}% Completed</span>
-                <span className="font-medium text-slate-900 dark:text-slate-100">{course.progress === 100 ? 'Done' : 'In Progress'}</span>
+                <span className="text-zinc-600 dark:text-zinc-400">{course.progress}% Completed</span>
+                <span className="font-medium text-zinc-900 dark:text-zinc-100">{course.progress === 100 ? 'Done' : 'In Progress'}</span>
               </div>
               <ProgressIndicator progress={course.progress} size="large" accent={course.accent} />
             </div>
@@ -182,8 +182,8 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
             className="dashboard-panel flex-1 p-6"
           >
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Curriculum</h2>
-              <span className="text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">{course.modules.length} items</span>
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Curriculum</h2>
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">{course.modules.length} items</span>
             </div>
             
             <div className="space-y-3">
@@ -191,24 +191,24 @@ export default function CoursePage({ params }: { params: Promise<{ id: string }>
                 <button
                   key={module.id}
                   onClick={() => handleToggleModule(module.id)}
-                  className={`w-full flex items-start gap-4 rounded-xl border p-4 text-left transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-xl ${
+                  className={`w-full flex items-start gap-4 rounded-xl border p-4 text-left transition-colors duration-200 ease-out  hover:shadow-xl ${
                     module.completed 
                       ? 'border-emerald-400/20 bg-emerald-400/5 hover:border-emerald-400/40 hover:shadow-emerald-400/10' 
-                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 hover:border-cyan-400/30 hover:bg-slate-100 dark:hover:bg-slate-800/80 hover:shadow-cyan-400/10'
+                      : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 hover:border-cyan-400/30 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:shadow-cyan-400/10'
                   }`}
                 >
                   <div className="mt-0.5 shrink-0">
                     {module.completed ? (
                       <CheckCircle2 size={20} className="text-emerald-400" />
                     ) : (
-                      <Circle size={20} className="text-slate-600" />
+                      <Circle size={20} className="text-zinc-600" />
                     )}
                   </div>
                   <div>
-                    <p className={`text-sm font-medium ${module.completed ? 'text-slate-700 dark:text-slate-300' : 'text-slate-800 dark:text-slate-200'}`}>
+                    <p className={`text-sm font-medium ${module.completed ? 'text-zinc-700 dark:text-zinc-300' : 'text-zinc-800 dark:text-zinc-200'}`}>
                       {idx + 1}. {module.title}
                     </p>
-                    <p className="mt-1 text-xs text-slate-900 dark:text-slate-500">
+                    <p className="mt-1 text-xs text-zinc-900 dark:text-zinc-500">
                       {module.completed ? 'Completed' : 'Pending'}
                     </p>
                   </div>

@@ -176,7 +176,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#070913] text-slate-900 dark:text-slate-100 flex flex-col justify-between relative overflow-hidden transition-colors duration-500 font-sans">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#070913] text-zinc-900 dark:text-zinc-100 flex flex-col justify-between relative overflow-hidden transition-colors duration-500 font-sans">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-gradient-to-br from-cyan-500/15 via-blue-500/10 to-transparent blur-[120px] pointer-events-none" />
@@ -185,7 +185,7 @@ export default function SignUpPage() {
       {/* Header / Navigation Bar */}
       <header className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 group-hover:scale-105 transition-transform">
+          <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 group- transition-transform">
             <GraduationCap size={22} className="animate-pulse" />
           </div>
           <div>
@@ -201,21 +201,21 @@ export default function SignUpPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="hidden sm:flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800 px-4 py-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm transition-all"
+            className="hidden sm:flex items-center gap-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 hover:text-cyan-600 dark:hover:text-cyan-400 bg-white/80 dark:bg-zinc-900/80 hover:bg-white dark:hover:bg-zinc-800 px-4 py-2.5 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm transition-all"
           >
             <ArrowLeft size={14} />
             <span>Back to Login</span>
           </Link>
 
           {mounted && (
-            <div className="flex items-center rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-900/80 p-1 shadow-sm backdrop-blur-md">
+            <div className="flex items-center rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/80 dark:bg-zinc-900/80 p-1 shadow-sm backdrop-blur-md">
               <button
                 type="button"
                 onClick={() => setTheme('light')}
                 className={`p-2 rounded-lg text-xs font-semibold transition-all ${
                   theme === 'light'
                     ? 'bg-cyan-500 text-white shadow-md'
-                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'
                 }`}
                 title="Light Mode"
               >
@@ -227,7 +227,7 @@ export default function SignUpPage() {
                 className={`p-2 rounded-lg text-xs font-semibold transition-all ${
                   theme === 'dark'
                     ? 'bg-cyan-500 text-white shadow-md'
-                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'
                 }`}
                 title="Dark Mode"
               >
@@ -239,7 +239,7 @@ export default function SignUpPage() {
                 className={`p-2 rounded-lg text-xs font-semibold transition-all ${
                   theme === 'system'
                     ? 'bg-cyan-500 text-white shadow-md'
-                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'
                 }`}
                 title="System Theme"
               >
@@ -261,7 +261,7 @@ export default function SignUpPage() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 w-full"
           >
-            <div className="relative rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-[#0c0e19]/85 p-6 sm:p-8 lg:p-10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.7)] backdrop-blur-3xl overflow-hidden">
+            <div className="relative rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-[#0c0e19]/85 p-6 sm:p-8 lg:p-10 shadow-sm dark:shadow-sm backdrop-blur-3xl overflow-hidden">
               
               {/* Shimmer Top Bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600" />
@@ -271,10 +271,10 @@ export default function SignUpPage() {
                   <UserPlus size={14} />
                   <span>Student Onboarding Portal</span>
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
                   Create Your Student Account
                 </h1>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                   Enter your information below to establish your permanent campus identity and unlock AI pair programming tools.
                 </p>
               </div>
@@ -312,7 +312,7 @@ export default function SignUpPage() {
                 {/* Row 1: Full Name & Username */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                       <User size={14} className="text-cyan-500" /> Full Name <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -322,13 +322,13 @@ export default function SignUpPage() {
                         onChange={(e) => { setName(e.target.value); setErrorMsg(''); }}
                         placeholder="Alex Morgan"
                         required
-                        className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        className="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center justify-between">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
                         <AtSign size={14} className="text-cyan-500" /> Student Username <span className="text-red-500">*</span>
                       </span>
@@ -339,14 +339,14 @@ export default function SignUpPage() {
                       )}
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-3.5 text-slate-400 dark:text-slate-500 font-bold text-sm">@</span>
+                      <span className="absolute left-3.5 top-3.5 text-zinc-400 dark:text-zinc-500 font-bold text-sm">@</span>
                       <input
                         type="text"
                         value={username}
                         onChange={handleUsernameChange}
                         placeholder="alex_morgan26"
                         required
-                        className="w-full h-12 pl-9 pr-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-mono font-bold text-sm placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        className="w-full h-12 pl-9 pr-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-mono font-bold text-sm placeholder:text-zinc-400 placeholder:font-normal focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                       />
                     </div>
                   </div>
@@ -354,7 +354,7 @@ export default function SignUpPage() {
 
                 {/* Row 2: University Email */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                     <Mail size={14} className="text-cyan-500" /> University Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -364,7 +364,7 @@ export default function SignUpPage() {
                       onChange={(e) => { setEmail(e.target.value); setErrorMsg(''); }}
                       placeholder="student.name@university.edu"
                       required
-                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      className="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                     />
                     {email.includes('@') && email.includes('.') && (
                       <CheckCircle size={18} className="absolute right-3.5 top-3.5 text-emerald-500" />
@@ -375,7 +375,7 @@ export default function SignUpPage() {
                 {/* Row 3: Password & Confirm Password */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center justify-between">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
                         <Lock size={14} className="text-cyan-500" /> Password <span className="text-red-500">*</span>
                       </span>
@@ -387,12 +387,12 @@ export default function SignUpPage() {
                         onChange={(e) => { setPassword(e.target.value); setErrorMsg(''); }}
                         placeholder="••••••••••••"
                         required
-                        className="w-full h-12 pl-4 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        className="w-full h-12 pl-4 pr-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                        className="absolute right-3.5 top-3.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors"
                       >
                         {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                       </button>
@@ -400,7 +400,7 @@ export default function SignUpPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center justify-between">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
                         <Lock size={14} className="text-cyan-500" /> Confirm Password <span className="text-red-500">*</span>
                       </span>
@@ -417,16 +417,16 @@ export default function SignUpPage() {
                         onChange={(e) => { setConfirmPassword(e.target.value); setErrorMsg(''); }}
                         placeholder="••••••••••••"
                         required
-                        className={`w-full h-12 pl-4 pr-10 rounded-xl border bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-all shadow-inner ${
+                        className={`w-full h-12 pl-4 pr-10 rounded-xl border bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 transition-all shadow-inner ${
                           confirmPassword && password !== confirmPassword
                             ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
-                            : 'border-slate-200 dark:border-slate-800 focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-cyan-500/20'
+                            : 'border-zinc-200 dark:border-zinc-800 focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-cyan-500/20'
                         }`}
                       />
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                        className="absolute right-3.5 top-3.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors"
                       >
                         {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                       </button>
@@ -436,9 +436,9 @@ export default function SignUpPage() {
 
                 {/* Password Strength Meter */}
                 {password.length > 0 && (
-                  <div className="p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-1.5 transition-all">
+                  <div className="p-3 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 space-y-1.5 transition-all">
                     <div className="flex items-center justify-between text-xs font-semibold">
-                      <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                      <span className="text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5">
                         <ShieldCheck size={14} className="text-cyan-500" /> Password Security Level:
                       </span>
                       <span className={`font-bold ${
@@ -451,10 +451,10 @@ export default function SignUpPage() {
                       {[1, 2, 3, 4].map((step) => (
                         <div
                           key={step}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                          className={`h-1.5 rounded-full transition-colors duration-200 ${
                             step <= strength
                               ? strengthColors[strength]
-                              : 'bg-slate-200 dark:bg-slate-800'
+                              : 'bg-slate-200 dark:bg-zinc-800'
                           }`}
                         />
                       ))}
@@ -465,13 +465,13 @@ export default function SignUpPage() {
                 {/* Row 4: Academic Department & Year of Study */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                       <Building2 size={14} className="text-cyan-500" /> Academic Department
                     </label>
                     <select
                       value={course}
                       onChange={(e) => setCourse(e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      className="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                     >
                       <option value="Computer Science & AI">Computer Science & AI</option>
                       <option value="Data Science & Big Data">Data Science & Big Data</option>
@@ -483,7 +483,7 @@ export default function SignUpPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                       <Award size={14} className="text-cyan-500" /> Academic Standing
                     </label>
                     <div className="grid grid-cols-4 gap-1.5">
@@ -495,7 +495,7 @@ export default function SignUpPage() {
                           className={`h-12 rounded-xl text-xs font-bold transition-all flex items-center justify-center border ${
                             yearOfStudy === year
                               ? 'bg-cyan-500 text-white border-cyan-500 shadow-md shadow-cyan-500/20 scale-[1.02]'
-                              : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-cyan-500/50'
+                              : 'bg-zinc-50 dark:bg-zinc-900/60 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-cyan-500/50'
                           }`}
                         >
                           {year.split(' ')[0]}
@@ -508,7 +508,7 @@ export default function SignUpPage() {
                 {/* Row 5: University Name & Student ID */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                       <Building2 size={14} className="text-cyan-500" /> University / Institution <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -517,11 +517,11 @@ export default function SignUpPage() {
                       onChange={(e) => setUniversity(e.target.value)}
                       placeholder="e.g. Stanford University, IIT Bombay, Harvard"
                       required
-                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      className="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                       <KeyRound size={14} className="text-cyan-500" /> Student ID / Roll Number <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -530,7 +530,7 @@ export default function SignUpPage() {
                       onChange={(e) => setStudentId(e.target.value)}
                       placeholder="e.g. STU-2026-8841 or Roll No."
                       required
-                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-mono font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      className="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-mono font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                     />
                   </div>
                 </div>
@@ -538,7 +538,7 @@ export default function SignUpPage() {
                 {/* Row 6: Personal Biography & Skills */}
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center gap-1.5">
                       <BookOpen size={14} className="text-cyan-500" /> Personal Biography / Career Vision
                     </label>
                     <textarea
@@ -546,65 +546,65 @@ export default function SignUpPage() {
                       onChange={(e) => setBio(e.target.value)}
                       rows={2}
                       placeholder="Tell us about your academic goals, projects, and career aspirations..."
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5 flex items-center justify-between">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5 flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
                         <Award size={14} className="text-cyan-500" /> Skills & Technologies (Comma Separated)
                       </span>
-                      <span className="text-[10px] text-slate-400 font-normal">e.g. React, Python, JavaScript, SQL</span>
+                      <span className="text-[10px] text-zinc-400 font-normal">e.g. React, Python, JavaScript, SQL</span>
                     </label>
                     <input
                       type="text"
                       value={skillsInput}
                       onChange={(e) => setSkillsInput(e.target.value)}
                       placeholder="React, Next.js, Python, TypeScript, Problem Solving"
-                      className="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 text-slate-900 dark:text-white font-medium text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      className="w-full h-12 px-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-white font-medium text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all shadow-inner"
                     />
                   </div>
                 </div>
 
                 {/* Personal Connected Profiles Section (Optional) */}
-                <div className="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80 space-y-3">
+                <div className="p-4 rounded-2xl bg-zinc-100/70 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
                       <span>Personal Connected Profiles</span>
                     </h4>
-                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Optional • Give & Edit Your Own Links</span>
+                    <span className="text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase">Optional • Give & Edit Your Own Links</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">GitHub Profile</label>
+                      <label className="block text-[10px] font-bold text-zinc-600 dark:text-zinc-400 uppercase mb-1">GitHub Profile</label>
                       <input
                         type="url"
                         value={portfolioUrl}
                         onChange={(e) => setPortfolioUrl(e.target.value)}
                         placeholder="https://github.com/..."
-                        className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
+                        className="w-full h-10 px-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-xs text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
                       />
                     </div>
                     <div>
-                      <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">LinkedIn Profile</label>
+                      <label className="block text-[10px] font-bold text-zinc-600 dark:text-zinc-400 uppercase mb-1">LinkedIn Profile</label>
                       <input
                         type="url"
                         value={linkedinUrl}
                         onChange={(e) => setLinkedinUrl(e.target.value)}
                         placeholder="https://linkedin.com/in/..."
-                        className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
+                        className="w-full h-10 px-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-xs text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
                       />
                     </div>
                     <div>
-                      <label className="block text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">LeetCode Profile</label>
+                      <label className="block text-[10px] font-bold text-zinc-600 dark:text-zinc-400 uppercase mb-1">LeetCode Profile</label>
                       <input
                         type="url"
                         value={leetcodeUrl}
                         onChange={(e) => setLeetcodeUrl(e.target.value)}
                         placeholder="https://leetcode.com/u/..."
-                        className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
+                        className="w-full h-10 px-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-xs text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 transition-all shadow-inner"
                       />
                     </div>
                   </div>
@@ -617,9 +617,9 @@ export default function SignUpPage() {
                       type="checkbox"
                       checked={agreeTerms}
                       onChange={(e) => setAgreeTerms(e.target.checked)}
-                      className="mt-0.5 w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-cyan-500 focus:ring-cyan-500/20 bg-slate-100 dark:bg-slate-900"
+                      className="mt-0.5 w-4 h-4 rounded border-zinc-300 dark:border-zinc-700 text-cyan-500 focus:ring-cyan-500/20 bg-zinc-100 dark:bg-zinc-900"
                     />
-                    <span className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">
+                    <span className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed group-hover:text-zinc-900 dark:group-hover:text-zinc-200 transition-colors">
                       I certify that I am a registered student and agree to abide by the{' '}
                       <span className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline">Student Code of Conduct</span>,{' '}
                       <span className="font-semibold text-cyan-600 dark:text-cyan-400 hover:underline">Academic Integrity Policy</span>, and NextGen Terms of Service.
@@ -655,8 +655,8 @@ export default function SignUpPage() {
               </form>
 
               {/* Bottom Login Redirect Banner */}
-              <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 text-center">
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <div className="mt-8 pt-6 border-t border-zinc-200/80 dark:border-zinc-800/80 text-center">
+                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
                   Already have an active student account?{' '}
                   <Link
                     href="/login"
@@ -681,7 +681,7 @@ export default function SignUpPage() {
               
               {/* Preview Header */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 flex items-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 flex items-center gap-1.5">
                   <Sparkles size={14} className="text-cyan-500" /> Live Campus ID Preview
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-extrabold uppercase tracking-wider border border-emerald-500/20 flex items-center gap-1">
@@ -690,7 +690,7 @@ export default function SignUpPage() {
               </div>
 
               {/* Holographic ID Card */}
-              <div className="relative rounded-3xl p-6 sm:p-7 overflow-hidden border border-white/20 dark:border-slate-700/60 bg-gradient-to-br from-slate-900 via-[#11162b] to-indigo-950 text-white shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:scale-[1.02] group">
+              <div className="relative rounded-3xl p-6 sm:p-7 overflow-hidden border border-white/20 dark:border-zinc-700/60 bg-gradient-to-br from-slate-900 via-[#11162b] to-indigo-950 text-white shadow-sm transform transition-colors duration-200 hover:scale-[1.02] group">
                 
                 {/* Holographic Shimmer Bar & Glows */}
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400" />
@@ -719,7 +719,7 @@ export default function SignUpPage() {
                       <span className="inline-block px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-extrabold uppercase tracking-wider text-cyan-300 border border-white/10">
                         STUDENT ID
                       </span>
-                      <p className="text-[11px] font-mono text-slate-300 mt-1 font-semibold">
+                      <p className="text-[11px] font-mono text-zinc-300 mt-1 font-semibold">
                         {studentId.trim() || 'STU-ID-PENDING'}
                       </p>
                     </div>
@@ -728,7 +728,7 @@ export default function SignUpPage() {
                   {/* Middle Details */}
                   <div className="grid grid-cols-2 gap-4 my-2">
                     <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                         University
                       </span>
                       <span className="font-bold text-xs sm:text-sm text-white flex items-center gap-1 mt-0.5 truncate">
@@ -736,7 +736,7 @@ export default function SignUpPage() {
                       </span>
                     </div>
                     <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                         Department
                       </span>
                       <span className="font-bold text-xs sm:text-sm text-white truncate block mt-0.5">
@@ -748,7 +748,7 @@ export default function SignUpPage() {
                   {/* Bottom Row / Security QR */}
                   <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
                     <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                         Academic Standing
                       </span>
                       <span className="inline-block mt-0.5 px-2.5 py-0.5 rounded-md bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 font-extrabold text-xs">
@@ -767,8 +767,8 @@ export default function SignUpPage() {
               </div>
 
               {/* What You Unlock Feature Box */}
-              <div className="rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-7 shadow-lg backdrop-blur-3xl">
-                <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <div className="rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-7 shadow-lg backdrop-blur-3xl">
+                <h4 className="text-xs font-extrabold uppercase tracking-wider text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
                   <Sparkles size={16} className="text-cyan-500" />
                   <span>Instant Student Benefits Included</span>
                 </h4>
@@ -779,8 +779,8 @@ export default function SignUpPage() {
                       <Check size={14} className="stroke-[3]" />
                     </div>
                     <div>
-                      <h5 className="text-xs font-bold text-slate-900 dark:text-white">AI Pair Programming Tutor</h5>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                      <h5 className="text-xs font-bold text-zinc-900 dark:text-white">AI Pair Programming Tutor</h5>
+                      <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">
                         Access 24/7 intelligent code debugging and algorithm explanation tools.
                       </p>
                     </div>
@@ -791,8 +791,8 @@ export default function SignUpPage() {
                       <Check size={14} className="stroke-[3]" />
                     </div>
                     <div>
-                      <h5 className="text-xs font-bold text-slate-900 dark:text-white">Campus SSO & Verified Credentials</h5>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                      <h5 className="text-xs font-bold text-zinc-900 dark:text-white">Campus SSO & Verified Credentials</h5>
+                      <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">
                         Seamlessly sync with university assignments, LeetCode, and GitHub Student Pack.
                       </p>
                     </div>
@@ -803,8 +803,8 @@ export default function SignUpPage() {
                       <Check size={14} className="stroke-[3]" />
                     </div>
                     <div>
-                      <h5 className="text-xs font-bold text-slate-900 dark:text-white">Interactive Problem Sandbox</h5>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                      <h5 className="text-xs font-bold text-zinc-900 dark:text-white">Interactive Problem Sandbox</h5>
+                      <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">
                         Run and test Next.js, React, and TypeScript code in real-time browser VMs.
                       </p>
                     </div>
@@ -819,12 +819,12 @@ export default function SignUpPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-500">
+      <footer className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-zinc-200/60 dark:border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-500">
         <p>© 2026 NextGen Learn Student OS. All rights reserved.</p>
         <div className="flex items-center gap-6 font-medium">
-          <Link href="/login" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Sign In</Link>
-          <a href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Campus Support</a>
+          <Link href="/login" className="hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors">Sign In</Link>
+          <a href="#" className="hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors">Campus Support</a>
         </div>
       </footer>
 

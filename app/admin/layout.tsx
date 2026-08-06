@@ -42,14 +42,14 @@ export default function AdminLayout({
   // If on login page, don't show the AdminSidebar
   if (pathname === '/admin/login' || pathname?.startsWith('/admin/login')) {
     return (
-      <main className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-300">
+      <main className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a] transition-colors duration-300">
         {children}
       </main>
     );
   }
 
   return (
-    <div className="flex h-screen bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden">
+    <div className="flex h-screen bg-zinc-50 dark:bg-[#0a0a0a] transition-colors duration-300 overflow-hidden">
       <AdminSidebar />
       <main className="flex-1 overflow-y-auto overflow-x-hidden relative">
         <motion.div

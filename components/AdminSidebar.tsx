@@ -77,7 +77,7 @@ export function AdminSidebar() {
       {/* Mobile Toggle */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 left-4 z-40 lg:hidden p-2 bg-white/10 dark:bg-black/20 backdrop-blur-md rounded-xl border border-white/20 shadow-lg text-slate-800 dark:text-slate-200"
+        className="fixed top-4 left-4 z-40 lg:hidden p-2 bg-white/10 dark:bg-black/20 backdrop-blur-md rounded-xl border border-white/20 shadow-lg text-zinc-800 dark:text-zinc-200"
       >
         <ShieldCheck size={24} />
       </button>
@@ -191,7 +191,7 @@ export function AdminSidebar() {
                         )}
                         <Icon
                           size={20}
-                          className={`flex-shrink-0 transition-transform group-hover:scale-110 \${
+                          className={`flex-shrink-0 transition-transform group- \${
                             isActive ? 'text-indigo-500' : ''
                           }`}
                         />
@@ -222,7 +222,7 @@ export function AdminSidebar() {
             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group \${currentTheme.hover} text-red-500/80 hover:text-red-600 dark:hover:text-red-400`}
             title={isCollapsed ? 'Log out' : undefined}
           >
-            <LogOut size={20} className="flex-shrink-0 transition-transform group-hover:scale-110" />
+            <LogOut size={20} className="flex-shrink-0 transition-transform group-" />
             {!isCollapsed && <span className="font-medium">Sign Out</span>}
           </button>
         </div>

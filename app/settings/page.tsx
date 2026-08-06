@@ -208,13 +208,13 @@ export default function SettingsPage() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="fixed top-6 right-6 z-50 flex items-center gap-3 rounded-2xl border border-cyan-400/40 bg-slate-900/95 dark:bg-slate-950/95 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_12px_35px_rgba(6,182,212,0.35)] backdrop-blur-2xl"
+            className="fixed top-6 right-6 z-50 flex items-center gap-3 rounded-2xl border border-cyan-400/40 bg-zinc-900/95 dark:bg-zinc-950/95 px-5 py-3.5 text-sm font-semibold text-white shadow-sm backdrop-blur-2xl"
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">
               <CheckCircle2 size={18} strokeWidth={2.5} />
             </span>
             <span>{savedMessage}</span>
-            <button onClick={() => setSavedMessage(null)} className="ml-2 text-slate-400 hover:text-white">
+            <button onClick={() => setSavedMessage(null)} className="ml-2 text-zinc-400 hover:text-white">
               <X size={16} />
             </button>
           </motion.div>
@@ -228,26 +228,26 @@ export default function SettingsPage() {
         <div className="absolute right-1/3 -bottom-20 w-60 h-60 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="min-w-0 relative z-10">
-          <div className="flex flex-wrap items-center gap-2 text-xs font-bold tracking-wider text-slate-600 dark:text-slate-400 uppercase">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-bold tracking-wider text-zinc-600 dark:text-zinc-400 uppercase">
             <span className="flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-cyan-400/15 px-3 py-1 text-cyan-600 dark:text-cyan-300 shadow-sm">
               <Sparkles size={13} className="animate-pulse" />
               Settings & Preferences
             </span>
-            <span className="text-slate-400 dark:text-slate-600">•</span>
+            <span className="text-zinc-400 dark:text-zinc-600">•</span>
             <span>Syncs across all devices</span>
           </div>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl flex items-center gap-3">
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white md:text-4xl flex items-center gap-3">
             Account Preferences
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 md:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-600 dark:text-zinc-400 md:text-base">
             Customize your personal identity, app lighting, neon navigation presets, and high-security options.
           </p>
         </div>
 
         {/* Quick Search & Status Bar */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 relative z-10 shrink-0">
-          <div className="search-control !rounded-2xl !min-h-12 border-slate-300 dark:border-slate-800 shadow-sm">
-            <Search size={18} className="text-slate-400 shrink-0" />
+          <div className="search-control !rounded-2xl !min-h-12 border-zinc-300 dark:border-zinc-800 shadow-sm">
+            <Search size={18} className="text-zinc-400 shrink-0" />
             <input
               type="text"
               placeholder="Filter settings..."
@@ -256,7 +256,7 @@ export default function SettingsPage() {
               className="!w-44 text-sm"
             />
             {searchQuery && (
-              <button onClick={() => setSearchQuery("")} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+              <button onClick={() => setSearchQuery("")} className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
                 <X size={14} />
               </button>
             )}
@@ -277,9 +277,9 @@ export default function SettingsPage() {
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Navigation Sidebar */}
         <div className="w-full lg:w-72 shrink-0 flex flex-col gap-4 sticky top-6">
-          <div className="dashboard-panel p-3 flex flex-col gap-1.5 relative overflow-hidden bg-white/40 dark:bg-slate-950/40">
+          <div className="dashboard-panel p-3 flex flex-col gap-1.5 relative overflow-hidden bg-white/40 dark:bg-zinc-950/40">
             <div className="px-4 pb-2 pt-2 flex items-center gap-2.5">
-              <div className="h-5 w-1.5 rounded-full bg-gradient-to-b from-cyan-400 to-violet-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
+              <div className="h-5 w-1.5 rounded-full bg-gradient-to-b from-cyan-400 to-violet-500 shadow-sm" />
               <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] bg-gradient-to-r from-slate-800 to-slate-500 dark:from-slate-200 dark:to-slate-400 bg-clip-text text-transparent select-none">
                 Navigation Menu
               </p>
@@ -294,14 +294,14 @@ export default function SettingsPage() {
                   className={`group flex items-center justify-between px-4 py-3.5 rounded-2xl transition-colors duration-300 text-left relative z-10 outline-none ${
                     isSelected
                       ? 'text-cyan-700 dark:text-cyan-300'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
                   }`}
                 >
                   {/* Animated Active Background */}
                   {isSelected && (
                     <motion.div
                       layoutId="activeSettingsNavTab"
-                      className="absolute inset-0 rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-500/15 via-cyan-500/5 to-transparent shadow-[0_8px_20px_-6px_rgba(6,182,212,0.25)] -z-10"
+                      className="absolute inset-0 rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-500/15 via-cyan-500/5 to-transparent shadow-sm -z-10"
                       initial={false}
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
@@ -311,18 +311,18 @@ export default function SettingsPage() {
                   {isSelected && (
                     <motion.span 
                       layoutId="activeSettingsNavGlow"
-                      className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.8)] z-0" 
+                      className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-cyan-400 shadow-sm z-0" 
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
 
                   {/* Hover Background for Inactive Tabs */}
                   {!isSelected && (
-                    <div className="absolute inset-0 rounded-2xl bg-slate-200/50 dark:bg-slate-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10" />
+                    <div className="absolute inset-0 rounded-2xl bg-slate-200/50 dark:bg-zinc-800/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -z-10" />
                   )}
                   
                   <div className="flex items-center gap-3 min-w-0">
-                    <Icon size={18} className={`shrink-0 transition-all duration-300 ${isSelected ? 'text-cyan-500 dark:text-cyan-300 scale-110 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]' : 'text-slate-400 dark:text-slate-500 group-hover:scale-110'}`} />
+                    <Icon size={18} className={`shrink-0 transition-colors duration-200 ${isSelected ? 'text-cyan-500 dark:text-cyan-300 scale-110 drop-shadow-sm' : 'text-zinc-400 dark:text-zinc-500 group-'}`} />
                     <span className={`truncate text-sm transition-all duration-200 ${isSelected ? 'font-bold tracking-tight' : 'font-medium'}`}>
                       {tab.label}
                     </span>
@@ -330,7 +330,7 @@ export default function SettingsPage() {
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-all shrink-0 shadow-sm ${
                     isSelected
                       ? 'bg-cyan-400/20 border-cyan-400/40 text-cyan-600 dark:text-cyan-300 scale-105'
-                      : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700/80 text-slate-500 dark:text-slate-400 group-hover:border-slate-300 dark:group-hover:border-slate-600'
+                      : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700/80 text-zinc-500 dark:text-zinc-400 group-hover:border-zinc-300 dark:group-hover:border-zinc-600'
                   }`}>
                     {tab.badge}
                   </span>
@@ -340,15 +340,15 @@ export default function SettingsPage() {
           </div>
 
           {/* Mini Status Card */}
-          <div className="dashboard-panel p-4 flex items-center gap-3 bg-gradient-to-br from-slate-100/50 dark:from-slate-900/50 to-transparent border-slate-300/60 dark:border-slate-800/60">
+          <div className="dashboard-panel p-4 flex items-center gap-3 bg-gradient-to-br from-slate-100/50 dark:from-slate-900/50 to-transparent border-zinc-300/60 dark:border-zinc-800/60">
             <div className={`h-10 w-10 shrink-0 rounded-xl bg-gradient-to-tr ${currentAvatarStyle.bg} flex items-center justify-center font-bold text-white shadow-sm`}>
               {initials || '?'}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">{firstName} {lastName}</p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">{email}</p>
+              <p className="text-xs font-bold text-zinc-800 dark:text-zinc-200 truncate">{firstName} {lastName}</p>
+              <p className="text-[11px] text-zinc-500 dark:text-zinc-400 truncate">{email}</p>
               <div className="flex items-center gap-1.5 mt-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-sm" />
                 <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">Online & Synchronized</span>
               </div>
             </div>
@@ -369,10 +369,10 @@ export default function SettingsPage() {
                 className="flex flex-col gap-6"
               >
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-8">
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-slate-200/80 dark:border-slate-800/80">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80">
                     <div className="relative group shrink-0">
-                      <div className={`h-28 w-28 rounded-full bg-gradient-to-tr ${currentAvatarStyle.bg} p-1 shadow-[0_10px_30px_rgba(6,182,212,0.25)] transition-all duration-300 group-hover:scale-105`}>
-                        <div className="h-full w-full rounded-full bg-white dark:bg-slate-950 flex items-center justify-center text-4xl font-extrabold transition-all duration-300">
+                      <div className={`h-28 w-28 rounded-full bg-gradient-to-tr ${currentAvatarStyle.bg} p-1 shadow-sm transition-colors duration-200 group-`}>
+                        <div className="h-full w-full rounded-full bg-white dark:bg-zinc-950 flex items-center justify-center text-4xl font-extrabold transition-colors duration-200">
                           <span className={`bg-gradient-to-tr ${currentAvatarStyle.bg} bg-clip-text text-transparent`}>
                             {initials || '?'}
                           </span>
@@ -380,7 +380,7 @@ export default function SettingsPage() {
                       </div>
                       <button
                         onClick={() => setShowAvatarPicker(!showAvatarPicker)}
-                        className="absolute bottom-0 right-0 h-9 w-9 rounded-full bg-cyan-500 text-slate-950 shadow-lg flex items-center justify-center hover:scale-110 transition-transform border-2 border-white dark:border-slate-950"
+                        className="absolute bottom-0 right-0 h-9 w-9 rounded-full bg-cyan-500 text-slate-950 shadow-lg flex items-center justify-center  transition-transform border-2 border-white dark:border-slate-950"
                         title="Customize Avatar Style"
                       >
                         <Camera size={16} strokeWidth={2.5} />
@@ -389,12 +389,12 @@ export default function SettingsPage() {
 
                     <div className="flex-1 text-center sm:text-left flex flex-col justify-center">
                       <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{firstName} {lastName}</h2>
+                        <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">{firstName} {lastName}</h2>
                         <span className="px-2.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-300 text-xs font-bold">
                           Pro Member
                         </span>
                       </div>
-                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{roleTitle}</p>
+                      <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{roleTitle}</p>
                       
                       <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-3">
                         <button
@@ -415,9 +415,9 @@ export default function SettingsPage() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden rounded-2xl bg-slate-100/80 dark:bg-slate-900/50 border border-slate-300/80 dark:border-slate-800 p-4 -mt-4"
+                        className="overflow-hidden rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/50 border border-zinc-300/80 dark:border-zinc-800 p-4 -mt-4"
                       >
-                        <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-3 flex items-center gap-1.5">
+                        <p className="text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300 mb-3 flex items-center gap-1.5">
                           <Sparkles size={14} className="text-cyan-500" />
                           Select Avatar Halo Gradient
                         </p>
@@ -430,14 +430,14 @@ export default function SettingsPage() {
                                 onClick={() => setAvatarColor(g.id)}
                                 className={`flex flex-col items-center gap-2 p-2.5 rounded-xl border transition-all ${
                                   isSelected
-                                    ? 'border-cyan-400 bg-white dark:bg-slate-800 shadow-md scale-105'
-                                    : 'border-transparent hover:border-slate-300 dark:hover:border-slate-700 hover:bg-white/50 dark:hover:bg-slate-800/40'
+                                    ? 'border-cyan-400 bg-white dark:bg-zinc-800 shadow-md scale-105'
+                                    : 'border-transparent hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white/50 dark:hover:bg-zinc-800/40'
                                 }`}
                               >
                                 <div className={`h-10 w-10 rounded-full bg-gradient-to-tr ${g.bg} flex items-center justify-center text-white font-bold text-sm shadow-sm`}>
                                   {initials}
                                 </div>
-                                <span className="text-[11px] font-semibold text-slate-700 dark:text-slate-300 truncate w-full text-center">{g.name}</span>
+                                <span className="text-[11px] font-semibold text-zinc-700 dark:text-zinc-300 truncate w-full text-center">{g.name}</span>
                               </button>
                             );
                           })}
@@ -449,55 +449,55 @@ export default function SettingsPage() {
                   {/* Profile Form Fields */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                      <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 flex items-center justify-between">
                         First Name
-                        <span className="text-[10px] text-slate-400 font-normal">Required</span>
+                        <span className="text-[10px] text-zinc-400 font-normal">Required</span>
                       </label>
                       <input
                         type="text"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        className="w-full bg-white/80 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
+                        className="w-full bg-white/80 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
                       />
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+                      <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 flex items-center justify-between">
                         Last Name
-                        <span className="text-[10px] text-slate-400 font-normal">Required</span>
+                        <span className="text-[10px] text-zinc-400 font-normal">Required</span>
                       </label>
                       <input
                         type="text"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        className="w-full bg-white/80 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
+                        className="w-full bg-white/80 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
+                      <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Email Address</label>
                       <div className="relative">
-                        <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full bg-white/80 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
+                          className="w-full bg-white/80 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-800 rounded-xl pl-10 pr-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
                         />
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Professional Title / Role</label>
+                      <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Professional Title / Role</label>
                       <div className="relative">
-                        <Sliders size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <Sliders size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" />
                         <input
                           type="text"
                           value={roleTitle}
                           onChange={(e) => setRoleTitle(e.target.value)}
-                          className="w-full bg-white/80 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
+                          className="w-full bg-white/80 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-800 rounded-xl pl-10 pr-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all"
                         />
                       </div>
                     </div>
@@ -505,8 +505,8 @@ export default function SettingsPage() {
 
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between">
-                      <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Bio</label>
-                      <span className="text-xs text-slate-400">{bio.length}/300 characters</span>
+                      <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Bio</label>
+                      <span className="text-xs text-zinc-400">{bio.length}/300 characters</span>
                     </div>
                     <textarea
                       rows={4}
@@ -514,12 +514,12 @@ export default function SettingsPage() {
                       value={bio}
                       onChange={(e) => setBio(e.target.value)}
                       placeholder="Write a short summary about your learning journey..."
-                      className="w-full bg-white/80 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all resize-none"
+                      className="w-full bg-white/80 dark:bg-zinc-950/60 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400 transition-all resize-none"
                     />
                   </div>
 
-                  <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-left">
+                  <div className="pt-4 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center sm:text-left">
                       Changes are synchronized across your student dashboard immediately upon saving.
                     </p>
                     <div className="flex items-center gap-3 shrink-0">
@@ -559,11 +559,11 @@ export default function SettingsPage() {
                 {/* Lighting & Color Scheme */}
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
                   <div>
-                    <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                    <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2.5">
                       <Sun size={22} className="text-amber-500" />
                       App Lighting & Color Scheme
                     </h2>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                       Choose between bright aurora light mode, deep cosmic dark mode, or follow your operating system preferences.
                     </p>
                   </div>
@@ -580,14 +580,14 @@ export default function SettingsPage() {
                         <button
                           key={m.id}
                           onClick={() => setTheme(m.id)}
-                          className={`flex flex-col items-start gap-3 p-5 rounded-2xl border transition-all duration-300 text-left relative overflow-hidden group ${
+                          className={`flex flex-col items-start gap-3 p-5 rounded-2xl border transition-colors duration-200 text-left relative overflow-hidden group ${
                             isSelected
-                              ? 'border-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/10 shadow-[0_10px_30px_rgba(6,182,212,0.2)] scale-[1.02]'
-                              : 'border-slate-300 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:border-slate-400 dark:hover:border-slate-700 hover:bg-white dark:hover:bg-slate-900/80'
+                              ? 'border-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/10 shadow-sm scale-[1.02]'
+                              : 'border-zinc-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40 hover:border-zinc-400 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80'
                           }`}
                         >
                           <div className="flex items-center justify-between w-full">
-                            <span className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 ${m.color} group-hover:scale-110 transition-transform`}>
+                            <span className={`flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 ${m.color} group- transition-transform`}>
                               <Icon size={20} />
                             </span>
                             {isSelected && (
@@ -597,8 +597,8 @@ export default function SettingsPage() {
                             )}
                           </div>
                           <div>
-                            <p className="font-bold text-slate-900 dark:text-white text-base">{m.label}</p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">{m.desc}</p>
+                            <p className="font-bold text-zinc-900 dark:text-white text-base">{m.label}</p>
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">{m.desc}</p>
                           </div>
                         </button>
                       );
@@ -610,11 +610,11 @@ export default function SettingsPage() {
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                      <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2.5">
                         <Palette size={22} className="text-cyan-500" />
                         Sidebar Navigation Presets
                       </h2>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                         Personalize the side navigation panel with 4 curated glassmorphism neon presets.
                       </p>
                     </div>
@@ -630,23 +630,23 @@ export default function SettingsPage() {
                         <div
                           key={t.id}
                           onClick={() => handleSelectSidebarTheme(t.id)}
-                          className={`cursor-pointer rounded-3xl border p-6 flex flex-col gap-4 transition-all duration-300 relative overflow-hidden group ${
+                          className={`cursor-pointer rounded-3xl border p-6 flex flex-col gap-4 transition-colors duration-200 relative overflow-hidden group ${
                             isSelected
-                              ? 'border-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/10 shadow-[0_12px_35px_rgba(6,182,212,0.25)] scale-[1.01]'
-                              : 'border-slate-300 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/50 hover:border-slate-400 dark:hover:border-slate-700 hover:bg-white dark:hover:bg-slate-900/90'
+                              ? 'border-cyan-400 bg-cyan-500/10 dark:bg-cyan-500/10 shadow-sm scale-[1.01]'
+                              : 'border-zinc-300 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/50 hover:border-zinc-400 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/90'
                           }`}
                         >
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2.5">
                               <span className={`h-3 w-3 rounded-full bg-gradient-to-r ${t.swatchGradient}`} />
-                              <span className="font-bold text-slate-900 dark:text-white text-base">{t.name}</span>
+                              <span className="font-bold text-zinc-900 dark:text-white text-base">{t.name}</span>
                             </div>
                             {isSelected ? (
                               <span className="flex items-center gap-1.5 text-xs font-bold text-cyan-600 dark:text-cyan-300 bg-cyan-400/20 px-3 py-1 rounded-full border border-cyan-400/40">
                                 <Check size={13} strokeWidth={3} /> Selected
                               </span>
                             ) : (
-                              <span className="text-xs font-semibold text-slate-400 group-hover:text-cyan-500 transition-colors">
+                              <span className="text-xs font-semibold text-zinc-400 group-hover:text-cyan-500 transition-colors">
                                 Click to Apply →
                               </span>
                             )}
@@ -659,7 +659,7 @@ export default function SettingsPage() {
                             </span>
                           </div>
 
-                          <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                          <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                             {t.description}
                           </p>
                         </div>
@@ -672,17 +672,17 @@ export default function SettingsPage() {
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                      <h3 className="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
                         <Eye size={19} className="text-violet-500" />
                         Live Interface Preview
                       </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                         Previewing how {activeSidebarConfig.name} preset looks alongside main application panels.
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-4 sm:p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-slate-100/80 dark:bg-[#070a12] flex flex-col sm:flex-row gap-4 overflow-hidden">
+                  <div className="p-4 sm:p-6 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100/80 dark:bg-[#070a12] flex flex-col sm:flex-row gap-4 overflow-hidden">
                     {/* Mock Sidebar */}
                     <div className={`${activeSidebarConfig.asideClassName} !w-full sm:!w-56 shrink-0 !relative !left-0 !top-0 !h-auto p-4 rounded-2xl flex flex-col gap-3 border shadow-md`}>
                       <div className="flex items-center gap-2.5">
@@ -721,15 +721,15 @@ export default function SettingsPage() {
                           <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
                           <span className="text-xs font-bold">Synchronized Workspace</span>
                         </div>
-                        <span className="text-[10px] font-semibold text-slate-400 bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-semibold text-zinc-400 bg-slate-200 dark:bg-zinc-800 px-2 py-0.5 rounded">
                           Live Render
                         </span>
                       </div>
                       <div className="dashboard-panel p-5 flex-1 flex flex-col justify-center gap-2">
-                        <p className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                        <p className="text-xs font-extrabold text-zinc-900 dark:text-white uppercase tracking-wider">
                           Preset Applied: {activeSidebarConfig.name}
                         </p>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                           Your chosen theme instantly styles all navigation links, indicator dots, glassmorphic blur levels, and profile tiles across all routes.
                         </p>
                       </div>
@@ -752,11 +752,11 @@ export default function SettingsPage() {
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                      <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2.5">
                         <Bell size={22} className="text-cyan-500" />
                         Notification Preferences
                       </h2>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                         Control how and when you receive course updates, reminders, and community interaction alerts.
                       </p>
                     </div>
@@ -780,14 +780,14 @@ export default function SettingsPage() {
                       return (
                         <div key={item.key} className="py-5 flex items-center justify-between gap-4 first:pt-2 last:pb-2">
                           <div className="min-w-0 pr-4">
-                            <p className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">{item.title}</p>
-                            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">{item.desc}</p>
+                            <p className="font-bold text-zinc-900 dark:text-white text-sm sm:text-base">{item.title}</p>
+                            <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">{item.desc}</p>
                           </div>
                           <button
                             onClick={() => handleToggleNotification(item.key)}
                             aria-label={`Toggle ${item.title}`}
                             className={`w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-300 shrink-0 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 ${
-                              isEnabled ? 'bg-cyan-500' : 'bg-slate-300 dark:bg-slate-800'
+                              isEnabled ? 'bg-cyan-500' : 'bg-slate-300 dark:bg-zinc-800'
                             }`}
                           >
                             <motion.div
@@ -796,7 +796,7 @@ export default function SettingsPage() {
                               animate={{ x: isEnabled ? 24 : 0 }}
                               transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                             >
-                              {isEnabled ? <Check size={12} strokeWidth={3} className="text-cyan-600" /> : <X size={12} className="text-slate-400" />}
+                              {isEnabled ? <Check size={12} strokeWidth={3} className="text-cyan-600" /> : <X size={12} className="text-zinc-400" />}
                             </motion.div>
                           </button>
                         </div>
@@ -821,11 +821,11 @@ export default function SettingsPage() {
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                      <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2.5">
                         <Lock size={22} className="text-cyan-500" />
                         Password & Authentication
                       </h2>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                         Manage your account credentials and enable two-factor verification.
                       </p>
                     </div>
@@ -844,40 +844,40 @@ export default function SettingsPage() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden rounded-2xl bg-slate-100/80 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-800 p-5 space-y-4"
+                        className="overflow-hidden rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 p-5 space-y-4"
                       >
-                        <p className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                        <p className="text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">
                           Change Account Password
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                           <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-semibold text-slate-600 dark:text-slate-400">Current Password</label>
+                            <label className="text-xs font-semibold text-zinc-600 dark:text-zinc-400">Current Password</label>
                             <input
                               type="password"
                               placeholder="••••••••"
                               value={currentPassword}
                               onChange={(e) => setCurrentPassword(e.target.value)}
-                              className="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-sm"
+                              className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm"
                             />
                           </div>
                           <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-semibold text-slate-600 dark:text-slate-400">New Password</label>
+                            <label className="text-xs font-semibold text-zinc-600 dark:text-zinc-400">New Password</label>
                             <input
                               type="password"
                               placeholder="••••••••"
                               value={newPassword}
                               onChange={(e) => setNewPassword(e.target.value)}
-                              className="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-sm"
+                              className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm"
                             />
                           </div>
                           <div className="flex flex-col gap-1.5">
-                            <label className="text-xs font-semibold text-slate-600 dark:text-slate-400">Confirm New Password</label>
+                            <label className="text-xs font-semibold text-zinc-600 dark:text-zinc-400">Confirm New Password</label>
                             <input
                               type="password"
                               placeholder="••••••••"
                               value={confirmPassword}
                               onChange={(e) => setConfirmPassword(e.target.value)}
-                              className="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-3.5 py-2.5 text-sm"
+                              className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm"
                             />
                           </div>
                         </div>
@@ -885,10 +885,10 @@ export default function SettingsPage() {
                         {/* Password Strength Indicator */}
                         {newPassword && (
                           <div className="flex items-center gap-3 pt-1">
-                            <div className="flex-1 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-                              <div className={`h-full transition-all duration-300 ${pwdStrength.color}`} style={{ width: `${pwdStrength.score}%` }} />
+                            <div className="flex-1 h-2 bg-slate-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+                              <div className={`h-full transition-colors duration-200 ${pwdStrength.color}`} style={{ width: `${pwdStrength.score}%` }} />
                             </div>
-                            <span className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                            <span className="text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-300">
                               Strength: {pwdStrength.label}
                             </span>
                           </div>
@@ -917,19 +917,19 @@ export default function SettingsPage() {
                   </AnimatePresence>
 
                   {/* 2FA Toggle */}
-                  <div className="flex items-center justify-between gap-4 p-5 rounded-2xl border border-slate-300 dark:border-slate-800/80 bg-slate-100/50 dark:bg-slate-900/30">
+                  <div className="flex items-center justify-between gap-4 p-5 rounded-2xl border border-zinc-300 dark:border-zinc-800/80 bg-zinc-100/50 dark:bg-zinc-900/30">
                     <div className="flex items-center gap-4 min-w-0">
                       <div className="h-12 w-12 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0">
                         <ShieldCheck size={24} />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <p className="font-bold text-slate-900 dark:text-white text-base">Two-Factor Authentication (2FA)</p>
+                          <p className="font-bold text-zinc-900 dark:text-white text-base">Two-Factor Authentication (2FA)</p>
                           <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-[10px] font-bold uppercase">
                             Recommended
                           </span>
                         </div>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                           Adds an extra layer of protection requiring a time-based verification code when logging in from new devices.
                         </p>
                       </div>
@@ -940,7 +940,7 @@ export default function SettingsPage() {
                         showToast(twoFactorActive ? "2FA disabled" : "2FA enabled and secured");
                       }}
                       className={`w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-300 shrink-0 ${
-                        twoFactorActive ? 'bg-cyan-500' : 'bg-slate-300 dark:bg-slate-800'
+                        twoFactorActive ? 'bg-cyan-500' : 'bg-slate-300 dark:bg-zinc-800'
                       }`}
                     >
                       <motion.div
@@ -948,7 +948,7 @@ export default function SettingsPage() {
                         className="bg-white h-6 w-6 rounded-full shadow-md flex items-center justify-center text-slate-950"
                         animate={{ x: twoFactorActive ? 24 : 0 }}
                       >
-                        {twoFactorActive ? <Check size={12} strokeWidth={3} className="text-cyan-600" /> : <X size={12} className="text-slate-400" />}
+                        {twoFactorActive ? <Check size={12} strokeWidth={3} className="text-cyan-600" /> : <X size={12} className="text-zinc-400" />}
                       </motion.div>
                     </button>
                   </div>
@@ -956,17 +956,17 @@ export default function SettingsPage() {
                   {/* SSO & Premium Auth Portal */}
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-transparent">
                     <div>
-                      <p className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                      <p className="font-bold text-zinc-900 dark:text-white flex items-center gap-2">
                         <KeyRound size={18} className="text-cyan-500" />
                         Premium Auth Portal & Theme Preview
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                      <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
                         Access the ultra-premium login, sign-up & SSO gateway styled with responsive light & dark themes.
                       </p>
                     </div>
                     <Link
                       href="/login"
-                      className="primary-button shrink-0 !py-2.5 !text-xs shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+                      className="primary-button shrink-0 !py-2.5 !text-xs shadow-sm"
                     >
                       Go to Login Portal →
                     </Link>
@@ -976,34 +976,34 @@ export default function SettingsPage() {
                 {/* Active Sessions & Devices */}
                 <div className="dashboard-panel p-6 sm:p-8 flex flex-col gap-6">
                   <div>
-                    <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+                    <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2.5">
                       <Laptop size={22} className="text-violet-500" />
                       Active Devices & Sessions
                     </h2>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                       Review all devices currently authenticated to your student account. Revoke access anytime.
                     </p>
                   </div>
 
                   <div className="space-y-3">
                     {activeSessions.map((s) => (
-                      <div key={s.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40">
+                      <div key={s.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl border border-zinc-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40">
                         <div className="flex items-center gap-3.5 min-w-0">
                           <div className={`h-11 w-11 rounded-xl flex items-center justify-center shrink-0 ${
-                            s.current ? 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                            s.current ? 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30' : 'bg-slate-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
                           }`}>
                             <Laptop size={20} />
                           </div>
                           <div className="min-w-0">
                             <div className="flex items-center gap-2">
-                              <p className="font-bold text-slate-900 dark:text-white text-sm truncate">{s.device}</p>
+                              <p className="font-bold text-zinc-900 dark:text-white text-sm truncate">{s.device}</p>
                               {s.current && (
                                 <span className="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
                                   Current Session
                                 </span>
                               )}
                             </div>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                               {s.location} · IP: {s.ip} · {s.lastActive}
                             </p>
                           </div>
@@ -1029,15 +1029,15 @@ export default function SettingsPage() {
                       <AlertTriangle size={22} />
                       Danger Zone
                     </h2>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                       Irreversible actions regarding your account history, courses, and data.
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border border-red-500/20 bg-white/40 dark:bg-slate-950/40">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border border-red-500/20 bg-white/40 dark:bg-zinc-950/40">
                     <div>
-                      <p className="font-bold text-slate-900 dark:text-white text-base">Delete Account & Course Records</p>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
+                      <p className="font-bold text-zinc-900 dark:text-white text-base">Delete Account & Course Records</p>
+                      <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 max-w-xl">
                         Permanently removes your profile data, course progress, certificates, and community posts. This action cannot be undone.
                       </p>
                     </div>
@@ -1063,13 +1063,13 @@ export default function SettingsPage() {
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="dashboard-panel max-w-md w-full p-6 sm:p-8 space-y-5 border-red-500/40 bg-slate-900 text-white"
+              className="dashboard-panel max-w-md w-full p-6 sm:p-8 space-y-5 border-red-500/40 bg-zinc-900 text-white"
             >
               <div className="flex items-center gap-3 text-red-400">
                 <AlertTriangle size={26} />
                 <h3 className="text-xl font-bold">Confirm Account Deletion</h3>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm text-zinc-300 leading-relaxed">
                 Are you completely sure you want to delete <span className="font-semibold text-white">{email}</span>? All enrolled courses, certificates, and progress will be erased immediately.
               </p>
               <div className="flex items-center justify-end gap-3 pt-3">

@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full antialiased ${inter.variable} ${outfit.variable}`}>
-      <body className="h-screen overflow-hidden bg-[var(--background)] text-slate-900 dark:text-slate-100 selection:bg-cyan-400/30 transition-colors duration-300">
+      <body className="h-screen overflow-hidden bg-[var(--background)] text-zinc-900 dark:text-zinc-100 selection:bg-cyan-400/30 transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="dashboard-shell h-full">
             <Sidebar />

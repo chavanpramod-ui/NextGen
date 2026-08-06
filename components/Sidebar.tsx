@@ -125,24 +125,24 @@ export function Sidebar() {
       {/* Header & Brand */}
       <div className="flex items-center justify-between gap-3 pb-2">
         <Link href="/" className="flex min-w-0 items-center gap-3 group">
-          <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-sm font-bold transition-all duration-300 group-hover:scale-105 ${currentTheme.logoBoxClassName}`}>
+          <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-sm font-bold transition-colors duration-200 group- ${currentTheme.logoBoxClassName}`}>
             NG
           </div>
           {!isCollapsed && (
             <div className="min-w-0 flex flex-col justify-center">
               <div className="flex items-center gap-1.5">
-                <p className="truncate text-sm font-bold text-slate-900 dark:text-slate-50 tracking-tight">NextGen Learn</p>
+                <p className="truncate text-sm font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">NextGen Learn</p>
                 <span className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-500/25 tracking-widest uppercase">
                   OS
                 </span>
               </div>
-              <p className="truncate text-[11px] text-slate-500 dark:text-slate-400 font-medium">Student Dashboard</p>
+              <p className="truncate text-[11px] text-zinc-500 dark:text-zinc-400 font-medium">Student Dashboard</p>
             </div>
           )}
         </Link>
         <button
           type="button"
-          className="h-8 w-8 rounded-lg text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/10 transition-all hidden lg:flex items-center justify-center shrink-0"
+          className="h-8 w-8 rounded-lg text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all hidden lg:flex items-center justify-center shrink-0"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           onClick={() => setIsCollapsed((value) => !value)}
@@ -156,11 +156,11 @@ export function Sidebar() {
         {navSections.map((section) => (
           <div key={section.title} className="space-y-1">
             {!isCollapsed ? (
-              <p className="px-3 text-[10px] font-bold tracking-widest text-slate-400 dark:text-slate-500 uppercase mb-2 select-none">
+              <p className="px-3 text-[10px] font-bold tracking-widest text-zinc-400 dark:text-zinc-500 uppercase mb-2 select-none">
                 {section.title}
               </p>
             ) : (
-              <div className="h-[1px] w-8 mx-auto bg-slate-200 dark:bg-slate-800 my-3" />
+              <div className="h-[1px] w-8 mx-auto bg-slate-200 dark:bg-zinc-800 my-3" />
             )}
             {section.items.map((item) => {
               const Icon = item.icon;
@@ -181,7 +181,7 @@ export function Sidebar() {
                   <Icon
                     size={18}
                     className={`shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5 ${
-                      isActive ? 'text-cyan-500 dark:text-cyan-300 scale-105' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-100'
+                      isActive ? 'text-cyan-500 dark:text-cyan-300 scale-105' : 'text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-100'
                     }`}
                   />
                   {!isCollapsed && (
@@ -208,10 +208,10 @@ export function Sidebar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className={`absolute ${isCollapsed ? 'left-20 bottom-4' : 'left-4 bottom-20'} z-50 w-64 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-[#0c101e]/95 p-3.5 shadow-[0_15px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl`}
+            className={`absolute ${isCollapsed ? 'left-20 bottom-4' : 'left-4 bottom-20'} z-50 w-64 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/95 dark:bg-[#0c101e]/95 p-3.5 shadow-sm backdrop-blur-2xl`}
           >
-            <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-200/60 dark:border-slate-800/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+              <span className="text-xs font-bold uppercase tracking-wider text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
                 <Sparkles size={14} className="text-cyan-500" />
                 Sidebar Presets
               </span>
@@ -229,14 +229,14 @@ export function Sidebar() {
                     onClick={() => handleSelectTheme(t.id)}
                     className={`w-full flex items-center gap-3 p-2 rounded-xl border text-left transition-all ${
                       isSelected
-                        ? 'border-cyan-400/60 bg-cyan-500/10 text-slate-900 dark:text-white font-semibold'
-                        : 'border-transparent hover:border-slate-200 dark:hover:border-slate-800 hover:bg-slate-100/60 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300'
+                        ? 'border-cyan-400/60 bg-cyan-500/10 text-zinc-900 dark:text-white font-semibold'
+                        : 'border-transparent hover:border-zinc-200 dark:hover:border-zinc-800 hover:bg-zinc-100/60 dark:hover:bg-white/5 text-zinc-600 dark:text-zinc-300'
                     }`}
                   >
                     <div className={`h-6 w-6 shrink-0 rounded-lg bg-gradient-to-br ${t.swatchGradient} border ${t.swatchBorder} shadow-2xs`} />
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-medium truncate">{t.name}</p>
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{t.description}</p>
+                      <p className="text-[10px] text-zinc-500 dark:text-zinc-400 truncate">{t.description}</p>
                     </div>
                     {isSelected && <Check size={14} className="text-cyan-500 shrink-0" />}
                   </button>
@@ -248,7 +248,7 @@ export function Sidebar() {
       </AnimatePresence>
 
       {/* Clean & Compact Bottom Profile / Control Bar */}
-      <div className="mt-auto pt-3 border-t border-slate-200/60 dark:border-slate-800/60">
+      <div className="mt-auto pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60">
         {!isCollapsed ? (
           <div className="flex items-center justify-between gap-2">
             <Link
@@ -256,18 +256,18 @@ export function Sidebar() {
               onClick={() => setIsOpen(false)}
               className={`flex-1 min-w-0 flex items-center gap-3 rounded-xl p-2 transition-all duration-200 group ${currentTheme.profileBoxClassName}`}
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-400 to-cyan-500 text-sm font-bold text-slate-950 shadow-sm group-hover:scale-105 transition-transform">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-400 to-cyan-500 text-sm font-bold text-slate-950 shadow-sm group- transition-transform">
                 {firstName ? firstName.charAt(0).toUpperCase() : 'A'}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-cyan-500 transition-colors">
+                <p className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-500 transition-colors">
                   {firstName} {lastName}
                 </p>
-                <p className="truncate text-[11px] text-slate-500 dark:text-slate-400 font-medium">Pro Learner</p>
+                <p className="truncate text-[11px] text-zinc-500 dark:text-zinc-400 font-medium">Pro Learner</p>
               </div>
             </Link>
 
-            <div className="flex items-center gap-1 shrink-0 pl-1 border-l border-slate-200/60 dark:border-slate-800/60">
+            <div className="flex items-center gap-1 shrink-0 pl-1 border-l border-zinc-200/60 dark:border-zinc-800/60">
               <button
                 type="button"
                 onClick={() => setShowThemeMenu(!showThemeMenu)}
@@ -275,7 +275,7 @@ export function Sidebar() {
                 className={`h-9 w-9 rounded-xl flex items-center justify-center transition-all ${
                   showThemeMenu
                     ? 'bg-cyan-500 text-slate-950 shadow-sm scale-105'
-                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/10'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10'
                 }`}
               >
                 <Palette size={17} />
@@ -300,7 +300,7 @@ export function Sidebar() {
               href="/profile"
               onClick={() => setIsOpen(false)}
               title={`${firstName} ${lastName} - Profile`}
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-400 to-cyan-500 text-sm font-bold text-slate-950 shadow-sm hover:scale-110 transition-transform"
+              className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-400 to-cyan-500 text-sm font-bold text-slate-950 shadow-sm  transition-transform"
             >
               {firstName ? firstName.charAt(0).toUpperCase() : 'A'}
             </Link>
@@ -311,7 +311,7 @@ export function Sidebar() {
               className={`h-9 w-9 rounded-xl flex items-center justify-center transition-all ${
                 showThemeMenu
                   ? 'bg-cyan-500 text-slate-950 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/10'
+                  : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10'
               }`}
             >
               <Palette size={17} />
@@ -340,7 +340,7 @@ export function Sidebar() {
         <button
           type="button"
           aria-label="Close navigation overlay"
-          className="fixed inset-0 z-40 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-sm lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -351,7 +351,7 @@ export function Sidebar() {
           width: isCollapsed ? 88 : 280,
         }}
         transition={{ type: 'spring', stiffness: 280, damping: 30 }}
-        className={`${currentTheme.asideClassName} fixed left-4 top-4 z-50 h-[calc(100vh-2rem)] p-4 lg:relative lg:left-auto lg:top-auto lg:z-20 lg:!translate-x-0 transition-all duration-500 ease-in-out ${
+        className={`${currentTheme.asideClassName} fixed left-4 top-4 z-50 h-[calc(100vh-2rem)] p-4 lg:relative lg:left-auto lg:top-auto lg:z-20 lg:!translate-x-0 transition-colors duration-200 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-[120%]'
         }`}
       >

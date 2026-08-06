@@ -33,7 +33,7 @@ export default function ProgressPage() {
       icon: Clock, 
       gradient: 'from-sky-500/20 via-blue-500/10 to-transparent',
       border: 'border-sky-400/30 dark:border-sky-400/20',
-      iconBg: 'bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-[0_0_20px_rgba(56,189,248,0.4)]',
+      iconBg: 'bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-sm',
       textColor: 'text-sky-600 dark:text-sky-300'
     },
     { 
@@ -45,7 +45,7 @@ export default function ProgressPage() {
       icon: BookOpen, 
       gradient: 'from-violet-500/20 via-purple-500/10 to-transparent',
       border: 'border-violet-400/30 dark:border-violet-400/20',
-      iconBg: 'bg-gradient-to-br from-violet-400 to-purple-600 text-white shadow-[0_0_20px_rgba(167,139,250,0.4)]',
+      iconBg: 'bg-gradient-to-br from-violet-400 to-purple-600 text-white shadow-sm',
       textColor: 'text-violet-600 dark:text-violet-300'
     },
     { 
@@ -57,7 +57,7 @@ export default function ProgressPage() {
       icon: Target, 
       gradient: 'from-teal-500/20 via-emerald-500/10 to-transparent',
       border: 'border-emerald-400/30 dark:border-emerald-400/20',
-      iconBg: 'bg-gradient-to-br from-teal-400 to-emerald-600 text-white shadow-[0_0_20px_rgba(52,211,153,0.4)]',
+      iconBg: 'bg-gradient-to-br from-teal-400 to-emerald-600 text-white shadow-sm',
       textColor: 'text-emerald-600 dark:text-emerald-300'
     },
     { 
@@ -69,7 +69,7 @@ export default function ProgressPage() {
       icon: Flame, 
       gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
       border: 'border-amber-400/30 dark:border-amber-400/20',
-      iconBg: 'bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-[0_0_20px_rgba(251,191,36,0.4)]',
+      iconBg: 'bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-sm',
       textColor: 'text-amber-600 dark:text-amber-300'
     },
   ];
@@ -181,7 +181,7 @@ export default function ProgressPage() {
       {/* Soft & Elevated Hero Banner */}
       <motion.header 
         variants={itemVariants}
-        className="relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 bg-gradient-to-r from-white/90 via-slate-50/90 to-sky-50/80 dark:from-[#0c1222]/90 dark:via-[#0f172a]/90 dark:to-[#111827]/90 p-6 sm:p-8 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.4)] backdrop-blur-3xl"
+        className="relative overflow-hidden rounded-3xl border border-zinc-200/80 dark:border-white/10 bg-gradient-to-r from-white/90 via-slate-50/90 to-sky-50/80 dark:from-[#0c1222]/90 dark:via-[#0f172a]/90 dark:to-[#111827]/90 p-6 sm:p-8 shadow-sm dark:shadow-sm backdrop-blur-3xl"
       >
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-sky-400/20 via-indigo-500/15 to-purple-500/10 blur-3xl pointer-events-none" />
         <div className="absolute left-1/3 -bottom-24 h-48 w-48 rounded-full bg-gradient-to-tr from-emerald-400/15 to-teal-500/10 blur-3xl pointer-events-none" />
@@ -199,20 +199,20 @@ export default function ProgressPage() {
               </span>
             </div>
 
-            <h1 className="mt-3.5 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl md:text-5xl">
+            <h1 className="mt-3.5 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
               Performance & <span className="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">Journey Stats</span>
             </h1>
-            <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
               Deep analytics, real-time skill progression tracking, and verified milestone certificates tailored to accelerate your mastery.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <button className="inline-flex items-center gap-2 rounded-2xl border border-slate-300/80 dark:border-white/15 bg-white/80 dark:bg-white/5 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm hover:scale-[1.02] hover:bg-white dark:hover:bg-white/10 transition-all active:scale-95">
+            <button className="inline-flex items-center gap-2 rounded-2xl border border-zinc-300/80 dark:border-white/15 bg-white/80 dark:bg-white/5 px-5 py-3 text-sm font-semibold text-zinc-700 dark:text-zinc-200 shadow-sm hover:scale-[1.02] hover:bg-white dark:hover:bg-white/10 transition-all active:scale-95">
               <Award size={17} className="text-amber-500" />
               Download Report
             </button>
-            <button className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_25px_-4px_rgba(14,165,233,0.4)] hover:scale-[1.02] hover:shadow-[0_40px_100px_-10px_rgba(14,165,233,0.7),0_0_60px_-5px_rgba(14,165,233,0.5)] transition-all active:scale-95">
+            <button className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:scale-[1.02] hover:shadow-sm transition-all active:scale-95">
               <Zap size={17} className="fill-white" />
               Start Next Module
             </button>
@@ -227,15 +227,15 @@ export default function ProgressPage() {
             key={i}
             variants={itemVariants}
             whileHover={{ y: -6, scale: 1.015 }}
-            className={`relative overflow-hidden rounded-3xl border ${stat.border} bg-white/80 dark:bg-[#0c1222]/75 p-6 shadow-[0_15px_35px_-10px_rgba(0,0,0,0.06)] dark:shadow-[0_15px_35px_-10px_rgba(0,0,0,0.4)] backdrop-blur-2xl transition-all duration-300 group`}
+            className={`relative overflow-hidden rounded-3xl border ${stat.border} bg-white/80 dark:bg-[#0c1222]/75 p-6 shadow-sm dark:shadow-sm backdrop-blur-2xl transition-colors duration-200 group`}
           >
             <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
 
             <div className="flex items-start justify-between">
-              <div className={`flex h-13 w-13 items-center justify-center rounded-2xl ${stat.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+              <div className={`flex h-13 w-13 items-center justify-center rounded-2xl ${stat.iconBg} transition-transform duration-300 group-`}>
                 <stat.icon size={26} />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 dark:bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-white/10">
+              <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 dark:bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-zinc-600 dark:text-zinc-300 border border-zinc-200/60 dark:border-white/10">
                 {stat.trend === 'up' && <TrendingUp size={12} className="text-emerald-500" />}
                 {stat.trend === 'hot' && <Flame size={12} className="text-orange-500" />}
                 {stat.change}
@@ -243,9 +243,9 @@ export default function ProgressPage() {
             </div>
 
             <div className="mt-5">
-              <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{stat.label}</p>
+              <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">{stat.label}</p>
               <div className="mt-1 flex items-baseline gap-1.5">
-                <h3 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                <h3 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
                   {stat.value}
                 </h3>
                 <span className={`text-base font-bold ${stat.textColor}`}>
@@ -261,21 +261,21 @@ export default function ProgressPage() {
         {/* Interactive Skill Progression Panel */}
         <motion.div 
           variants={itemVariants}
-          className="rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-[#0c1222]/80 p-6 sm:p-8 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.4)] backdrop-blur-3xl lg:col-span-2 flex flex-col gap-6"
+          className="rounded-3xl border border-zinc-200/80 dark:border-white/10 bg-white/80 dark:bg-[#0c1222]/80 p-6 sm:p-8 shadow-sm dark:shadow-sm backdrop-blur-3xl lg:col-span-2 flex flex-col gap-6"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/60 dark:border-white/10 pb-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200/60 dark:border-white/10 pb-5">
             <div>
               <div className="flex items-center gap-2">
                 <Layers size={20} className="text-sky-500" />
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Skill Progression & Mastery</h2>
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">Skill Progression & Mastery</h2>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                 Live assessment data across your active learning tracks.
               </p>
             </div>
 
             {/* Category Filter Chips */}
-            <div className="flex items-center gap-1.5 rounded-2xl bg-slate-100 dark:bg-white/5 p-1 border border-slate-200/60 dark:border-white/10 self-start sm:self-auto">
+            <div className="flex items-center gap-1.5 rounded-2xl bg-zinc-100 dark:bg-white/5 p-1 border border-zinc-200/60 dark:border-white/10 self-start sm:self-auto">
               {[
                 { id: 'all', label: 'All Tracks' },
                 { id: 'frontend', label: 'Frontend' },
@@ -287,8 +287,8 @@ export default function ProgressPage() {
                   onClick={() => setSelectedCategory(tab.id as any)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
                     selectedCategory === tab.id
-                      ? 'bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-300 shadow-sm'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-white dark:bg-zinc-800 text-sky-600 dark:text-sky-300 shadow-sm'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                   }`}
                 >
                   {tab.label}
@@ -302,7 +302,7 @@ export default function ProgressPage() {
               <div key={skill.name} className="group">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="font-bold text-sm text-slate-800 dark:text-slate-100 truncate">
+                    <span className="font-bold text-sm text-zinc-800 dark:text-zinc-100 truncate">
                       {skill.name}
                     </span>
                     <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${skill.badgeBg} shrink-0`}>
@@ -310,16 +310,16 @@ export default function ProgressPage() {
                     </span>
                   </div>
                   <div className="flex items-center gap-3 self-end sm:self-auto shrink-0">
-                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
                       {skill.modules}
                     </span>
-                    <span className="text-sm font-extrabold text-slate-900 dark:text-white bg-slate-100 dark:bg-white/10 px-2.5 py-0.5 rounded-lg border border-slate-200/60 dark:border-white/10">
+                    <span className="text-sm font-extrabold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-white/10 px-2.5 py-0.5 rounded-lg border border-zinc-200/60 dark:border-white/10">
                       {skill.progress}%
                     </span>
                   </div>
                 </div>
 
-                <div className="h-3 w-full bg-slate-100 dark:bg-slate-900/80 rounded-full overflow-hidden p-[2px] border border-slate-200/60 dark:border-white/5 shadow-inner">
+                <div className="h-3 w-full bg-zinc-100 dark:bg-zinc-900/80 rounded-full overflow-hidden p-[2px] border border-zinc-200/60 dark:border-white/5 shadow-inner">
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${skill.progress}%` }}
@@ -334,8 +334,8 @@ export default function ProgressPage() {
             ))}
           </div>
 
-          <div className="mt-2 pt-5 border-t border-slate-200/60 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-            <span>Next milestone evaluation available in <strong className="text-slate-800 dark:text-slate-200">3 days</strong></span>
+          <div className="mt-2 pt-5 border-t border-zinc-200/60 dark:border-white/10 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
+            <span>Next milestone evaluation available in <strong className="text-zinc-800 dark:text-zinc-200">3 days</strong></span>
             <button className="inline-flex items-center gap-1 font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-500 transition-colors">
               Explore Skill Paths <ArrowUpRight size={14} />
             </button>
@@ -345,16 +345,16 @@ export default function ProgressPage() {
         {/* Soft Theme Recent Achievements Timeline */}
         <motion.div 
           variants={itemVariants}
-          className="rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-[#0c1222]/80 p-6 sm:p-8 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.4)] backdrop-blur-3xl flex flex-col gap-6"
+          className="rounded-3xl border border-zinc-200/80 dark:border-white/10 bg-white/80 dark:bg-[#0c1222]/80 p-6 sm:p-8 shadow-sm dark:shadow-sm backdrop-blur-3xl flex flex-col gap-6"
         >
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-white/10 pb-5">
+          <div className="flex items-center justify-between border-b border-zinc-200/60 dark:border-white/10 pb-5">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-[0_0_15px_rgba(251,191,36,0.4)]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-sm">
                 <Trophy size={20} />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Recent Trophies</h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Verified certificates & XP</p>
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">Recent Trophies</h2>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Verified certificates & XP</p>
               </div>
             </div>
             <span className="text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-400/20 px-2.5 py-1 rounded-xl">
@@ -367,14 +367,14 @@ export default function ProgressPage() {
               <motion.div 
                 key={i}
                 whileHover={{ x: 4 }}
-                className="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 pb-2 last:pb-0 transition-transform duration-200 group"
+                className="relative pl-6 border-l-2 border-zinc-200 dark:border-zinc-800 pb-2 last:pb-0 transition-transform duration-200 group"
               >
                 <div className={`absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-gradient-to-tr ${achievement.badgeColor} ring-4 ${achievement.ringColor} dark:ring-slate-900 shadow-sm flex items-center justify-center`}>
                   <div className="h-1.5 w-1.5 rounded-full bg-white" />
                 </div>
 
                 <div className="flex items-center justify-between gap-2">
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-sky-500 transition-colors">
+                  <h4 className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-sky-500 transition-colors">
                     {achievement.title}
                   </h4>
                   <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-400/20 shrink-0">
@@ -382,30 +382,30 @@ export default function ProgressPage() {
                   </span>
                 </div>
 
-                <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1.5">
-                  <Clock size={12} className="text-slate-400" />
+                <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-1 flex items-center gap-1.5">
+                  <Clock size={12} className="text-zinc-400" />
                   {achievement.date}
                 </p>
 
-                <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed bg-slate-50/80 dark:bg-white/5 p-3 rounded-2xl border border-slate-200/60 dark:border-white/5">
+                <p className="text-xs text-zinc-600 dark:text-zinc-300 mt-2 leading-relaxed bg-zinc-50/80 dark:bg-white/5 p-3 rounded-2xl border border-zinc-200/60 dark:border-white/5">
                   {achievement.description}
                 </p>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10">
+          <div className="mt-auto pt-4 border-t border-zinc-200/60 dark:border-white/10">
             <div className="rounded-2xl bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-pink-500/10 border border-sky-400/20 p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-400 to-indigo-600 text-white shadow-sm">
                   <Star size={18} className="fill-white" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-slate-900 dark:text-white">Next Trophy Unlock</p>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">Complete 2 more modules to claim</p>
+                  <p className="text-xs font-bold text-zinc-900 dark:text-white">Next Trophy Unlock</p>
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400">Complete 2 more modules to claim</p>
                 </div>
               </div>
-              <ChevronRight size={18} className="text-slate-400" />
+              <ChevronRight size={18} className="text-zinc-400" />
             </div>
           </div>
         </motion.div>

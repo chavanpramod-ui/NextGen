@@ -232,7 +232,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col justify-between bg-slate-50 dark:bg-[#030409] text-slate-900 dark:text-slate-100 relative overflow-hidden transition-colors duration-500 selection:bg-cyan-400/30">
+    <div className="min-h-screen w-full flex flex-col justify-between bg-zinc-50 dark:bg-[#030409] text-zinc-900 dark:text-zinc-100 relative overflow-hidden transition-colors duration-500 selection:bg-cyan-400/30">
       {/* Background Ambient Mesh & Grid Overlay for both Dark & Light Themes */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Dark theme radial glows */}
@@ -250,7 +250,7 @@ export default function LoginPage() {
       {/* Top Header Bar */}
       <header className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex items-center justify-between gap-4">
         <Link href="/" className="group flex items-center gap-3">
-          <div className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-white/80 dark:bg-slate-900/80 shadow-[0_4px_20px_rgba(34,211,238,0.15)] backdrop-blur-xl group-hover:scale-105 transition-all">
+          <div className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-white/80 dark:bg-zinc-900/80 shadow-sm backdrop-blur-xl group- transition-all">
             <span className="bg-gradient-to-br from-violet-600 to-cyan-500 dark:from-cyan-300 dark:to-violet-400 bg-clip-text text-base font-bold text-transparent">
               NG
             </span>
@@ -260,7 +260,7 @@ export default function LoginPage() {
             <span className="block text-base font-bold tracking-tight bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-800 dark:from-white dark:via-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
               NextGen Learn
             </span>
-            <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">
+            <span className="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
               Student Command Center
             </span>
           </div>
@@ -269,14 +269,14 @@ export default function LoginPage() {
         {/* Theme Switcher & Back Pill */}
         <div className="flex items-center gap-3">
           {mounted && (
-            <div className="flex items-center rounded-full border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 p-1 shadow-sm backdrop-blur-xl">
+            <div className="flex items-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/70 p-1 shadow-sm backdrop-blur-xl">
               <button
                 type="button"
                 onClick={() => setTheme('light')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   theme === 'light'
                     ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                 }`}
                 title="Light Theme"
               >
@@ -289,7 +289,7 @@ export default function LoginPage() {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   theme === 'dark'
                     ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-md shadow-violet-500/20'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                 }`}
                 title="Dark Theme"
               >
@@ -301,8 +301,8 @@ export default function LoginPage() {
                 onClick={() => setTheme('system')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   theme === 'system' || (!theme && mounted)
-                    ? 'bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    ? 'bg-slate-200 dark:bg-zinc-800 text-zinc-900 dark:text-white'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                 }`}
                 title="System Theme"
               >
@@ -314,7 +314,7 @@ export default function LoginPage() {
 
           <Link
             href="/"
-            className="flex items-center gap-2 rounded-full border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm backdrop-blur-xl hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-white transition-all"
+            className="flex items-center gap-2 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/70 px-4 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 shadow-sm backdrop-blur-xl hover:border-zinc-300 dark:hover:border-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-all"
           >
             <ArrowLeft size={14} />
             <span className="hidden sm:inline">Back to App</span>
@@ -334,20 +334,20 @@ export default function LoginPage() {
             className="lg:col-span-7 flex flex-col justify-center space-y-8"
           >
             {/* AI Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/10 text-cyan-700 dark:text-cyan-300 text-xs font-semibold w-fit shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/10 text-cyan-700 dark:text-cyan-300 text-xs font-semibold w-fit shadow-sm">
               <Sparkles size={14} className="animate-spin text-cyan-500" style={{ animationDuration: '4s' }} />
               <span>NextGen 2.0 • Unified Academic Intelligence</span>
             </div>
 
             {/* Headline */}
             <div className="space-y-4 max-w-xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.15]">
                 Your Academic Life, <br />
                 <span className="bg-gradient-to-r from-violet-600 via-indigo-500 to-cyan-500 dark:from-cyan-400 dark:via-violet-400 dark:to-pink-400 bg-clip-text text-transparent">
                   Supercharged.
                 </span>
               </h1>
-              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 font-normal leading-relaxed">
+              <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
                 Log in to access your personalized courses, AI study assistants, real-time assignment analytics, and verified learning streaks—all engineered in ultra-responsive dark and light themes.
               </p>
             </div>
@@ -355,41 +355,41 @@ export default function LoginPage() {
             {/* Interactive Live Mini-Widgets Preview (Shows off Theme Harmonization) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-xl">
               {/* Widget 1: Streak & Activity */}
-              <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/60 p-5 shadow-lg shadow-slate-900/5 dark:shadow-black/40 backdrop-blur-2xl hover:border-cyan-500/40 dark:hover:border-cyan-400/30 transition-all group">
+              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/60 p-5 shadow-lg shadow-slate-900/5 dark:shadow-black/40 backdrop-blur-2xl hover:border-cyan-500/40 dark:hover:border-cyan-400/30 transition-all group">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Live Activity</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Live Activity</span>
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400 font-bold">
                     <Flame size={18} className="animate-pulse" />
                   </div>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-slate-900 dark:text-white">14 Days</span>
+                  <span className="text-3xl font-black text-zinc-900 dark:text-white">14 Days</span>
                   <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">+2 from last week</span>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Consistency is in the 99th percentile 🔥</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Consistency is in the 99th percentile 🔥</p>
               </div>
 
               {/* Widget 2: Course Progress */}
-              <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/60 p-5 shadow-lg shadow-slate-900/5 dark:shadow-black/40 backdrop-blur-2xl hover:border-violet-500/40 dark:hover:border-violet-400/30 transition-all group">
+              <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/60 p-5 shadow-lg shadow-slate-900/5 dark:shadow-black/40 backdrop-blur-2xl hover:border-violet-500/40 dark:hover:border-violet-400/30 transition-all group">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Current Course</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Current Course</span>
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400 font-bold">
                     <BookOpen size={18} />
                   </div>
                 </div>
                 <div className="flex items-baseline justify-between">
-                  <span className="text-sm font-bold text-slate-900 dark:text-white truncate">AI Architecture</span>
+                  <span className="text-sm font-bold text-zinc-900 dark:text-white truncate">AI Architecture</span>
                   <span className="text-xs font-extrabold text-violet-600 dark:text-violet-400">92%</span>
                 </div>
                 {/* Progress bar */}
-                <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mt-2.5 overflow-hidden">
+                <div className="w-full h-1.5 bg-slate-200 dark:bg-zinc-800 rounded-full mt-2.5 overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-violet-600 to-cyan-500 rounded-full" style={{ width: '92%' }} />
                 </div>
               </div>
             </div>
 
             {/* Testimonial Badge */}
-            <div className="flex items-center gap-4 pt-2 border-t border-slate-200/60 dark:border-slate-800/60 max-w-xl">
+            <div className="flex items-center gap-4 pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60 max-w-xl">
               <div className="flex -space-x-2 overflow-hidden">
                 <div className="inline-block h-9 w-9 rounded-full ring-2 ring-white dark:ring-slate-900 bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center text-xs font-bold text-white shadow-md">
                   AM
@@ -401,8 +401,8 @@ export default function LoginPage() {
                   SR
                 </div>
               </div>
-              <div className="text-xs text-slate-600 dark:text-slate-400">
-                <p className="font-semibold text-slate-900 dark:text-white flex items-center gap-1">
+              <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                <p className="font-semibold text-zinc-900 dark:text-white flex items-center gap-1">
                   Over 12,500+ Students & Faculty <ShieldCheck size={14} className="text-cyan-500" />
                 </p>
                 <p>Trusted across top global universities for daily workflow.</p>
@@ -418,7 +418,7 @@ export default function LoginPage() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none"
           >
-            <div className="relative rounded-3xl border border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.7)] backdrop-blur-3xl overflow-hidden transition-all duration-500">
+            <div className="relative rounded-3xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/85 dark:bg-[#0c0e19]/80 p-6 sm:p-8 shadow-sm dark:shadow-sm backdrop-blur-3xl overflow-hidden transition-colors duration-200">
               
               {/* Card Top Border Glow Shimmer */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-violet-600 to-pink-500" />
@@ -432,17 +432,17 @@ export default function LoginPage() {
                     <UserPlus size={20} className="animate-pulse" />
                   </div>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <h4 className="text-xs sm:text-sm font-extrabold text-zinc-900 dark:text-white flex items-center gap-1.5">
                       <span>New Student? No Account?</span> <Sparkles size={14} className="text-cyan-500" />
                     </h4>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-tight">
+                    <p className="text-[11px] text-zinc-600 dark:text-zinc-300 mt-0.5 leading-tight">
                       Create your account first, then log in to access the platform!
                     </p>
                   </div>
                 </div>
                 <Link
                   href="/signup"
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl font-extrabold text-xs text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:via-blue-500 hover:to-indigo-500 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-1.5 shrink-0 transition-transform hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl font-extrabold text-xs text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:via-blue-500 hover:to-indigo-500 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-1.5 shrink-0 transition-transform  active:scale-95"
                 >
                   <span>Sign Up Here</span>
                   <ArrowRight size={14} />
@@ -450,20 +450,20 @@ export default function LoginPage() {
               </div>
 
               {/* Mode Switcher Tabs */}
-              <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800 mb-6 relative z-10">
+              <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200/60 dark:border-zinc-800 mb-6 relative z-10">
                 <button
                   type="button"
                   onClick={() => { setMode('signin'); setErrorMsg(''); setSuccessMsg(''); }}
                   className={`relative py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                     mode === 'signin'
-                      ? 'text-slate-900 dark:text-white shadow-sm'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'text-zinc-900 dark:text-white shadow-sm'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                   }`}
                 >
                   {mode === 'signin' && (
                     <motion.div
                       layoutId="tab-indicator"
-                      className="absolute inset-0 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/50 dark:border-slate-700/50"
+                      className="absolute inset-0 rounded-xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-200/50 dark:border-zinc-700/50"
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
                     />
                   )}
@@ -475,14 +475,14 @@ export default function LoginPage() {
                   onClick={() => { setMode('signup'); setErrorMsg(''); setSuccessMsg(''); }}
                   className={`relative py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                     mode === 'signup'
-                      ? 'text-slate-900 dark:text-white shadow-sm'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'text-zinc-900 dark:text-white shadow-sm'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                   }`}
                 >
                   {mode === 'signup' && (
                     <motion.div
                       layoutId="tab-indicator"
-                      className="absolute inset-0 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/50 dark:border-slate-700/50"
+                      className="absolute inset-0 rounded-xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-200/50 dark:border-zinc-700/50"
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
                     />
                   )}
@@ -494,14 +494,14 @@ export default function LoginPage() {
                   onClick={() => { setMode('magic'); setErrorMsg(''); setSuccessMsg(''); }}
                   className={`relative py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                     mode === 'magic'
-                      ? 'text-slate-900 dark:text-white shadow-sm'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                      ? 'text-zinc-900 dark:text-white shadow-sm'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
                   }`}
                 >
                   {mode === 'magic' && (
                     <motion.div
                       layoutId="tab-indicator"
-                      className="absolute inset-0 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-200/50 dark:border-slate-700/50"
+                      className="absolute inset-0 rounded-xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-200/50 dark:border-zinc-700/50"
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
                     />
                   )}
@@ -511,12 +511,12 @@ export default function LoginPage() {
 
               {/* Title & Description */}
               <div className="mb-6">
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
                   {mode === 'signin' && <span>Welcome Back 👋</span>}
                   {mode === 'signup' && <span>Create Student ID ✨</span>}
                   {mode === 'magic' && <span>Passwordless SSO ⚡</span>}
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
                   {mode === 'signin' && 'Enter your university email and password to access your dashboard.'}
                   {mode === 'signup' && 'Join thousands of students optimizing their study workflow today.'}
                   {mode === 'magic' && 'Receive an instant one-click authentication link directly to your student inbox.'}
@@ -541,7 +541,7 @@ export default function LoginPage() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="mb-4 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-medium flex items-center gap-2.5 shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+                    className="mb-4 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-medium flex items-center gap-2.5 shadow-sm"
                   >
                     <CheckCircle2 size={16} className="shrink-0 text-emerald-500" />
                     <span>{successMsg}</span>
@@ -554,7 +554,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => { setErrorMsg(''); setSuccessMsg('Redirecting to Google Workspace SSO...'); }}
-                  className="flex items-center justify-center gap-2 h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                  className="flex items-center justify-center gap-2 h-11 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
                   title="Sign in with Google Workspace"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -569,17 +569,17 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => { setErrorMsg(''); setSuccessMsg('Redirecting to GitHub Student Developer Pack...'); }}
-                  className="flex items-center justify-center gap-2 h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                  className="flex items-center justify-center gap-2 h-11 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
                   title="Sign in with GitHub"
                 >
-                  <svg className="w-4 h-4 fill-current text-slate-800 dark:text-slate-100" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  <svg className="w-4 h-4 fill-current text-zinc-800 dark:text-zinc-100" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                   <span>GitHub</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => { setErrorMsg(''); setSuccessMsg('Redirecting to Microsoft Azure AD / Campus SSO...'); }}
-                  className="flex items-center justify-center gap-2 h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-200 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
+                  className="flex items-center justify-center gap-2 h-11 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/60 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-200 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
                   title="Sign in with Microsoft Campus ID"
                 >
                   <svg className="w-4 h-4 fill-current text-[#00A4EF]" viewBox="0 0 23 23">
@@ -595,9 +595,9 @@ export default function LoginPage() {
               {/* Divider */}
               <div className="relative flex items-center justify-center mb-6">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-200 dark:border-slate-800" />
+                  <div className="w-full border-t border-zinc-200 dark:border-zinc-800" />
                 </div>
-                <span className="relative bg-white dark:bg-[#0c0e19] px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <span className="relative bg-white dark:bg-[#0c0e19] px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
                   Or continue with student credentials
                 </span>
               </div>
@@ -612,18 +612,18 @@ export default function LoginPage() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                   >
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1.5">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1 flex items-center gap-1.5">
                       <AtSign size={13} className="text-cyan-500" /> Student Username <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500 font-bold text-sm">@</span>
+                      <span className="absolute left-3.5 top-3 text-zinc-400 dark:text-zinc-500 font-bold text-sm">@</span>
                       <input
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_.]/g, ''))}
                         placeholder="alex_morgan"
                         required={mode === 'signup'}
-                        className="w-full h-11 pl-9 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white font-mono font-bold text-xs sm:text-sm placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        className="w-full h-11 pl-9 pr-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-white font-mono font-bold text-xs sm:text-sm placeholder:text-zinc-400 placeholder:font-normal focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                       />
                       {username.length >= 3 && (
                         <Check size={16} className="absolute right-3.5 top-3 text-emerald-500 animate-in zoom-in" />
@@ -634,18 +634,18 @@ export default function LoginPage() {
 
                 {/* Email or Username Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
                     {mode === 'signin' ? 'Username or University Email' : 'University Email Address'} {mode === 'signup' && <span className="text-red-500">*</span>}
                   </label>
                   <div className="relative">
-                    <Mail size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
+                    <Mail size={16} className="absolute left-3.5 top-3 text-zinc-400 dark:text-zinc-500" />
                     <input
                       type={mode === 'signin' ? 'text' : 'email'}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={mode === 'signin' ? 'alex_morgan or student@university.edu' : 'student.name@university.edu'}
                       required
-                      className="w-full h-11 pl-10 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                      className="w-full h-11 pl-10 pr-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-white text-xs sm:text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                     />
                     {email.includes('@') && email.includes('.') && (
                       <Check size={16} className="absolute right-3.5 top-3 text-emerald-500" />
@@ -657,7 +657,7 @@ export default function LoginPage() {
                 {mode !== 'magic' && (
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                      <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 flex items-center gap-1">
                         Password {mode === 'signup' && <span className="text-red-500">*</span>}
                       </label>
                       {mode === 'signin' && (
@@ -671,19 +671,19 @@ export default function LoginPage() {
                       )}
                     </div>
                     <div className="relative">
-                      <Lock size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
+                      <Lock size={16} className="absolute left-3.5 top-3 text-zinc-400 dark:text-zinc-500" />
                       <input
                         type={showPassword ? 'text' : 'password'}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••••••"
                         required
-                        className="w-full h-11 pl-10 pr-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                        className="w-full h-11 pl-10 pr-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-white text-xs sm:text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                        className="absolute right-3.5 top-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors"
                       >
                         {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
@@ -691,9 +691,9 @@ export default function LoginPage() {
 
                     {/* Dynamic Password Strength Meter for Sign Up */}
                     {mode === 'signup' && password.length > 0 && (
-                      <div className="mt-2.5 space-y-1.5 p-2.5 rounded-xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                      <div className="mt-2.5 space-y-1.5 p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800">
                         <div className="flex items-center justify-between text-[11px] font-semibold">
-                          <span className="text-slate-500 dark:text-slate-400">Security Strength:</span>
+                          <span className="text-zinc-500 dark:text-zinc-400">Security Strength:</span>
                           <span className={`font-bold ${
                             strength <= 1 ? 'text-red-500' : strength === 2 ? 'text-yellow-500' : 'text-emerald-500'
                           }`}>
@@ -704,10 +704,10 @@ export default function LoginPage() {
                           {[1, 2, 3, 4].map((step) => (
                             <div
                               key={step}
-                              className={`h-1.5 rounded-full transition-all duration-300 ${
+                              className={`h-1.5 rounded-full transition-colors duration-200 ${
                                 step <= strength
                                   ? strengthColors[strength]
-                                  : 'bg-slate-200 dark:bg-slate-800'
+                                  : 'bg-slate-200 dark:bg-zinc-800'
                               }`}
                             />
                           ))}
@@ -726,34 +726,34 @@ export default function LoginPage() {
                     className="grid grid-cols-2 gap-3 pt-1"
                   >
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
                         Full Name
                       </label>
                       <div className="relative">
-                        <User size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
+                        <User size={16} className="absolute left-3.5 top-3 text-zinc-400 dark:text-zinc-500" />
                         <input
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Alex Morgan"
                           required={mode === 'signup'}
-                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-white text-xs sm:text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
                         Student ID #
                       </label>
                       <div className="relative">
-                        <KeyRound size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-slate-500" />
+                        <KeyRound size={16} className="absolute left-3.5 top-3 text-zinc-400 dark:text-zinc-500" />
                         <input
                           type="text"
                           value={studentId}
                           onChange={(e) => setStudentId(e.target.value)}
                           placeholder="NG-2026-XXXX"
                           required={mode === 'signup'}
-                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
+                          className="w-full h-11 pl-10 pr-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-white text-xs sm:text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/20 transition-all shadow-inner"
                         />
                       </div>
                     </div>
@@ -768,21 +768,21 @@ export default function LoginPage() {
                         type="checkbox"
                         checked={rememberMe}
                         onChange={(e) => setRememberMe(e.target.checked)}
-                        className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-cyan-500 focus:ring-cyan-500/20 bg-slate-100 dark:bg-slate-900"
+                        className="w-4 h-4 rounded border-zinc-300 dark:border-zinc-700 text-cyan-500 focus:ring-cyan-500/20 bg-zinc-100 dark:bg-zinc-900"
                       />
-                      <span className="text-xs text-slate-600 dark:text-slate-400 font-medium">Remember 30 days</span>
+                      <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">Remember 30 days</span>
                     </label>
                   </div>
                 )}
 
                 {mode === 'signup' && (
                   <div className="pt-1">
-                    <label className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-400 font-normal select-none cursor-pointer">
+                    <label className="flex items-start gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-normal select-none cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         defaultChecked
-                        className="mt-0.5 w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-cyan-500 focus:ring-cyan-500/20 bg-slate-100 dark:bg-slate-900 shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded border-zinc-300 dark:border-zinc-700 text-cyan-500 focus:ring-cyan-500/20 bg-zinc-100 dark:bg-zinc-900 shrink-0"
                       />
                       <span>
                         I agree to the <a href="#" className="text-cyan-600 dark:text-cyan-400 hover:underline">Academic Honor Code</a> and <a href="#" className="text-cyan-600 dark:text-cyan-400 hover:underline">Student Terms</a>.
@@ -795,7 +795,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full h-12 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 text-white font-bold text-sm shadow-[0_0_25px_rgba(139,92,246,0.35)] hover:shadow-[0_40px_100px_-10px_rgba(34,211,238,0.7),0_0_60px_-5px_rgba(34,211,238,0.5)] hover:scale-[1.03] active:scale-98 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 group"
+                  className="w-full h-12 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 text-white font-bold text-sm shadow-sm hover:shadow-sm  active:scale-98 transition-colors duration-200 flex items-center justify-center gap-2 disabled:opacity-70 group"
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
@@ -816,8 +816,8 @@ export default function LoginPage() {
               </form>
 
               {/* Quick Demo Login Banner */}
-              <div className="mt-6 pt-5 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col items-center gap-2">
-                <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+              <div className="mt-6 pt-5 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-col items-center gap-2">
+                <span className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   Reviewing the theme? Try Demo Access
                 </span>
                 <button
@@ -834,7 +834,7 @@ export default function LoginPage() {
 
             {/* Bottom Security Footer */}
             <div className="mt-6 text-center">
-              <p className="text-xs text-slate-500 dark:text-slate-500 flex items-center justify-center gap-1.5">
+              <p className="text-xs text-zinc-500 dark:text-zinc-500 flex items-center justify-center gap-1.5">
                 <ShieldCheck size={14} className="text-emerald-500" />
                 <span>256-bit SSL Encrypted • Powered by NextGen Auth Engine</span>
               </p>
@@ -845,12 +845,12 @@ export default function LoginPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-500">
+      <footer className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-zinc-200/60 dark:border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-500">
         <p>© 2026 NextGen Learn Student OS. All rights reserved.</p>
         <div className="flex items-center gap-6 font-medium">
-          <a href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Security Audit</a>
-          <a href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">System Status: 🟢 Normal</a>
+          <a href="#" className="hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors">Security Audit</a>
+          <a href="#" className="hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors">System Status: 🟢 Normal</a>
         </div>
       </footer>
 
@@ -862,12 +862,12 @@ export default function LoginPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c0e19] p-6 sm:p-8 shadow-2xl text-slate-900 dark:text-slate-100"
+              className="relative w-full max-w-md rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0e19] p-6 sm:p-8 shadow-2xl text-zinc-900 dark:text-zinc-100"
             >
               <button
                 type="button"
                 onClick={() => setShowForgotModal(false)}
-                className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
+                className="absolute top-6 right-6 text-zinc-400 hover:text-zinc-600 dark:hover:text-white transition-colors"
               >
                 <X size={20} />
               </button>
@@ -876,8 +876,8 @@ export default function LoginPage() {
                 <HelpCircle size={24} />
               </div>
 
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Reset Account Password</h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 mb-6">
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Reset Account Password</h3>
+              <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 mb-6">
                 Enter your registered university email. We will send a 2FA recovery link with temporary login credentials.
               </p>
 
@@ -889,7 +889,7 @@ export default function LoginPage() {
               ) : (
                 <form onSubmit={handleResetSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
                       Student Email Address
                     </label>
                     <input
@@ -898,7 +898,7 @@ export default function LoginPage() {
                       onChange={(e) => setResetEmail(e.target.value)}
                       placeholder="student@university.edu"
                       required
-                      className="w-full h-11 px-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white text-xs sm:text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-500"
+                      className="w-full h-11 px-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-white text-xs sm:text-sm placeholder:text-zinc-400 focus:outline-none focus:border-cyan-500"
                     />
                   </div>
                   <button

@@ -113,16 +113,16 @@ export default function CoursesPage() {
     <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-4 sm:px-6 lg:px-8">
       <header className="dashboard-panel flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
             <span className="flex items-center gap-2 rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 text-cyan-300">
               <BookOpen size={14} />
               Courses
             </span>
           </div>
-          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-900 dark:text-slate-50 md:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-zinc-900 dark:text-zinc-50 md:text-4xl">
             Learning Catalog
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 md:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-600 dark:text-zinc-400 md:text-base">
             Explore available courses and manage your learning tracks.
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function CoursesPage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div ref={searchContainerRef} className="relative z-50">
             <label className="search-control group">
-              <Search size={17} className="text-slate-900 dark:text-slate-500 transition-colors group-focus-within:text-cyan-400" />
+              <Search size={17} className="text-zinc-900 dark:text-zinc-500 transition-colors group-focus-within:text-cyan-400" />
               <span className="sr-only">Search catalog</span>
               <input
                 type="search"
@@ -138,34 +138,34 @@ export default function CoursesPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setIsSearchFocused(true)}
-                className="w-full transition-all duration-300 sm:w-48 sm:focus:w-64"
+                className="w-full transition-colors duration-200 sm:w-48 sm:focus:w-64"
               />
             </label>
             
             {isSearchFocused && searchQuery && (
-              <div className="absolute top-full left-0 z-50 mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 w-full sm:min-w-[320px]">
+              <div className="absolute top-full left-0 z-50 mt-2 overflow-hidden rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 w-full sm:min-w-[320px]">
                 {searchResults.length > 0 ? (
                   <ul className="flex max-h-80 flex-col overflow-y-auto">
                     {searchResults.map((course) => (
                       <li key={course.id}>
                         <button
                           type="button"
-                          className="group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 transition-all duration-300 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 hover:shadow-md dark:text-slate-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
+                          className="group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-zinc-700 transition-colors duration-200 hover:scale-[1.02] hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-violet-500/10 hover:text-cyan-700 hover:shadow-md dark:text-zinc-300 dark:hover:from-cyan-500/20 dark:hover:to-violet-500/20 dark:hover:text-cyan-300"
                           onClick={() => {
                             setSearchQuery(course.title);
                             setIsSearchFocused(false);
                             router.push(`/courses/${course.id}`);
                           }}
                         >
-                          <Search size={14} className="text-slate-400 opacity-70 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:text-cyan-500 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
+                          <Search size={14} className="text-zinc-400 opacity-70 shrink-0 transition-colors duration-200 group- group-hover:text-cyan-500 group-hover:drop-shadow-sm" />
                           <span className="truncate font-medium">{course.title}</span>
-                          <span className="ml-auto text-xs whitespace-nowrap text-slate-400 dark:text-slate-500 transition-colors duration-300 group-hover:text-cyan-600/70 dark:group-hover:text-cyan-400/70">{course.status}</span>
+                          <span className="ml-auto text-xs whitespace-nowrap text-zinc-400 dark:text-zinc-500 transition-colors duration-300 group-hover:text-cyan-600/70 dark:group-hover:text-cyan-400/70">{course.status}</span>
                         </button>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <div className="p-4 text-center text-sm text-slate-500 dark:text-slate-400">
+                  <div className="p-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
                     No results found for "{searchQuery}"
                   </div>
                 )}
@@ -182,11 +182,11 @@ export default function CoursesPage() {
       <div className="flex flex-col gap-8">
         <section 
           aria-labelledby="active-courses"
-          className="group/sec relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(6,182,212,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-cyan-400/90 hover:shadow-[0_40px_100px_-10px_rgba(6,182,212,0.7),0_0_60px_-5px_rgba(6,182,212,0.5)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-7"
+          className="group/sec relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-sm transition-colors duration-200   hover:border-cyan-400/90 hover:shadow-sm dark:border-zinc-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-cyan-400/80 sm:p-7"
         >
           {/* Ambient Radial Auroras */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/15 blur-3xl transition-all duration-700 group-hover/sec:scale-150 group-hover/sec:opacity-100 dark:bg-cyan-500/25" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500 group-hover/sec:h-[3px] group-hover/sec:shadow-[0_0_30px_rgba(6,182,212,1)]" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full hidden transition-colors duration-200 group-hover/sec:scale-150 group-hover/sec:opacity-100 dark:bg-cyan-500/25" />
+          <div className="hidden shadow-sm transition-colors duration-200 group-hover/sec:h-[3px] group-hover/sec:shadow-sm" />
 
           <div className="relative z-10 mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -197,11 +197,11 @@ export default function CoursesPage() {
                 </span>
                 In Progress
               </div>
-              <h2 id="active-courses" className="mt-2 text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+              <h2 id="active-courses" className="mt-2 text-2xl font-black tracking-tight text-zinc-900 dark:text-white sm:text-3xl">
                 Pick up where you left off
               </h2>
             </div>
-            <div className="flex items-center gap-2 rounded-full border border-slate-300/80 bg-slate-100/90 px-3 py-1 text-xs font-bold text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+            <div className="flex items-center gap-2 rounded-full border border-zinc-300/80 bg-zinc-100/90 px-3 py-1 text-xs font-bold text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
               <Target size={15} className="text-cyan-500" />
               <span>{active.length} active tracks</span>
             </div>
@@ -226,21 +226,21 @@ export default function CoursesPage() {
 
         <section 
           aria-labelledby="recommended-courses"
-          className="group/sec2 relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-[0_18px_45px_-15px_rgba(16,185,129,0.12)] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-emerald-400/90 hover:shadow-[0_40px_100px_-10px_rgba(16,185,129,0.7),0_0_60px_-5px_rgba(16,185,129,0.5)] dark:border-slate-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-emerald-400/80 sm:p-7"
+          className="group/sec2 relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white via-slate-50/95 to-slate-100/90 p-6 shadow-sm transition-colors duration-200   hover:border-emerald-400/90 hover:shadow-sm dark:border-zinc-800/80 dark:from-slate-900/95 dark:via-slate-900 dark:to-slate-950 dark:hover:border-emerald-400/80 sm:p-7"
         >
-          <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl transition-all duration-700 group-hover/sec2:scale-150 group-hover/sec2:opacity-100 dark:bg-emerald-500/25" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/80 to-transparent shadow-[0_0_15px_rgba(16,185,129,0.8)] transition-all duration-500 group-hover/sec2:h-[3px] group-hover/sec2:shadow-[0_0_30px_rgba(16,185,129,1)]" />
+          <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full hidden transition-colors duration-200 group-hover/sec2:scale-150 group-hover/sec2:opacity-100 dark:bg-emerald-500/25" />
+          <div className="hidden shadow-sm transition-colors duration-200 group-hover/sec2:h-[3px] group-hover/sec2:shadow-sm" />
 
           <div className="relative z-10 mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-emerald-700 shadow-xs backdrop-blur-md dark:border-emerald-400/30 dark:text-emerald-300">
                 Discover
               </div>
-              <h2 id="recommended-courses" className="mt-2 text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+              <h2 id="recommended-courses" className="mt-2 text-2xl font-black tracking-tight text-zinc-900 dark:text-white sm:text-3xl">
                 Recommended for you
               </h2>
             </div>
-            <button type="button" className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-3.5 py-1.5 text-xs font-bold text-emerald-600 shadow-2xs transition-all hover:scale-105 hover:border-emerald-400 dark:border-slate-800 dark:bg-slate-900 dark:text-emerald-400">
+            <button type="button" className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200/80 bg-white px-3.5 py-1.5 text-xs font-bold text-emerald-600 shadow-2xs transition-all  hover:border-emerald-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-emerald-400">
               <span>Browse all catalog</span>
               <ArrowUpRight size={15} />
             </button>
@@ -260,7 +260,7 @@ export default function CoursesPage() {
               />
             ))}
             {filteredRecommended.length === 0 && (
-              <div className="col-span-full py-12 text-center text-slate-900 dark:text-slate-500 font-medium">
+              <div className="col-span-full py-12 text-center text-zinc-900 dark:text-zinc-500 font-medium">
                 No courses found matching your search.
               </div>
             )}
