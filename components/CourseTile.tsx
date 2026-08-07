@@ -25,79 +25,34 @@ interface CourseTileProps {
 }
 
 const cardThemes: Record<string, string> = {
-  amber: 'border-amber-300/60 dark:border-amber-500/30 bg-gradient-to-br from-white via-amber-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-amber-950/25 dark:to-slate-950 hover:border-amber-400 dark:hover:border-amber-400/90 hover:shadow-sm',
-  cyan: 'border-cyan-300/60 dark:border-cyan-500/30 bg-gradient-to-br from-white via-cyan-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-cyan-950/25 dark:to-slate-950 hover:border-cyan-400 dark:hover:border-cyan-400/90 hover:shadow-sm',
-  emerald: 'border-emerald-300/60 dark:border-emerald-500/30 bg-gradient-to-br from-white via-emerald-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-emerald-950/25 dark:to-slate-950 hover:border-emerald-400 dark:hover:border-emerald-400/90 hover:shadow-sm',
-  violet: 'border-violet-300/60 dark:border-violet-500/30 bg-gradient-to-br from-white via-violet-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-violet-950/25 dark:to-slate-950 hover:border-violet-400 dark:hover:border-violet-400/90 hover:shadow-sm',
-  rose: 'border-rose-300/60 dark:border-rose-500/30 bg-gradient-to-br from-white via-rose-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-rose-950/25 dark:to-slate-950 hover:border-rose-400 dark:hover:border-rose-400/90 hover:shadow-sm',
-  indigo: 'border-indigo-300/60 dark:border-indigo-500/30 bg-gradient-to-br from-white via-indigo-50/40 to-slate-50/90 dark:from-slate-900/90 dark:via-indigo-950/25 dark:to-slate-950 hover:border-indigo-400 dark:hover:border-indigo-400/90 hover:shadow-sm',
-};
-
-const topBeams: Record<string, string> = {
-  amber: 'bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-sm group-hover:shadow-sm',
-  cyan: 'bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-sm group-hover:shadow-sm',
-  emerald: 'bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-sm group-hover:shadow-sm',
-  violet: 'bg-gradient-to-r from-transparent via-violet-400 to-transparent shadow-sm group-hover:shadow-sm',
-  rose: 'bg-gradient-to-r from-transparent via-rose-400 to-transparent shadow-sm group-hover:shadow-sm',
-  indigo: 'bg-gradient-to-r from-transparent via-indigo-400 to-transparent shadow-sm group-hover:shadow-sm',
-};
-
-const ambientGlows: Record<string, string> = {
-  amber: 'bg-amber-500/15 dark:bg-amber-500/25',
-  cyan: 'bg-cyan-500/15 dark:bg-cyan-500/25',
-  emerald: 'bg-emerald-500/15 dark:bg-emerald-500/25',
-  violet: 'bg-violet-500/15 dark:bg-violet-500/25',
-  rose: 'bg-rose-500/15 dark:bg-rose-500/25',
-  indigo: 'bg-indigo-500/15 dark:bg-indigo-500/25',
+  amber: 'hover:border-amber-400/60 dark:hover:border-amber-500/50',
+  cyan: 'hover:border-cyan-400/60 dark:hover:border-cyan-500/50',
+  emerald: 'hover:border-emerald-400/60 dark:hover:border-emerald-500/50',
+  violet: 'hover:border-violet-400/60 dark:hover:border-violet-500/50',
+  rose: 'hover:border-rose-400/60 dark:hover:border-rose-500/50',
+  indigo: 'hover:border-indigo-400/60 dark:hover:border-indigo-500/50',
 };
 
 const iconBoxes: Record<string, string> = {
-  amber: 'border-amber-400/40 bg-gradient-to-br from-amber-400/20 to-orange-400/10 text-amber-600 dark:text-amber-300 shadow-sm',
-  cyan: 'border-cyan-400/40 bg-gradient-to-br from-cyan-400/20 to-teal-400/10 text-cyan-600 dark:text-cyan-300 shadow-sm',
-  emerald: 'border-emerald-400/40 bg-gradient-to-br from-emerald-400/20 to-green-400/10 text-emerald-600 dark:text-emerald-300 shadow-sm',
-  violet: 'border-violet-400/40 bg-gradient-to-br from-violet-400/20 to-fuchsia-400/10 text-violet-600 dark:text-violet-300 shadow-sm',
-  rose: 'border-rose-400/40 bg-gradient-to-br from-rose-400/20 to-pink-400/10 text-rose-600 dark:text-rose-300 shadow-sm',
-  indigo: 'border-indigo-400/40 bg-gradient-to-br from-indigo-400/20 to-blue-400/10 text-indigo-600 dark:text-indigo-300 shadow-sm',
+  amber: 'text-amber-600 dark:text-amber-400',
+  cyan: 'text-cyan-600 dark:text-cyan-400',
+  emerald: 'text-emerald-600 dark:text-emerald-400',
+  violet: 'text-violet-600 dark:text-violet-400',
+  rose: 'text-rose-600 dark:text-rose-400',
+  indigo: 'text-indigo-600 dark:text-indigo-400',
 };
 
-const statusBadges: Record<string, { box: string; dot: string }> = {
-  amber: {
-    box: 'border-amber-400/40 bg-amber-500/10 text-amber-700 dark:border-amber-400/30 dark:text-amber-300 shadow-sm',
-    dot: 'bg-amber-400',
-  },
-  cyan: {
-    box: 'border-cyan-400/40 bg-cyan-500/10 text-cyan-700 dark:border-cyan-400/30 dark:text-cyan-300 shadow-sm',
-    dot: 'bg-cyan-400',
-  },
-  emerald: {
-    box: 'border-emerald-400/40 bg-emerald-500/10 text-emerald-700 dark:border-emerald-400/30 dark:text-emerald-300 shadow-sm',
-    dot: 'bg-emerald-400',
-  },
-  violet: {
-    box: 'border-violet-400/40 bg-violet-500/10 text-violet-700 dark:border-violet-400/30 dark:text-violet-300 shadow-sm',
-    dot: 'bg-violet-400',
-  },
-  rose: {
-    box: 'border-rose-400/40 bg-rose-500/10 text-rose-700 dark:border-rose-400/30 dark:text-rose-300 shadow-sm',
-    dot: 'bg-rose-400',
-  },
-  indigo: {
-    box: 'border-indigo-400/40 bg-indigo-500/10 text-indigo-700 dark:border-indigo-400/30 dark:text-indigo-300 shadow-sm',
-    dot: 'bg-indigo-400',
-  },
-};
-
-const buttonBoxes: Record<string, string> = {
-  amber: 'border-amber-300/60 bg-amber-50/80 text-amber-800 hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-500 hover:text-white hover:border-transparent hover:shadow-sm dark:border-amber-500/30 dark:bg-amber-950/40 dark:text-amber-300 dark:hover:bg-gradient-to-r dark:hover:from-amber-500 dark:hover:to-orange-500 dark:hover:text-white',
-  cyan: 'border-cyan-300/60 bg-cyan-50/80 text-cyan-800 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 hover:text-white hover:border-transparent hover:shadow-sm dark:border-cyan-500/30 dark:bg-cyan-950/40 dark:text-cyan-300 dark:hover:bg-gradient-to-r dark:hover:from-cyan-500 dark:hover:to-teal-500 dark:hover:text-white',
-  emerald: 'border-emerald-300/60 bg-emerald-50/80 text-emerald-800 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-transparent hover:shadow-sm dark:border-emerald-500/30 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:bg-gradient-to-r dark:hover:from-emerald-500 dark:hover:to-teal-500 dark:hover:text-white',
-  violet: 'border-violet-300/60 bg-violet-50/80 text-violet-800 hover:bg-gradient-to-r hover:from-violet-600 hover:to-indigo-500 hover:text-white hover:border-transparent hover:shadow-sm dark:border-violet-500/30 dark:bg-violet-950/40 dark:text-violet-300 dark:hover:bg-gradient-to-r dark:hover:from-violet-600 dark:hover:to-indigo-500 dark:hover:text-white',
-  rose: 'border-rose-300/60 bg-rose-50/80 text-rose-800 hover:bg-gradient-to-r hover:from-rose-500 hover:to-pink-500 hover:text-white hover:border-transparent hover:shadow-sm dark:border-rose-500/30 dark:bg-rose-950/40 dark:text-rose-300 dark:hover:bg-gradient-to-r dark:hover:from-rose-500 dark:hover:to-pink-500 dark:hover:text-white',
-  indigo: 'border-indigo-300/60 bg-indigo-50/80 text-indigo-800 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-blue-500 hover:text-white hover:border-transparent hover:shadow-sm dark:border-indigo-500/30 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-gradient-to-r dark:hover:from-indigo-500 dark:hover:to-blue-500 dark:hover:text-white',
+const statusBadges: Record<string, string> = {
+  amber: 'bg-amber-500',
+  cyan: 'bg-cyan-500',
+  emerald: 'bg-emerald-500',
+  violet: 'bg-violet-500',
+  rose: 'bg-rose-500',
+  indigo: 'indigo-500',
 };
 
 function CourseIcon({ iconName }: { iconName: string }) {
-  const iconProps = { size: 21 };
+  const iconProps = { size: 20 };
 
   switch (iconName) {
     case 'BookOpen':
@@ -125,64 +80,51 @@ export function CourseTile({
   onContinue,
 }: CourseTileProps) {
   const cardTheme = cardThemes[accent] ?? cardThemes.cyan;
-  const topBeam = topBeams[accent] ?? topBeams.cyan;
-  const ambientGlow = ambientGlows[accent] ?? ambientGlows.cyan;
   const iconBox = iconBoxes[accent] ?? iconBoxes.cyan;
-  const badgeTheme = statusBadges[accent] ?? statusBadges.cyan;
-  const buttonBox = buttonBoxes[accent] ?? buttonBoxes.cyan;
+  const badgeDot = statusBadges[accent] ?? statusBadges.cyan;
 
   return (
     <motion.article
       key={id}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -9, scale: 1.025, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
-      className={`dashboard-panel group relative flex min-h-[235px] flex-col justify-between overflow-hidden rounded-3xl border p-5 transition-colors duration-200 ${cardTheme}`}
+      transition={{ delay: index * 0.05, duration: 0.3, ease: 'easeOut' }}
+      className={`group relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 ${cardTheme}`}
     >
-      {/* Top Luminous Neon Border Beam */}
-      <div className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] transition-colors duration-200 group-hover:h-[3px] ${topBeam}`} />
-
-      {/* Ambient Corner Radial Auroras */}
-      <div className={`hidden transition-colors duration-200 group-hover:scale-[1.7] group-hover:opacity-100 opacity-60 ${ambientGlow}`} />
-      <div className={`hidden transition-colors duration-200 group-hover:scale-[1.7] group-hover:opacity-100 opacity-40 ${ambientGlow}`} />
-
       <div className="relative z-10">
         <div className="flex items-start justify-between gap-4">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border backdrop-blur-md transition-transform duration-300 group- group- ${iconBox}`}>
+          <div className={`flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950 ${iconBox}`}>
             <CourseIcon iconName={iconName} />
           </div>
-          <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold backdrop-blur-md transition-transform duration-300 group- ${badgeTheme.box}`}>
-            <span className="relative flex h-1.5 w-1.5">
-              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${badgeTheme.dot}`} />
-              <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${badgeTheme.dot}`} />
-            </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-[11px] font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+            <span className={`h-1.5 w-1.5 rounded-full ${badgeDot}`} />
             {status}
           </span>
         </div>
 
-        <h3 className="mt-5 line-clamp-2 text-base font-bold tracking-tight text-zinc-900 dark:text-white transition-colors">
+        <h3 className="mt-4 line-clamp-2 text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
           {title}
         </h3>
-        <div className="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-          <Clock3 size={14} className="text-zinc-400 dark:text-zinc-500" />
+        <div className="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+          <Clock3 size={14} />
           <span>{duration}</span>
         </div>
       </div>
 
-      <div className="relative z-10 mt-6">
-        <div className="mb-2 flex items-center justify-between text-xs font-semibold">
+      <div className="relative z-10 mt-5">
+        <div className="mb-2 flex items-center justify-between text-xs font-medium">
           <span className="text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Progress</span>
-          <span className="text-zinc-800 dark:text-zinc-100 font-bold">{progress}%</span>
+          <span className="text-zinc-900 dark:text-zinc-100 font-semibold">{progress}%</span>
         </div>
-        <ProgressIndicator progress={progress} size="medium" accent={accent} />
+        <ProgressIndicator progress={progress} size="small" accent={accent} />
+        
         <button
           type="button"
           onClick={() => onContinue && onContinue(id)}
-          className={`mt-4 flex w-full items-center justify-between rounded-xl border px-3.5 py-2.5 text-xs font-bold tracking-wide backdrop-blur-md transition-colors duration-200 ${buttonBox}`}
+          className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
         >
           <span>Continue Track</span>
-          <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+          <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
         </button>
       </div>
     </motion.article>

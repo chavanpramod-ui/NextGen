@@ -264,7 +264,7 @@ function CoursesGrid({
       {/* Header */}
       <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-cyan-700 shadow-xs backdrop-blur-md dark:border-cyan-400/30 dark:text-cyan-300">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
@@ -307,17 +307,17 @@ function CoursesGrid({
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-colors duration-200 ${
+              className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 ${
                 isSelected
-                  ? 'border border-cyan-400/60 bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-sm scale-105'
-                  : 'border border-zinc-200/80 bg-white/70 text-zinc-600 hover:border-cyan-400/40 hover:bg-white hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400 dark:hover:border-cyan-400/40 dark:hover:bg-zinc-900 dark:hover:text-zinc-200'
+                  ? 'bg-zinc-900 text-white shadow-sm dark:bg-zinc-100 dark:text-zinc-900'
+                  : 'bg-white text-zinc-600 hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800'
               }`}
             >
               <span>{filter}</span>
-              <span className={`rounded-full px-1.5 py-0.2 text-[10px] font-extrabold ${
+              <span className={`flex h-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold ${
                 isSelected
-                  ? 'bg-white/20 text-white'
-                  : 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400'
+                  ? 'bg-white/20 text-white dark:bg-black/10 dark:text-zinc-900'
+                  : 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400'
               }`}>
                 {count}
               </span>
