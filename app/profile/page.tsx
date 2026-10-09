@@ -7,7 +7,6 @@ import {
   Globe, CreditCard, Code, Terminal, Layers
 } from 'lucide-react';
 
-// Define theme options with premium hover glows, shadows, and focus rings
 const THEMES = [
   { 
     id: 'cyber', 
@@ -85,7 +84,6 @@ export default function ProfilePage() {
   const [course, setCourse] = useState("B.S. Computer Science");
   const [yearOfStudy, setYearOfStudy] = useState("Junior");
 
-  // Premium Features State
   const [selectedTheme, setSelectedTheme] = useState(THEMES[0]);
   const [skills, setSkills] = useState<string[]>(["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Python"]);
   const [newSkillInput, setNewSkillInput] = useState("");
