@@ -35,10 +35,8 @@ export default function LoginPage() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Form Mode: 'signin' | 'signup' | 'magic'
   const [mode, setMode] = useState<'signin' | 'signup' | 'magic'>('signin');
-  
-  // Form State
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,8 +44,7 @@ export default function LoginPage() {
   const [studentId, setStudentId] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
-  
-  // Interactive UI States
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
@@ -71,7 +68,6 @@ export default function LoginPage() {
     }
   }, []);
 
-  // Password Strength Calculation for Sign Up
   const getPasswordStrength = (pass: string) => {
     let score = 0;
     if (pass.length >= 8) score++;
@@ -119,7 +115,6 @@ export default function LoginPage() {
       setIsLoading(false);
       if (mode === 'signin') {
         setSuccessMsg('Authentication successful! Launching Student Command Center...');
-        // Check if user exists in localStorage
         const loginId = (username || email).toLowerCase().trim();
         const existingProfileRaw = localStorage.getItem('userProfile');
         let matchedProfile: any = null;
@@ -147,7 +142,6 @@ export default function LoginPage() {
         if (matchedProfile) {
           localStorage.setItem('userProfile', JSON.stringify(matchedProfile));
         } else {
-          // Fallback demo session
           const fbId = username || email;
           localStorage.setItem('userProfile', JSON.stringify({
             username: username || fbId.split('@')[0] || 'alex_morgan',
