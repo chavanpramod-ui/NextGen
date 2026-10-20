@@ -66,7 +66,7 @@ export function Sidebar() {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
 
-  if (pathname === '/login' || pathname?.startsWith('/login')) {
+  if (pathname === '/login' || pathname?.startsWith('/login') || pathname?.startsWith('/admin')) {
     return null;
   }
 

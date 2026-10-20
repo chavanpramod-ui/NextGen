@@ -52,7 +52,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
 
   const dynamicActivityData = activityData.map((item, index) => {
     const now = new Date();
-    const currentDayIdx = (now.getDay() + 6) % 7; // Mon = 0, Sun = 6
+    const currentDayIdx = (now.getDay() + 6) % 7; 
     const diffDays = index - currentDayIdx;
     const itemDate = new Date(now);
     itemDate.setDate(now.getDate() + diffDays);
@@ -85,7 +85,6 @@ export function ActivityTile({ activity }: ActivityTileProps) {
     >
       <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full hidden transition-colors duration-200 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-cyan-500/25" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full hidden transition-colors duration-200 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-teal-500/20" />
-
       <div className="hidden shadow-sm transition-colors duration-200 group-hover/tile:h-[3px] group-hover/tile:shadow-sm" />
 
       <div className="relative z-10 flex items-start justify-between gap-4">
