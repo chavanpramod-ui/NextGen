@@ -20,7 +20,7 @@ const activityData = [
 ];
 
 export function ActivityTile({ activity }: ActivityTileProps) {
-  const [currentDayIndex, setCurrentDayIndex] = useState(3); // Default to Thu
+  const [currentDayIndex, setCurrentDayIndex] = useState(3); 
   const [currentDateFormatted, setCurrentDateFormatted] = useState('Friday, Jul 10, 2026');
   const [currentTimeFormatted, setCurrentTimeFormatted] = useState('10:03:40 PM');
 
@@ -83,14 +83,11 @@ export function ActivityTile({ activity }: ActivityTileProps) {
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className="group/tile relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white via-cyan-50/20 to-slate-50/90 p-6 shadow-sm transition-colors duration-200   hover:border-cyan-400/90 hover:shadow-sm dark:border-zinc-800/80 dark:from-slate-900 dark:via-cyan-950/20 dark:to-slate-950 dark:hover:border-cyan-400/80"
     >
-      {/* Ambient Radial Auroras */}
       <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full hidden transition-colors duration-200 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-cyan-500/25" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full hidden transition-colors duration-200 group-hover/tile:scale-150 group-hover/tile:opacity-100 dark:bg-teal-500/20" />
 
-      {/* Top Luminous Border Beam */}
       <div className="hidden shadow-sm transition-colors duration-200 group-hover/tile:h-[3px] group-hover/tile:shadow-sm" />
 
-      {/* Header */}
       <div className="relative z-10 flex items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
@@ -115,7 +112,6 @@ export function ActivityTile({ activity }: ActivityTileProps) {
         </div>
       </div>
 
-      {/* Ultra-Premium Dual Capsule Date & Time HUD Strip */}
       <div className="relative z-10 mt-5 flex flex-wrap items-center justify-between gap-2.5 rounded-xl border border-zinc-200/80 bg-zinc-100/70 p-1.5 shadow-inner backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60">
         <div className="flex items-center gap-2.5 rounded-lg border border-zinc-200/60 bg-white/95 px-3 py-1.5 shadow-xs dark:border-zinc-800/60 dark:bg-zinc-900/90">
           <div className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-xs">
@@ -139,9 +135,7 @@ export function ActivityTile({ activity }: ActivityTileProps) {
         </div>
       </div>
 
-      {/* Bar Chart Section */}
       <div className="relative z-10 mt-6 pt-2">
-        {/* Background Grid Guide Lines */}
         <div className="pointer-events-none absolute inset-x-0 top-3 flex h-36 flex-col justify-between opacity-35 dark:opacity-20">
           <div className="w-full border-b border-dashed border-zinc-300 dark:border-zinc-700" />
           <div className="w-full border-b border-dashed border-zinc-300 dark:border-zinc-700" />
@@ -163,14 +157,12 @@ export function ActivityTile({ activity }: ActivityTileProps) {
                       : 'bg-gradient-to-t from-slate-300 via-slate-200 to-slate-100 dark:from-slate-700 dark:via-slate-600 dark:to-slate-500 group-hover/bar:from-cyan-500 group-hover/bar:via-teal-400 group-hover/bar:to-emerald-300 group-hover/bar:shadow-sm'
                   }`}
                 >
-                  {/* Glowing Top Indicator Cap */}
                   <div className={`absolute inset-x-0.5 top-0.5 h-1 rounded-full ${
                     item.isToday ? 'bg-white/80 shadow-sm' : 'bg-white/40 group-hover/bar:bg-white/80'
                   }`} />
                 </motion.div>
               </div>
 
-              {/* Day & Date Pill */}
               <div
                 className={`flex flex-col items-center rounded-lg px-1.5 py-1 transition-colors duration-200 leading-none w-full ${
                   item.isToday
@@ -193,7 +185,6 @@ export function ActivityTile({ activity }: ActivityTileProps) {
         </div>
       </div>
 
-      {/* Ultra-Premium Dual Stat Pods */}
       <div className="relative z-10 mt-6 grid grid-cols-2 gap-3.5 border-t border-zinc-200/80 pt-5 dark:border-zinc-800/80">
         <div className="group/stat rounded-xl border border-zinc-200/70 bg-gradient-to-br from-slate-50 to-white p-3.5 transition-colors duration-200 hover:border-cyan-400/40 hover:shadow-md dark:border-zinc-800/70 dark:from-slate-900/60 dark:to-slate-900/30">
           <div className="flex items-center justify-between">
