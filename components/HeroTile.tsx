@@ -55,15 +55,15 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
       }}
       className="group/hero relative min-h-[380px] overflow-hidden rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white via-slate-50/90 to-slate-100/80 p-6 shadow-sm transition-colors duration-200   hover:border-violet-400/90 hover:shadow-sm dark:border-zinc-800/80 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-950 dark:hover:border-violet-400/80 sm:p-7 lg:p-8"
     >
-      {/* Ambient Mesh Auroras */}
+     
       <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-violet-600/15 blur-[110px] transition-colors duration-200 group-hover/hero:scale-125 group-hover/hero:opacity-100 dark:bg-violet-600/25" />
       <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-cyan-500/15 blur-[110px] transition-colors duration-200 group-hover/hero:scale-125 group-hover/hero:opacity-100 dark:bg-cyan-500/25" />
 
-      {/* Top Luminous Border Beam */}
+      
       <div className="hidden shadow-sm transition-colors duration-200 group-hover/hero:h-[3px] group-hover/hero:shadow-sm" />
 
       <div className="relative z-10 grid h-full gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
-        {/* Left Column: Welcome & Action Controls */}
+      
         <div className="flex min-w-0 flex-col justify-between gap-8">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-gradient-to-r from-violet-500/10 via-cyan-500/10 to-violet-500/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-violet-700 shadow-sm backdrop-blur-md dark:border-violet-400/30 dark:text-violet-300">
@@ -88,7 +88,7 @@ export function HeroTile({ userName, streakDays }: HeroTileProps) {
           </div>
 
           <div className="flex flex-col gap-4">
-            {/* Interactive Action Buttons */}
+          
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <button
                 type="button"
